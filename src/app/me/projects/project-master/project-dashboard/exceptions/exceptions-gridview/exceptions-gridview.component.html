@@ -1,0 +1,250 @@
+<div fxLayout="row wrap" #resizedDiv>
+  <div class="flex-p w-100">
+      
+      <div class="row" style="margin-bottom:14px;">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <div class="w-100 flex-p">
+                <ul class="nav nav-pills">
+                  <li routerLinkActive="active" >
+                      <a mat-raised-button class="navtabWidth" style="padding: 0 16px !important" [routerLink]="['/me/projects/project-dashboard/exceptions/cardview']">
+                      
+                      <mat-icon>view_day</mat-icon> Card view
+                      </a>
+                  </li>
+                  <li routerLinkActive="active">
+                    <a mat-raised-button class="navtabWidth" style="margin-left:10px;padding: 0 16px !important;background:rgba(140,140,140,1);color:white" [routerLink]="['/me/projects/project-dashboard/exceptions/gridview']">
+                    
+                    <mat-icon>grid_on</mat-icon> Grid view
+                    </a>
+                  </li>
+                </ul>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <div class="w-100 flex-p">
+                  <button mat-raised-button class="pull-right btn-primary" >
+                       Download CSV
+                  </button>
+                  <button mat-raised-button color="primary" class="pull-right filter-hover margin-right-10" (click)="filterToggle = !filterToggle">
+                      <mat-icon>filter_list</mat-icon> Filter
+                  </button>
+              </div>
+          </div>
+      </div>
+      
+      <div fxLayout="row wrap" *ngIf="filterToggle">
+          <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p">
+              <mat-card class="filter">
+                  <!-- <mat-card-header>
+                      <mat-card-subtitle></mat-card-subtitle>
+                  </mat-card-header> -->
+                  <mat-card-content>
+                      <div class="row col-sm-12">
+                          <div class="col-sm-3">
+                              <div class="col-sm-4 newMarginClass">
+                                  Start Date:
+                              </div>
+                              <div class="col-sm-8">
+                                <div class="input-icon right">
+                                  <input class="form-control"  placeholder="MM/DD/YYYY"
+                                    class="form-control" id="db" [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" name="dt1">
+                                  <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-3">
+                              <div class="col-sm-4 newMarginClass">
+                                  End Date:
+                              </div>
+                              <div class="col-sm-8">
+                                <div class="input-icon right">
+                                  <input class="form-control"  placeholder="MM/DD/YYYY"
+                                    class="form-control" id="db" [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2" name="dt1">
+                                  <owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-3">
+                              <div class="col-sm-4 newMarginClass">
+                                  Start Time:
+                              </div>
+                              <div class="col-sm-8">
+                                <div class="input-icon right" style="margin-top:-15px !important">
+                                  <mat-form-field>
+                                    <input matInput type="time">
+                                  </mat-form-field>
+                                </div>
+                              </div>
+
+                          </div>
+                          <div class="col-sm-3">
+                              <div class="col-sm-4 newMarginClass">
+                                  End Time:
+                              </div>
+                              <div class="col-sm-8">
+                                <div class="input-icon right" style="margin-top:-15px !important">
+                                  <mat-form-field>
+                                    <input matInput type="time">
+                                  </mat-form-field>
+                                  <!-- <input class="form-control"  placeholder="MM/DD/YYYY"
+                                    class="form-control" id="db" [owlDateTimeTrigger]="dt4" [owlDateTime]="dt4" name="dt1">
+                                  <owl-date-time [pickerType]="'calendar'" #dt4></owl-date-time> -->
+                                </div>
+                              </div>
+                          </div>
+                          <!-- <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                              <button class="add-hover btn btn-success">Search</button>
+                          </div>
+                          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="margin-left: -18px;">
+                              <button class="btn filter-hover" style="background-color:#37474f; color:#fff !important">Clear</button>
+                          </div> -->
+                          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+                      </div>
+                      <div class="row col-sm-12" style="margin-top:10px">
+                        
+                          
+                      </div>
+                      <div class="row col-sm-12" style="margin-top:20px">
+                        <div class="col-sm-6">
+                          <div class="col-sm-4 newMarginClass" >
+                              Search by Keyword:
+                          </div>
+                          <div class="col-sm-8" style="margin-left: -45px;">
+                            <input type="text" class="form-control"/>
+                          </div>
+                      </div>
+                          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                              <button class="add-hover btn btn-success">Search</button>
+                          </div>
+                          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                            <button (click)="filterToggle = !filterToggle" class="btn CancelClass">Close</button>
+                        </div>
+                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
+                          
+                      </div>
+                  </mat-card-content>
+              </mat-card>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="row">
+  <div class="col-xs-12">
+      <div id="grid-table-container" class="table-responsive">
+          <table matSort id="example2" class="table table-bordered table-hover">
+              <thead class="tbl-head">
+                  <tr>
+                      <th class="text-center">Date</th>
+                      <th class="text-center">Current(A)</th>
+                      <th class="text-center">Voltage(V)</th>
+                      <th class="text-center">Rating(KW)</th>
+                      <th class="text-center">Load(KVA)</th>
+                      <th class="text-center">Power Factor</th>
+                      <th class="text-center">Consumption(KWh)</th>
+                      <!-- <th class="text-center">Remarks</th>
+                      <th class="text-center">Current Status</th>
+                      <th class="text-center" style="width: 112px!important;">Actions</th> -->
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let item of values">
+                      <td class="text-center" style="min-width: 70px !important;">
+                        <a>
+                          {{item.head}}
+                      </a>
+                  </td>
+                  <!-- <td class="text-center" style="text-align: center!important;">{{item.projectNumber}}</td> -->
+                  <!-- <td class="text-center" style="text-align: center!important;">{{item.streetAddress}}</td>
+                  <td class="text-center" style="text-align: center!important;">{{item.industry}}</td>
+                  <td class="text-center" style="text-align: center!important;">{{item.projectType}}</td>
+                  <td class="text-center" style="text-align: center!important;"><a target="_blank" 
+                      routerLink="/mpki/projects/project-dashboard/stagegateprocess">
+                      {{item.ele}}
+                  </a></td> -->
+                  <td class="text-center">
+                      {{item.amperes}}
+                      
+                  </td>
+                  <td class="text-center">
+                      {{item.voltage}}
+                      
+                  </td>
+                  <td class="text-center">
+                      {{item.KW}}
+                      
+                  </td>
+                  <td class="text-center">
+                      {{item.KVA}}
+                      
+                  </td>
+                  <td class="text-center">
+                      {{item.power}}
+                      
+                  </td>
+                  <td class="text-center">
+                      {{item.KWh}}
+                      
+                  </td>
+                  <!-- <td style="text-align: center!important;">
+                      {{item.remarks}}
+                      
+                  </td>
+                  <td [ngStyle]="{'color': item.status=='Active'? 'rgb(72, 158, 19)' : 'red'}" style="text-align: center !important;">
+                      {{item.status}}
+                  </td> -->
+                  <!-- <td style="text-align: center!important;"><a target="_blank" 
+                      routerLink="/mpki/projects/project-dashboard/otherdocs">
+                      {{item.plumbing}}
+                  </a>
+              </td> -->
+              <!-- <td style="text-align: center!important;"><a style="color:#007ad9;cursor: pointer;" (click)="openLogisticsDialog(item)">
+                  {{item.logs}}
+              </a>
+          </td> -->
+          <!-- <td style="text-align: center!important;">
+              {{item.pm}}
+          </td>
+          <td style="text-align: center!important;">
+              {{item.fm}}
+              
+          </td>
+          <td style="text-align: center!important;">{{item.strDueDate}}</td>
+          <td style="text-align: center!important;">{{item.strFollowUpDate}}</td>
+          <td style="text-align: center!important;">{{item.strProjectAwaredDate}}</td>
+          <td style="text-align: center!important;">{{item.PE}}</td> -->
+          <!-- <td style="text-align: center!important;">{{item.awardedAmount}}</td>
+          <td >
+              <a 
+              [ngClass]="item.bt_status ? 'status' : 'status Red'"
+              mwlConfirmationPopover
+              [popoverTitle]="popoverStatusTitle"
+              [popoverMessage]="popoverStatusMessage"
+              placement="left"
+              (confirm)="cancelClicked = true"
+              (cancel)="cancelClicked = true">
+              {{item.bt_status?'Active':'Inactive'}}
+          </a>
+      </td> -->
+      <!-- <td  class="text-center">
+          <a style="cursor: pointer;margin-right:10px; " matTooltip="Update Project" >
+              <i class="fa fa-edit" style="color: cornflowerblue"></i>
+          </a>
+          <a ><i class="fa fa-trash red" matTooltip="Delete Project"  style="cursor: pointer;"></i></a>
+      </td>  -->
+  </tr>
+  <!-- <tr *ngIf="totalProjects ==null || totalProjects.length ==0">
+      <td colspan="13">No data available</td>
+  </tr> -->
+</tbody>
+</table>
+<!-- <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+[pageSizeOptions]="[5, 10, 25, 50, 100]"
+showFirstLastButtons></mat-paginator> -->
+<!-- <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+  [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="handlePage($event)"
+  showFirstLastButtons></mat-paginator> -->
+</div>
+</div>
+</div>

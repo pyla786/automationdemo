@@ -1,0 +1,73 @@
+<div class="row-wrap">
+  <div class="flex-p w-100">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="row" style="margin-bottom:7px;">
+          <div class="col-xs-6 ">
+            <div class="flex-p">
+              <app-project-master></app-project-master>
+          </div>
+          </div>
+          <div class="col-xs-6" style="margin-top: 10px;">
+            <button mat-raised-button color="btn-default" style="background-color: #dddddd;"
+              class="pull-right add-dark-hover margin-right-10" (click)="scrollKanban('left');">
+              <mat-icon>fast_forward</mat-icon> Next
+            </button>
+
+            <button mat-raised-button color="btn-default" style="background-color: #dddddd;"
+              class="pull-right add-dark-hover margin-right-10" (click)="scrollKanban('right');">
+              <mat-icon>fast_rewind</mat-icon> Prev
+            </button>
+          </div>
+        </div>
+        <div class="w-100 flex-p kanban-table-container" id="kanban-table-container">
+          <div *ngFor="let step of localData; let index = index" [ngStyle]="step.style">
+            <div [ngClass]="step.collapsed==true ? collapse :kanban-table" id="{{step.id}}">
+              <div (click)='changestatus(index)' style="cursor: pointer;" *ngIf="step.collapsed==true" class="outer">
+                <div class="inner">{{step.header | slice:0:30}}</div>
+              </div>
+              <table>
+                <thead *ngIf="step.collapsed==false">
+                  <tr>
+                    <th class="kanban-header">
+                      <div>
+                        <a class="info-card" style="color:white!important">{{step.header | slice:0:30}}</a>
+                        <a style="float:right;margin-left: 6px;margin-top: 2px;cursor: pointer;"
+                          (click)='changestatus(index)'><span class="material-icons">
+                            keyboard_arrow_left
+                          </span></a>
+                      </div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody *ngIf="step.collapsed==false" [dndDraggable]="step.data" dndDropzone dndEffectAllowed="all"
+                  (dndDrop)="drop($event)" class="dndList">
+                  <div class="kanban-item-container">
+                    <tr>
+                      <div dndPlaceholderRef class="dndPlaceholder kanban-item"></div>
+                    </tr>
+                    <tr *ngFor="let item of step.data;let i = index" id="{{item.id}}" [dndDraggable]="step.data"
+                      dndEffectAllowed="all" (dndMoved)="drag(item)" (dndStart)="dragStart($event,item, step.id)"
+                      (dndEnd)="dragEnd($event,item)">
+                      <div class="kanban-item" [style.background-color]="item.hex">
+                          <span>
+                              <a class="res-name"  id="resname" > {{item.projectcode}} </a>&nbsp;&nbsp;
+                          </span><br>  
+                          <span class="cap-name"> {{ item.clientName }} </span><br>
+                          <span class="cap-name"> {{ item.stage }} </span><br>
+                          <span class="cap-name"> {{ item.percentage }} </span><br>
+                          <span [style.color]="item.colorcode1"  class="cap-name">{{ item.duedate }} </span>
+                          <span [style.color]="item.colorcode2"  class="cap-name"> {{ item.cost }} </span><br>
+                          <span class="cap-name">{{ item.updateddate }} </span>
+                      </div>
+                    </tr>
+                  </div>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

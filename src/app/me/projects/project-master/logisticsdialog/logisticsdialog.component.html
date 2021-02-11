@@ -1,0 +1,46 @@
+<div class="NewHeader">
+  <h1 mat-dialog-title>
+    Logistics
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div id="divQuotesGrid" class="table-responsive">
+      <table matSort id="example2" class="table table-bordered table-hover">
+        <thead class="tbl-head">
+          <tr>
+            <!-- <th class="text-center">Project Name</th> -->
+            <th class="text-center">Subject</th>
+            <th class="text-center">Shipped By</th>
+            <th class="text-center">Date Shipped</th>
+            <th class="text-center">Provider</th>
+            <th class="text-center">Reference</th>
+            <th class="text-center">Status</th>
+            <th class="text-center">ETA</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of totalProjects">
+            <!-- <td style="text-align: center!important;">{{item.projectname}}</td> -->
+            <td style="text-align: center!important;">{{item.subject}}</td>
+            <td style="text-align: center!important;">{{item.shippedBy}}</td>
+            <td style="text-align: center!important;">{{item.dateShipped}}</td>
+            <td style="text-align: center!important;">{{item.provider}}</td>
+            <td style="text-align: center!important;">{{item.reference}}</td>
+            <td style="text-align: center!important;color: #337ab7;cursor: pointer;"><a target="_blank" routerLink="/mpki/logistics/tracking">View</a></td>
+            <td style="text-align: center!important;"><a>{{item.eta}}</a></td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<mat-dialog-actions class="col-sm-12" align="end">
+  <button mat-raised-button class="CancelClass" (click)="close()">
+    &nbsp;Close
+  </button>
+</mat-dialog-actions>

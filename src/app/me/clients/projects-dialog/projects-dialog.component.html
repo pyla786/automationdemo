@@ -1,0 +1,37 @@
+<div class="NewHeader">
+  <h1 mat-dialog-title>
+    Projects
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div id="divQuotesGrid" class="table-responsive">
+      <table matSort id="example2" class="table table-bordered table-hover">
+        <thead class="tbl-head">
+          <tr>
+            <!-- <th class="text-center">Project Name</th> -->
+            <th class="text-center">Project #ID</th>
+            <th class="text-center">Devices</th>
+            <th class="text-center">Exception</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of totalProjects">
+            <!-- <td style="text-align: center!important;">{{item.projectname}}</td> -->
+            <td style="text-align: center!important;"><a target="_blank" routerLink="/me/projects/project-dashboard/" matTooltip="Open Project Dashboard">{{item.projectid}}</a></td>
+            <td style="text-align: center!important;">{{item.devices}}</td>
+            <td style="text-align: center!important;">{{item.exceptions}}</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<mat-dialog-actions class="col-sm-12" align="end">
+  <button mat-raised-button class="CancelClass" (click)="close()">
+    &nbsp;Close
+  </button>
+</mat-dialog-actions>

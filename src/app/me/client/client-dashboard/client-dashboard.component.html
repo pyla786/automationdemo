@@ -1,0 +1,256 @@
+<div fxLayout="column">
+  <div class="flex-p">
+      <div class="w-100" style="margin:30px 0">
+          <div style="display: flex;align-items: center;justify-content: flex-end;">
+              <label style="margin-top:7px;margin-right:10px;text-align:right;color:rgb(180, 180, 180);font-size: 18px;">Select Project :</label>
+              <div style="width: 250px;border-radius:10px">
+                  <mat-select style="background: rgb(64, 73, 104);border: none;"  class="form-control"
+                    required>
+                    <mat-option *ngFor="let project of projects" [value]="project.project_id">{{project.project_code}}
+                    </mat-option>
+                  </mat-select>
+                </div>
+          </div>
+      </div>
+      <div class="row" style="margin-top:20px">
+          <div class="col-sm-3 text-center">
+              <button class="btn" style="font-weight:bold;background-color: rgb(45, 226, 45);" mat-rasied-button>
+                  H.T.Transformers
+              </button>
+          </div>
+          <div class="col-sm-3 text-center">
+              <button class="btn"  style="font-weight:bold;background-color:rgb(255, 52, 52)" mat-rasied-button>
+                  Voltage Stabilizer
+              </button>
+          </div>
+          <div class="col-sm-3 text-center">
+              <button class="btn" style="font-weight:bold;background-color: rgb(45, 226, 45);" mat-rasied-button>
+                  Switch-Gears
+              </button>
+          </div>
+          <div class="col-sm-3 text-center">
+              <button class="btn" style="font-weight:bold;background-color: rgb(45, 226, 45);" mat-rasied-button>
+                  Electric-Panels
+              </button>
+          </div>
+      </div>
+      <div class="row" style="margin-top:30px">
+        <div class="col-sm-3 text-center">
+            <button class="btn" style="font-weight:bold;background-color: rgb(45, 226, 45);" mat-rasied-button>
+                H.T.Transformers
+            </button>
+        </div>
+        <div class="col-sm-3 text-center">
+            <button class="btn" style="font-weight:bold;background-color: rgb(45, 226, 45);" mat-rasied-button>
+                Voltage Stablizers
+            </button>
+        </div>
+        <div class="col-sm-3 text-center">
+            <button class="btn" style="font-weight:bold;background-color: rgb(45, 226, 45);" mat-rasied-button>
+                Switch-Gears
+            </button>
+        </div>
+        <div class="col-sm-3 text-center">
+            <button class="btn" style="font-weight:bold;background-color: rgb(255, 52, 52);" mat-rasied-button>
+                Electric-Panels
+            </button>
+        </div>
+    </div>
+      
+      <div class="w-100" fxLayout="column" fxLayoutAlign="center center" style="margin-top:50px;background:rgb(33,39,61);padding:20px">
+          <mat-card-header fxLayoutAlign="center center">                
+              <mat-card-subtitle><h2 style="color:white">Main Transformer</h2></mat-card-subtitle>
+          </mat-card-header>
+          <div class="w-100" fxLayout="column" style="margin-top:20px;">
+              
+              
+                  <mat-card style="background:rgb(33,39,61) ;box-shadow: none !important;">
+                      <div class="w-100 h-300p" >
+                          <mat-card-header fxLayoutAlign="center center">                
+                              <mat-card-subtitle><h4 style="color:white">Current</h4></mat-card-subtitle>
+                          </mat-card-header>
+                          <ngx-charts-pie-grid
+                              [scheme]="colorScheme"
+                              [results]="single">
+                              <!-- (select)="onSelect($event)" -->
+                          </ngx-charts-pie-grid>        
+                      </div>
+                  </mat-card>
+              
+          </div>
+          <div class="w-100" fxLayout="row" fxLayoutAlign="space-around center" style="margin:20px 0">
+              
+          <div class="h-300px" fxLayout="row" fxLayoutAlign="center center" style="padding:20px;border-radius:10px;">
+              <div style="margin-right:50px">
+                  
+                  <img src="../../../assets/images/transformer.webp"/>
+              </div>
+              <div fxLayout="column">
+                  <div style="width: 200px;" fxLayoutAlign="space-between center">
+                      <p style="color:rgba(255,255,255,1)">Make:</p>
+                      <p style="color:rgba(180,180,180,1)">Macro Powertech</p>
+                  </div>
+                  <div style="width: 200px;" fxLayoutAlign="space-between center">
+                      <p style="color:rgba(255,255,255,1)">Rating:</p>
+                      <p style="color:rgba(180,180,180,1)">!32 KVA</p>
+                  </div>
+                  <div style="width: 200px;" fxLayoutAlign="space-between center">
+                      <p style="color:rgba(255,255,255,1)">Vector Group:</p>
+                      <p style="color:rgba(180,180,180,1)">Dynil</p>
+                  </div>
+                  <div style="width: 200px;" fxLayoutAlign="space-between center">
+                      <p style="color:rgba(255,255,255,1)">Voltage(H.V.):</p>
+                      <p style="color:rgba(180,180,180,1)">11 KV</p>
+                  </div>
+                  <div style="width: 200px;" fxLayoutAlign="space-between center">
+                      <p style="color:rgba(255,255,255,1)">Voltage(L.V.):</p>
+                      <p style="color:rgba(180,180,180,1)">433 KV</p>
+                  </div>
+                  <div style="width: 200px;" fxLayoutAlign="space-between center">
+                      <p style="color:rgba(255,255,255,1)">No Load Loss:</p>
+                      <p style="color:rgba(180,180,180,1)">500 W</p>
+                  </div>
+                  <div style="width: 200px;" fxLayoutAlign="space-between center">
+                      <p style="color:rgba(255,255,255,1)">Full Load Loss:</p>
+                      <p style="color:rgba(180,180,180,1)">1100 W</p>
+                  </div>
+                  <div style="width: 200px;" fxLayoutAlign="space-between center">
+                      <p style="color:rgba(255,255,255,1)">Frequency:</p>
+                      <p style="color:rgba(180,180,180,1)">50 HZ</p>
+                  </div>
+                  <div style="width: 200px;" fxLayoutAlign="space-between center">
+                      <p style="color:rgba(255,255,255,1)">Cooling:</p>
+                      <p style="color:rgba(180,180,180,1)">ONAN</p>
+                  </div>
+                  <div style="width: 200px;" fxLayoutAlign="space-between center">
+                      <p style="color:rgba(255,255,255,1)">Weight:</p>
+                      <p style="color:rgba(180,180,180,1)">2300 Kg</p>
+                  </div>
+
+              </div>
+
+          </div>
+          
+          </div>
+          <div class="w-100" fxLayout="row" fxLayoutAlign="space-around center">
+              <div fxLayout="column">
+                  <mat-card-header fxLayoutAlign="center center">
+                      <mat-card-subtitle>
+                          <h3 style="color:white">Load Factor in %</h3>
+                      </mat-card-subtitle>
+                  </mat-card-header>
+
+                  <img style="height:300px" src="../../../assets/images/loadfactor.png"/>
+              </div>
+              <div fxLayout="column">
+                  <mat-card-header fxLayoutAlign="center center">
+                      <mat-card-subtitle>
+                          <h3 style="color:white">Power Factor</h3>
+                      </mat-card-subtitle>
+                  </mat-card-header>
+  
+                  <img style="height:275px" src="../../../assets/images/powerfactor.png"/>
+              </div>
+              <div fxLayout="column">
+                  <mat-card-header fxLayoutAlign="center center">
+                      <mat-card-subtitle>
+                          <h3 style="color:white">Temperature</h3>
+                      </mat-card-subtitle>
+                  </mat-card-header>
+  
+                  <img style="height:300px" src="../../../assets/images/temperature.png"/>
+              </div>
+
+          </div>
+      </div>
+
+      <!-- Widget -->
+      <div class="w-100" fxLayout="column" fxLayoutAlign="center center" style="margin-top:50px;background:rgb(33,39,61);padding:20px">
+          <mat-card-header fxLayoutAlign="center center">
+              <mat-card-subtitle>
+                  <h3 style="color:white">Energy Consumption in KWh</h3>
+              </mat-card-subtitle>
+          </mat-card-header>
+          <div style="width:850px;height:300px;margin-top: 30px;padding:20px;border-radius:10px;">
+              <canvas baseChart
+                      [datasets]="widgets.widget5.datasets[widget5SelectedDay]"
+                      [labels]="widgets.widget5.labels"
+                      [colors]="widgets.widget5.colors"
+                      [options]="widgets.widget5.options"
+                      [chartType]="widgets.widget5.chartType">
+              </canvas>
+          </div>
+
+      </div>
+      <div class="w-100" fxLayout="row" fxLayoutAlign="space-between center" style="margin-top:20px;padding:20px">
+          <div style="width:45%;min-height:400px;margin-top: 30px;background:rgb(35, 43, 80);padding:20px;border-radius:10px;">
+              <mat-card-header fxLayoutAlign="flex-start center" style="margin-bottom: 10px;">
+                  <mat-card-subtitle>
+                      <h5 style="color:white;font-weight: bold;">Expenses and Income</h5>
+                  </mat-card-subtitle>
+              </mat-card-header>
+              <canvas baseChart
+                      [datasets]="widgets.widget10.datasets[widget5SelectedDay]"
+                      [labels]="widgets.widget10.labels"
+                      [colors]="widgets.widget10.colors"
+                      [options]="widgets.widget10.options"
+                      [chartType]="widgets.widget10.chartType">
+              </canvas>
+          </div>
+          <div style="width:45%;min-height:400px;margin-top: 30px;background:rgb(35, 43, 80);padding:20px;border-radius:10px;">
+              <mat-card-header fxLayoutAlign="flex-start center" style="margin-bottom: 10px;">
+                  <mat-card-subtitle>
+                      <h5 style="color:white;font-weight: bold;">Load Distribution</h5>
+                  </mat-card-subtitle>
+              </mat-card-header>
+              <ngx-charts-pie-chart
+                      [scheme]="colorScheme"
+                      [results]="triple"
+                      [legend]="showLegend"
+                      [explodeSlices]="explodeSlices"
+                      [labels]="showLabels"
+                      [doughnut]="doughnut"
+                      [gradient]="gradient"
+                      >
+                      <!-- (select)="onSelect($event)" -->
+                  </ngx-charts-pie-chart>  
+          </div>
+
+      </div>
+      <!-- <div class="fuse-card auto-width">
+
+          <div class="position-relative p-24"
+               fxLayout="row" fxLayoutAlign="space-between center">
+              <div fxLayout="column" fxLayoutAlign="start start">
+                  <span class="h2">Visitors & Page views</span>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="start center">
+                  <div class="py-8 px-12 border-radius-2 line-height-1 mr-8 cursor-pointer"
+                       (click)="widget5SelectedDay = 'yesterday'"
+                       [ngClass]="{'accent': widget5SelectedDay === 'yesterday'}">
+                      Yesterday
+                  </div>
+                  <div class="py-8 px-12 border-radius-2 line-height-1 mr-8 cursor-pointer"
+                       (click)="widget5SelectedDay = 'today'"
+                       [ngClass]="{'accent': widget5SelectedDay === 'today'}">
+                      Today
+                  </div>
+              </div>
+          </div>
+
+          <div class="position-relative h-368 pb-16">
+              <canvas baseChart
+                      [datasets]="widgets.widget5.datasets[widget5SelectedDay]"
+                      [labels]="widgets.widget5.labels"
+                      [colors]="widgets.widget5.colors"
+                      [options]="widgets.widget5.options"
+                      [chartType]="widgets.widget5.chartType">
+              </canvas>
+          </div>
+
+      </div> -->
+      <!-- Widget -->
+     
+  </div>
+</div>
+

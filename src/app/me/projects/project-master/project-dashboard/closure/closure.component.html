@@ -1,0 +1,62 @@
+<div class="row-wrap">
+    <div class="flex-p w-100">
+        
+        <div class="row" style="margin-bottom:7px;">
+            <div class="col-xs-6 ">
+                
+            </div>
+            <div class="col-xs-6 ">
+                <div class="flex-p">
+                    <button mat-raised-button class="pull-right  btn-primary" (click)="openUserDialog('add')">
+                        <mat-icon>add</mat-icon> Add Document
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            
+            <div id="divQuotesGrid" class="table-responsive">
+                <table matSort id="example2" class="table table-bordered table-hover">
+                    <thead class="tbl-head">
+                        <tr>
+                            <th>Document Title</th>
+                            <th class="text-center">Description</th>
+                            <th class="text-center">Version Number</th>
+                            <th class="text-center">Current Version</th>
+                            <th class="text-center">Previous Versions</th>
+                            <th class="text-center">Version Remarks</th>
+                            <th class="text-center" style="width: 112px!important;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of totalProjects">
+                            <td>{{item.docTytle}}</td>
+                            <td style="text-align: center!important;">{{item.des}}</td>
+                            <td style="text-align: center!important;">{{item.verNum}}</td>
+                            <td style="text-align: center!important;"><a href="http://africau.edu/images/default/sample.pdf" target="_blank">View</a></td>
+                            <td style="text-align: center!important;"><a (click)="openpreviousDialog('add')" style="color:#007ad9;cursor:pointer;">{{item.preVer}}</a></td>
+                            <td style="text-align: center!important;">{{item.Rem}}</td>
+                            <td  class="text-center">
+                                <a style="cursor: pointer;margin-right:10px; " matTooltip="Update Document" (click)="openUserDialog('add')">
+                                    <i class="fa fa-edit" style="color: cornflowerblue"></i>
+                                </a>
+                                <a style="cursor: pointer;margin-right:10px; " matTooltip="Append New Version" (click)="openNewDialog('add')">
+                                        <i class="fa fa-plus" style="color: cornflowerblue"></i>
+                                    </a>
+                                <a ><i class="fa fa-trash red" matTooltip="Delete Project"  style="cursor: pointer;"(click)="openDeleteDialog(item)"></i></a>
+                            </td> 
+                        </tr>
+                        <tr *ngIf="totalProjects ==null || totalProjects.length ==0">
+                            <td colspan="13">No data available</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+                [pageSizeOptions]="[5, 10, 25, 50, 100]" 
+                showFirstLastButtons></mat-paginator>
+            </div>
+            
+        </div>
+    </div>
+</div>

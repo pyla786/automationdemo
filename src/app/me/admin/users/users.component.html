@@ -1,0 +1,220 @@
+<div fxLayout="row wrap" #resizedDiv>
+    <div class="flex-p w-100">
+
+        <div class="row" style="margin-bottom:14px;">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="w-100 flex-p">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="w-100 flex-p">
+                    <button mat-raised-button class="pull-right btn-primary" (click)="openUserDialog(null)">
+                        <mat-icon>person_add</mat-icon> Add
+                        User
+                    </button>
+                    <button mat-raised-button color="primary" class="pull-right filter-hover margin-right-10"
+                        (click)="filterToggle = !filterToggle">
+                        <mat-icon>filter_list</mat-icon> Filter
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div fxLayout="row wrap" *ngIf="filterToggle">
+            <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p">
+                <mat-card class="filter">
+                    <!-- <mat-card-header>
+                        <mat-card-subtitle></mat-card-subtitle>
+                    </mat-card-header> -->
+                    <mat-card-content>
+                        <div class="row col-sm-12">
+                            <div class="col-sm-4">
+                                <div class="col-sm-4 newMarginClass">
+                                    Search by Name:
+                                </div>
+                                <div class="col-sm-8">
+                                    <input type="text" onCopy="return false" onPaste="return false" class="form-control"
+                                        placeholder="Search by User Name">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="col-sm-4 newMarginClass">
+                                    Select Status:
+                                </div>
+                                <div class="col-sm-8">
+                                    <select class="form-control">
+                                        <option disabled selected value> -- Select Status -- </option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-1" style="margin-left:195px!important;">
+                                <button mat-raised-button class="pull-right btn-primary">
+                                    <mat-icon>youtube_searched_for</mat-icon> Search
+                                </button>
+                            </div>
+                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="margin-left: -18px;">
+                                <button mat-raised-button style="background-color:#37474f; color:#fff !important">
+                                    <mat-icon>settings_backup_restore</mat-icon> Clear
+                                </button>
+                            </div>
+                            <a (click)="filterToggle = !filterToggle" class="pull-right"
+                                style="font-size: 25px; cursor: pointer; margin-left: 5px;">
+                                <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                            </a>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+                        </div>
+                        <!-- <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                <input type="text" class="form-control" placeholder="Search by Name">
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                <select class="form-control">
+                                    <option disabled selected value> -- Select Status -- </option>
+                                    <option>Active</option>
+                                    <option>Inactive</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                                <button class="add-hover btn btn-success">Search</button>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
+                            
+                        </div> -->
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+
+        <div fxLayout="row wrap">
+            <div class="table-responsive">
+                <table id="example2" class="table table-bordered table-hover">
+                    <thead class="tbl-head">
+                        <tr class="tr-grid-header">
+                            <th>S. No</th>
+                            <th>User Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th class="text-center" >User code</th>
+                            <th style="text-align: center !important;">Status</th>
+                            <th style="text-align: center !important;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let applicant of tableList">
+                            <td>{{applicant.sno}}</td>
+                            <td>{{applicant.vcName}}</td>
+                            <td>
+                                {{applicant.phone}}
+                            </td>
+                            <td>{{applicant.email}}</td>
+                            <td><a>{{applicant.role}}</a></td>
+                            <td class="text-center">{{applicant.code}}</td>
+                            <td style="text-align: center !important;">
+
+                                <a [ngStyle]="{'color': applicant.vcStatus? 'blue' : 'red','cursor':'pointer'}"
+                                    mwlConfirmationPopover [popoverTitle]="popoverStatusTitle"
+                                    [popoverMessage]="popoverStatusMessage" placement="left"
+                                    (confirm)="saveStatus();applicant.vcStatus=!applicant.vcStatus"
+                                    (cancel)="cancelClicked = true">
+                                    {{applicant.vcStatus?'Active':'Inactive'}}
+                                </a>
+                            </td>
+                            <td style="text-align: center !important;">
+                                <a title="Edit User" style="margin-right: 10px; cursor: pointer;">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <a mwlConfirmationPopover [popoverTitle]="popoverTitle"
+                                    [popoverMessage]="popoverMessage" placement="left" (confirm)="deleteUser()"
+                                    (cancel)="cancelClicked = true">
+                                    <i style="cursor: pointer;" title="Delete User" class="fa fa-trash red"></i>
+                                </a>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 
+    <div *ngIf="users" fxLayout="row wrap">
+        <div fxFlex="100" class="flex-p">
+            <mat-card class="p-0 text-center">
+                <pagination-controls class="gradus-pagination" autoHide="true" maxSize="3" (pageChange)="onPageChanged($event)"></pagination-controls>
+            </mat-card>
+        </div>
+    </div> -->
+
+<div *ngIf="!tableList" fxLayout="column" fxLayoutAlign="center center" class="campaign-spinner">
+    <mat-spinner color="primary"></mat-spinner>
+</div>
+
+
+
+
+<div id="modal" class="modal fade" tabindex="-1" role="dialog" style="z-index:5000 !important;opacity:1"
+    aria-labelledby="dialog-sizes-name2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="dialog-sizes-name2" class="modal-title pull-left">Add Information</h4>
+                <button type="button" class="close pull-right" aria-label="Close" onClick="closeModal('modal')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" action="/action_page.php">
+                    <div class="form-group">
+                        <!-- <label class="control-label col-sm-4">Content:</label> -->
+                        <div class="col-sm-12">
+                            <textarea rows="4" class="form-control txtarea" id="content"
+                                placeholder="Enter your comments"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <mat-radio-group>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                <mat-radio-button value="1">Email</mat-radio-button>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                <mat-radio-button value="2">Call</mat-radio-button>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                <mat-radio-button value="1">Text</mat-radio-button>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                <mat-radio-button value="2">Linkedin</mat-radio-button>
+                            </div>
+                        </mat-radio-group>
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                            <!-- <mat-form-field>
+                                <input matInput [matDatepicker]="picke" placeholder="Choose a date">
+                                <mat-datepicker-toggle matSuffix [for]="picke"></mat-datepicker-toggle>
+                                <mat-datepicker #picke startView="year" [startAt]="startDate"></mat-datepicker>
+                            </mat-form-field> -->
+                        </div>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label class="control-label col-sm-4">Name:</label>
+                        <div class="col-sm-6">
+                            <input type="email" class="form-control" id="email" placeholder="Enter notes name">
+                        </div>
+                    </div> -->
+
+
+                </form>
+            </div>
+            <div class="modal-footer">
+
+                <button mat-raised-button class="add-hover" style="background:#229494;color: white;"
+                    onClick="saveModal('mod1')">Save</button>
+                <button mat-raised-button class="add-dark-hover" style="background:transparent;"
+                    onClick="closeModal('modal')">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

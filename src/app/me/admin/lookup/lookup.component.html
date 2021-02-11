@@ -1,0 +1,69 @@
+<div fxLayout="row wrap" #resizedDiv>
+    <div class="flex-p w-100">
+
+        <div class="row" style="margin-bottom:14px;">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="w-100 flex-p">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="w-100 flex-p">
+                    <button mat-raised-button class="pull-right btn-primary" (click)="openUserDialog('Add')"><mat-icon>add</mat-icon>&nbsp;Add
+                        Lookup</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col=lg-7">
+            <div class="table-responsive">
+                <table id="example2" class="table table-bordered table-hover table-striped">
+                    <thead class="tbl-head">
+                        <tr class="tr-grid-header">
+                            <th>Code</th>
+                            <th>Lookups</th>
+                            <th style="text-align: center !important;">Status</th>
+                            <th style="text-align: center !important;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of tableList">
+                            <td>{{item.code}}</td>
+                            <td>{{item.options}}</td>
+                            <td style="text-align: center !important;">
+                                    <a 
+                                    [ngStyle]="{'color': item.status? 'blue' : 'red','cursor':'pointer'}"
+                                    
+                                    mwlConfirmationPopover
+                                    [popoverTitle]="popoverStatusTitle"
+                                    [popoverMessage]="popoverStatusMessage"
+                                    placement="left"
+                                    (confirm)="saveStatus();item.status=!item.status"
+                                    (cancel)="cancelClicked = true">
+                                    {{item.status?'Active':'Inactive'}}
+                                    </a></td>
+                            <td style="text-align: center !important;">
+                                <a (click)="openUserDialog('Edit')" style="margin-right: 10px; cursor: pointer;">
+                                    <i title="Edit" class="fa fa-edit"></i>
+                                </a>
+                                <a mwlConfirmationPopover
+                                        [popoverTitle]="popoverTitle"
+                                        [popoverMessage]="popoverMessage"
+                                        placement="left"
+                                        (confirm)="deleteLookup()"
+                                        (cancel)="cancelClicked = true">
+                                            <i style="cursor: pointer;" title="Delete User" class="fa fa-trash red"></i>
+                                        </a>
+                                    <!-- <i title="Delete" style="color:red;" class="fa fa-trash"></i> -->
+                                
+                            </td>
+    
+                        </tr>
+                    </tbody>
+                </table>
+    
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,141 @@
+<div fxLayout="row wrap" #resizedDiv>
+  <div class="flex-p w-100">
+      
+      <div class="row" style="margin-bottom:14px;">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <div class="w-100 flex-p">
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <div class="w-100 flex-p">
+                  <!-- <button mat-raised-button class="pull-right btn-primary" (click)="openUserDialog(null)">
+                      <mat-icon>person_add</mat-icon> Add
+                      User
+                  </button> -->
+                  <button mat-raised-button color="primary" class="pull-right filter-hover margin-right-10" (click)="filterToggle = !filterToggle">
+                      <mat-icon>filter_list</mat-icon> Filter
+                  </button>
+              </div>
+          </div>
+      </div>
+      
+      <div fxLayout="row wrap" *ngIf="filterToggle">
+          <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p">
+              <mat-card class="filter">
+                  <!-- <mat-card-header>
+                      <mat-card-subtitle></mat-card-subtitle>
+                  </mat-card-header> -->
+                  <mat-card-content>
+                      <div class="row col-sm-12">
+                          <div class="col-sm-5">
+                              <div class="col-sm-4 newMarginClass">
+                                  Search by User Name:
+                              </div>
+                              <div class="col-sm-8">
+                                  <input type="text" onCopy="return false"
+                                  onPaste="return false" class="form-control"
+                                  placeholder="Search by User Name">
+                              </div>
+                          </div>
+                          <div class="col-sm-5">
+                              <div class="col-sm-4 newMarginClass">
+                                  Select Status:
+                              </div>
+                              <div class="col-sm-8">
+                                  <select class="form-control">
+                                      <option disabled selected value> -- Select Status -- </option>
+                                      <option value="1">Active</option>
+                                      <option value="0">Inactive</option>
+                                  </select>
+                              </div>
+                          </div>
+                          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                              <button class="add-hover btn btn-success">Search</button>
+                          </div>
+                          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="margin-left: -18px;">
+                              <button class="btn filter-hover" style="background-color:#37474f; color:#fff !important">Clear</button>
+                          </div>
+                          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+                      </div>
+                      <!-- <div class="row">
+                          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                              <input type="text" class="form-control" placeholder="Search by Name">
+                          </div>
+                          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                              <select class="form-control">
+                                  <option disabled selected value> -- Select Status -- </option>
+                                  <option>Active</option>
+                                  <option>Inactive</option>
+                              </select>
+                          </div>
+                          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                              <button class="add-hover btn btn-success">Search</button>
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
+                          
+                      </div> -->
+                  </mat-card-content>
+              </mat-card>
+          </div>
+      </div>
+      
+      <div fxLayout="row wrap">
+          <div class="table-responsive">
+              <table id="example2" class="table table-bordered table-hover">
+                  <thead class="tbl-head">
+                      <tr class="tr-grid-header">
+                          <th>User Name</th>
+                          <th>Email</th>
+                          <th>Phone</th>
+                          <th>Permissions</th>
+                          <!-- <th>User Type</th> -->
+                          <th style="text-align: center !important;">Status</th>
+                          
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let applicant of tableList">
+                          <td>{{applicant.vcName}}</td>
+                          <td>
+                              <i *ngIf="applicant.vcEmail" title="User verified" class="fa fa-check Green"
+                              aria-hidden="true"></i>
+                              <i *ngIf="!applicant.vcEmail" title="User not verified" class="fa fa-times Red"
+                              aria-hidden="true"></i>
+                          </td>
+                          <td>{{applicant.vcPhone}}</td>
+                          <td><a>{{applicant.Permissions}}</a></td>
+                          <!-- <td>{{applicant.type}}</td> -->
+                          <td  style="text-align: center !important;">
+                              
+                              <a 
+                              
+                              [ngStyle]="{'color': applicant.vcStatus? 'rgb(72, 158, 19)' : 'red','cursor':'pointer'}"
+                              
+                              >
+                              {{applicant.vcStatus?'Active':'Inactive'}}
+                          </a>
+                      </td>
+                     
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
+</div>
+</div>
+<!-- 
+  <div *ngIf="users" fxLayout="row wrap">
+      <div fxFlex="100" class="flex-p">
+          <mat-card class="p-0 text-center">
+              <pagination-controls class="gradus-pagination" autoHide="true" maxSize="3" (pageChange)="onPageChanged($event)"></pagination-controls>
+          </mat-card>
+      </div>
+  </div> -->
+  
+  <div *ngIf="!tableList" fxLayout="column" fxLayoutAlign="center center" class="campaign-spinner">
+      <mat-spinner color="primary"></mat-spinner>
+  </div>
+  
+  
+  
+  

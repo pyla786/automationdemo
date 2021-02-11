@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "client-exceptions-gridview.component.scss"
+    ],
+    "names": [],
+    "file": "client-exceptions-gridview.component.css"
+}

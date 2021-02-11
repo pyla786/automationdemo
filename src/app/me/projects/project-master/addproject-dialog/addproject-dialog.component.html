@@ -1,0 +1,125 @@
+<div class="NewHeader">
+    <h1 mat-dialog-title>
+        Add Project
+    </h1>
+</div>
+<div mat-dialog-content>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Project Code:</label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <input type="number" class="form-control" placeholder="Enter Project Code(3 digit)">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Project Name:</label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <input type="text" class="form-control" placeholder="Enter Project Name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Client Name:</label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <input type="text" class="form-control" placeholder="Enter Client Name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Project Type: </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <input type="text" class="form-control" placeholder="Enter Project Type">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Client Location:</label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <input type="text" class="form-control" placeholder="Enter Client Location">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Project Manager: </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <mat-select class="form-control" placeholder="Select In Charge">
+                    <mat-option [value]="0">Dhanraj</mat-option>
+                    <mat-option [value]="1">Rajkumar</mat-option>
+                </mat-select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Start Date: </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <input class="form-control" placeholder="MM/DD/YYYY" class="form-control" id="db"
+                    [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" name="dt1">
+                <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Delivery Date: </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <input class="form-control" placeholder="MM/DD/YYYY" class="form-control" id="db"
+                    [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" name="dt1">
+                <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Status: </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <mat-select class="form-control" placeholder="Select Status">
+                    <mat-option value="Active">Active</mat-option>
+                    <mat-option value="Inactive">Inactive</mat-option>
+                    <mat-option value="On Hold">On Hold</mat-option>
+                </mat-select>
+            </div>
+        </div>
+
+
+        <!-- <div class="form-group">
+            <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 add-member-label">Client Type : </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <input type="email" class="form-control" id="email" placeholder="Enter ">
+            </div>
+        </div> -->
+
+        <!-- <div class="form-group">
+            <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 add-member-label" for="pwd">Category: </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <mat-select name="" id="" placeholder="-- Select   --" class="form-control">
+                    <mat-option [value]=1>Quality Systems</mat-option>
+                    <mat-option [value]=2>Production Systems</mat-option>
+                    <mat-option [value]=3>Laboratory Systems</mat-option>
+                    <mat-option [value]=3>Facility & Equipment Systems</mat-option>
+                    <mat-option [value]=3>Material Management Systems</mat-option>
+                    <mat-option [value]=3>Packaging & Labelling Systems</mat-option>
+                </mat-select>
+            </div>
+        </div> -->
+        <!-- <div class="form-group">
+            <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 add-member-label" for="pwd">Sub Category: </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <mat-select   placeholder="-- Select Subcategory --" class="form-control">
+                    <mat-option [value]=1>Quality Oversight</mat-option>
+                    <mat-option [value]=2>Laboratory Testing & Data Management</mat-option>
+                    <mat-option [value]=2>Laboratory Testing & Data Management</mat-option>
+                    <mat-option [value]=3>Documentation Controls</mat-option>
+                    <mat-option [value]=3>Controls Over Computerised Systems</mat-option>
+                    <mat-option [value]=3>Investigation</mat-option>
+                    <mat-option [value]=3>Validation (Process/ Cleaning/ Methods)</mat-option>
+                    <mat-option [value]=3>Material Management & Label Controls</mat-option>
+                    <mat-option [value]=3>Environmental Monitoring & Microbial Testing</mat-option>
+                </mat-select>
+            </div>
+        </div> -->
+        <!-- <div class="form-group">
+            <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 add-member-label" for="pwd">Visibility: </label>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button class="mr-5" value="1">Private</mat-radio-button>
+                    <mat-radio-button value="2">Public</mat-radio-button>
+                  </mat-radio-group>
+            </div>
+        </div> -->
+    </form>
+</div>
+<mat-dialog-actions align="end">
+    <button mat-raised-button class="btn-primary" [mat-dialog-close]="'test'"> <span>Save</span></button>
+    <button mat-raised-button class="add-dark-hover btn-default" (click)="close()">Close</button>
+</mat-dialog-actions>

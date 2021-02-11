@@ -1,0 +1,294 @@
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 flex-p" style="margin-top: 5px;">
+  <div class="row" style="margin-bottom:7px;">
+    <div class="col-xs-6 ">
+    </div>
+    <div class="col-xs-6 ">
+      <div class="flex-p">
+        <button mat-raised-button color="primary" class="pull-right filters-hover margin-right-10"
+          (click)="filterToggle = !filterToggle">
+          <mat-icon>filter_list</mat-icon> Filter
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Filter -->
+  <div fxLayout="row wrap" *ngIf="filterToggle">
+    <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p w-100 margins">
+      <mat-card class="filter">
+        <mat-card-content>
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="col-sm-4 newMarginClass">
+                From Date:
+              </div>
+              <div class="col-sm-8">
+                <input class="form-control" placeholder="MM/DD/YYYY" class="form-control" id="db"
+                  [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" name="dt1">
+                <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="col-sm-4 newMarginClass">
+                To Date:
+              </div>
+              <div class="col-sm-8">
+                <input class="form-control" placeholder="MM/DD/YYYY" class="form-control" id="db"
+                  [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2" name="dt2">
+                <owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="col-sm-4 newMarginClass">
+                Project #:
+              </div>
+              <div class="col-sm-8">
+                <mat-select class="form-control" placeholder="Select Project">
+                  <mat-option [value]="0">06</mat-option>
+                  <mat-option [value]="1">05</mat-option>
+                  <mat-option [value]="2">04</mat-option>
+                  <mat-option [value]="3">03</mat-option>
+                </mat-select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="padding-top:10px !important">
+            <div class="col-sm-4">
+              <div class="col-sm-4 newMarginClass">
+                Engineer:
+              </div>
+              <div class="col-sm-8">
+                <mat-select class="form-control" placeholder="Select Engineer">
+                  <mat-option [value]="0">Mukesh</mat-option>
+                  <mat-option [value]="1">Adityesh</mat-option>
+                  <mat-option [value]="2">Vijay</mat-option>
+                  <mat-option [value]="3">Murali</mat-option>
+                </mat-select>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="col-sm-4 newMarginClass">
+                Project Manager:
+              </div>
+              <div class="col-sm-8">
+                <mat-select class="form-control" placeholder="Select Person In Charge">
+                  <mat-option [value]="0">Dhanraj</mat-option>
+                  <mat-option [value]="1">Raj Kumar</mat-option>
+                </mat-select>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="col-sm-4 newMarginClass">
+                Project Status:
+              </div>
+              <div class="col-sm-8">
+                <mat-select class="form-control" placeholder="Select Project Status">
+                  <mat-option [value]="0">Initial</mat-option>
+                  <mat-option [value]="1">Active</mat-option>
+                  <mat-option [value]="2">On Hold</mat-option>
+                  <mat-option [value]="3">Completed</mat-option>
+                </mat-select>
+              </div>
+            </div>
+
+          </div>
+          <div class="row" style="padding-top:10px !important">
+            <div style="position: relative;left: 75%;">
+
+              <div class="col-lg-1" style="margin-left:195px!important;">
+                <button mat-raised-button class="pull-right btn-primary">
+                  <mat-icon>youtube_searched_for</mat-icon> Search
+                </button>
+              </div>
+              <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="margin-left: -18px;">
+                <button mat-raised-button style="background-color:#37474f; color:#fff !important">
+                  <mat-icon>settings_backup_restore</mat-icon> Clear
+                </button>
+              </div>
+              <a (click)="filterToggle = !filterToggle" class="pull-right"
+                style="font-size: 25px; cursor: pointer; margin-left: 5px;">
+                <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+              </a>
+            </div>
+
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <!-- Cards -->
+  <div class="row ">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+      <div class="w-100 flex-p">
+        <div class="dashboard-stat blue-madison">
+          <div class="visual">
+            <i class="fa fa-users fa-1x"></i>
+          </div>
+          <div class="details">
+            <div class="number">
+              Active Jobs - 5
+            </div>
+            <div class="desc">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+      <div class="w-100 flex-p">
+        <div class="dashboard-stat purple-plum">
+          <div class="visual">
+            <i class="fa fa-users fa-1x"></i>
+          </div>
+          <div class="details">
+            <div class="number">
+              Due for Review - 5
+            </div>
+            <div class="desc">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+      <div class="w-100 flex-p">
+        <div class="dashboard-stat red-intense">
+          <div class="visual">
+            <i class="fa fa-users"></i>
+          </div>
+          <div class="details">
+            <div class="number">
+              Open Issues - 5
+            </div>
+            <div class="desc">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="padding-left:7px !important;padding-right:7px !important;">
+    <!-- Active Jobs -->
+    <div fxFlex="100" fxFlex.gt-sm="50" class="flex-p">
+      <mat-card>
+        <mat-card-header fxLayoutAlign="center center">
+          <mat-card-subtitle>
+            <h2>Active Jobs (5)</h2>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <div class="row" style="margin-top:20px">
+          <div class="col-xs-12">
+            <div id="divQuotesGrid" class="table-responsive">
+              <table matSort id="example2" class="table table-bordered table-hover">
+                <thead class="tbl-head">
+                  <tr>
+                    <th>#Project</th>
+                    <th>#Job</th>
+                    <th>Assigned To</th>
+                    <th>Start Date</th>
+                    <th>Finish Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of active">
+                    <td>{{item.task}}</td>
+                    <td>{{item.project}}</td>
+                    <td>{{item.assigned}}</td>
+                    <td>{{item.start_date}}</td>
+                    <td>{{item.finish_date}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+                [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons></mat-paginator> -->
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+    <!-- Due for Review -->
+    <div fxFlex="100" fxFlex.gt-sm="50" class="flex-p">
+      <mat-card>
+        <mat-card-header fxLayoutAlign="center center">
+          <mat-card-subtitle>
+            <h2>Due for Review (5)</h2>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <div class="row" style="margin-top:20px">
+          <div class="col-xs-12">
+            <div id="divQuotesGrid" class="table-responsive">
+              <table matSort id="example2" class="table table-bordered table-hover">
+                <thead class="tbl-head">
+                  <tr>
+                    <th>#Project</th>
+                    <th>#Job</th>
+                    <th>Assigned To</th>
+                    <th>Review Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of due">
+                    <td>{{item.task}}</td>
+                    <td>{{item.project}}</td>
+                    <td>{{item.assigned}}</td>
+                    <td (click)="openReviewsDilog('')" style="color: blue;" >{{item.review_date}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+                [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons></mat-paginator> -->
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="row ">
+    <!-- Open Issues -->
+    <div fxFlex="100" fxFlex.gt-sm="100" class="flex-p">
+      <div class="flex-p">
+        <mat-card>
+          <mat-card-header fxLayoutAlign="center center">
+            <mat-card-subtitle>
+              <h2>Open Issues (5)</h2>
+            </mat-card-subtitle>
+          </mat-card-header>
+          <div class="row" style="margin-top:20px">
+            <div class="col-xs-12">
+              <div id="divQuotesGrid" class="table-responsive">
+                <table matSort id="example2" class="table table-bordered table-hover">
+                  <thead class="tbl-head">
+                    <tr>
+                      <th>#Project</th>
+                      <th>#Job</th>
+                      <th>Assigned To</th>
+                      <th style="width: 50%;">Issue Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of issues">
+                      <td>{{item.task}}</td>
+                      <td>{{item.project}}</td>
+                      <td>{{item.assigned}}</td>
+                      <td class="onClick" (click)="openIssuesDilog(item.total_issue)">{{item.total_issue}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+                  [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons></mat-paginator> -->
+              </div>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>

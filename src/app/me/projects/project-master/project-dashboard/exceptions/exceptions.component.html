@@ -1,0 +1,31 @@
+<div fxLayout="column">
+  <div class="flex-p">
+    <mat-card>
+      <mat-card-header fxLayoutAlign="center center">                
+          <mat-card-subtitle><h2>Exceptions by Day</h2></mat-card-subtitle>
+      </mat-card-header>
+      <div class="w-100 h-300p">
+          <ngx-charts-line-chart
+          [scheme]="colorScheme"
+          [results]="multi"
+          [gradient]="gradient2"
+          [xAxis]="showXAxis"
+          [yAxis]="showYAxis"
+          [legend]="showLegend2"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabel"
+          [yAxisLabel]="yAxisLabel"
+          [autoScale]="autoScale"
+          (select)="onSelect($event)">
+          </ngx-charts-line-chart>                  
+      </div>
+    </mat-card>
+
+  </div>
+
+</div>
+
+<router-outlet></router-outlet>
+  
+  

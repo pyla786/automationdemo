@@ -1,0 +1,78 @@
+<div fxLayout="column">
+  <div class="flex-p">
+    <mat-card>
+      <mat-card-header fxLayoutAlign="center center">                
+          <mat-card-subtitle><h2>Exceptions by Day</h2></mat-card-subtitle>
+      </mat-card-header>
+      <div class="w-100 h-300p">
+          <ngx-charts-line-chart
+          [scheme]="colorScheme"
+          [results]="multi"
+          [gradient]="gradient2"
+          [xAxis]="showXAxis"
+          [yAxis]="showYAxis"
+          [legend]="showLegend2"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabel"
+          [yAxisLabel]="yAxisLabel"
+          [autoScale]="autoScale"
+          (select)="onSelect($event)">
+          </ngx-charts-line-chart>                  
+      </div>
+    </mat-card>
+
+  </div>
+
+</div>
+
+
+
+      
+        <router-outlet></router-outlet>
+      
+
+      <!-- <div class="tables">
+      <div  *ngFor="let data of values">
+        <table id="datafield">
+          <tr>
+            <th>{{data.head}}</th>
+          </tr>
+          <tr>
+            <td><p>Current(A)</p> <p [ngStyle]="{'color': data.amperes>32?'red':'black'}">{{data.amperes}}</p></td>
+          </tr>
+          <tr>
+            <td><p>Voltage(V)</p> <p [ngStyle]="{'color': data.voltage>20?'rgb(255,165,0)':'red'}">{{data.voltage}}</p></td>
+          </tr>
+          <tr>
+            <td><p>Rating(KW)</p> <p [ngStyle]="{'color': data.KW>20?'rgb(255,165,0)':'red'}">{{data.KW}}</p></td>
+          </tr>
+          <tr>
+            <td><p>Load(KVA)</p> <p [ngStyle]="{'color': data.KVA>20?'rgb(255,165,0)':'red'}">{{data.KVA}}</p></td>
+          </tr>
+          <tr>
+            <td><p>Power Factor</p> <p [ngStyle]="{'color': data.power>20?'rgb(255,165,0)':'red'}">{{data.power}}</p></td>
+          </tr>
+          <tr>
+            <td><p>Consumption(KWh)</p> <p [ngStyle]="{'color': data.KWh>20?'rgb(255,165,0)':'red'}">{{data.KWh}}</p></td>
+          </tr>
+          
+        </table>
+      
+      </div>
+    </div> -->
+
+      
+      
+
+<!-- 
+  <div *ngIf="users" fxLayout="row wrap">
+      <div fxFlex="100" class="flex-p">
+          <mat-card class="p-0 text-center">
+              <pagination-controls class="gradus-pagination" autoHide="true" maxSize="3" (pageChange)="onPageChanged($event)"></pagination-controls>
+          </mat-card>
+      </div>
+  </div> -->
+  
+  
+

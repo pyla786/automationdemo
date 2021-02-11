@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,IAAI,AAAA,YAAY,CAAC,WAAW,CAAC,IAAI,CAAC;EAChC,IAAI,EAAE,OAAsB,CAAC,UAAU;EACvC,WAAW,EAAE,IAAI;EACjB,SAAS,EAAE,IAAI;CAChB",
+    "sources": [
+        "metrics.component.scss"
+    ],
+    "names": [],
+    "file": "metrics.component.css"
+}

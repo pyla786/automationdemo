@@ -1,0 +1,124 @@
+
+<div class="col-sm-12">
+  <div class="col-sm-6 no-padding" style="margin-bottom: 10px;">
+    <button [ngClass]="{'tabActive': isInception === true}" mat-raised-button (click)="fnInception()"
+      class="mat-raised-button tab"> BOQ
+    </button>
+    <button [ngClass]="{'tabActive': isControl === true}" mat-raised-button (click)="fnControl()"
+      class="mat-raised-button tab"> Technical Evaluation
+    </button>
+    <button [ngClass]="{'tabActive': isTests === true}" mat-raised-button (click)="fnTest()"
+      class="mat-raised-button tab"> Bid Management 
+    </button>
+    <button [ngClass]="{'tabActive': isContractor === true}" mat-raised-button (click)="fnContractor()"
+    class="mat-raised-button tab"> Bid Evaluation
+  </button>
+  </div>
+  <div *ngIf="isInception"  class="col-sm-6 no-padding pull-right" style="margin-bottom: 10px;">
+    <button mat-raised-button class="pull-right btn-success-gray">
+      <mat-icon>settings_backup_restore</mat-icon> Reset
+    </button>
+    <button mat-raised-button color="primary" class="pull-right" style="margin-right: 8px;">
+      <mat-icon>youtube_searched_for</mat-icon> Search
+     </button>
+    <div class="col-sm-3 pull-right" style="margin-right: 5px !important;margin-top: 3px;">
+      <input class="form-control" placeholder="Enter keyword" type="text">
+      </div>
+    <button  mat-raised-button class="pull-right  btn-primary">
+      <mat-icon>cloud_upload</mat-icon> Upload CSV
+     </button>
+    <button  mat-raised-button class="pull-right btn-primary" style="margin-right: 5px;">
+      <mat-icon>cloud_download</mat-icon> Template
+  </button>
+ 
+  <!-- <button  style="margin-bottom:10px;margin-right: 10px;" mat-raised-button class="pull-right btn-primary">
+      <mat-icon>add</mat-icon> Add Module
+  </button> -->
+  </div>
+</div>
+
+<div *ngIf="isTests || isContractor" class="row d-flex">
+  <div class="col-6 mx-auto middle">
+    <img style="margin-top: 15%; display: flex; margin-left: auto; margin-right: auto;" src="/assets/img/under-construction.png" height="400px" alt="under-construction">
+  </div>
+</div>
+
+<div *ngIf="isControl" class="row d-flex" #resizedDiv>
+    <div class="flex-p w-100">
+      <div class="col-lg-3" style="background-color:honeydew;"></div>
+      <div class="col-lg-5" style="background-color:honeydew;">
+          <h3 style="text-align: center;">Technical Evaluation</h3>
+        <div fxLayout="row wrap" style="margin-top: 20px !important;">
+          <div class="col-sm-7">
+              <div class="file btn btn-lg btn-primary pull-left upload" >
+                  <mat-icon class="upload-icon">cloud_upload</mat-icon> Upload File
+                  <input style="cursor: pointer !important" class="file" type="file" name="file" (change)="handleFileSelect($event)" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+              </div>
+          </div>
+          <div class="col-sm-5"style="margin-top:10px">
+              <a title="View Document"  target="_blank" href="http://africau.edu/images/default/sample.pdf" style="cursor: pointer;color:#337ab7;margin-right: 10px;margin-left: 10px !important;font-size: 19px !important;margin-top: 2px;">View Document</a>
+            </div>
+        </div>
+        <div fxLayout="row wrap" style="margin-top: 20px !important;">
+            <label style="
+            margin-bottom: 10px !important;
+            margin-left: 5px;">Enter Notes:</label>
+          </div>
+          <textarea style="width: 100%;margin-bottom: 30px;" class="area" rows="5" class="form-control txtarea" id="addSubject"
+          name="addSubject" placeholder="Enter Notes"></textarea>
+          <div fxLayout="row wrap"class="pull-right">
+            <button class="pull-right btn-primary" style="margin-right: 10px !important" mat-raised-button><mat-icon>send</mat-icon>&nbsp;Save</button>
+          </div>
+      </div>
+      <div class="col-lg-3" style="background-color:honeydew;"></div>
+    </div>
+</div>
+
+<div *ngIf="isInception " class="table-responsive w-100 col-sm-12" style="margin-top: 10px;">
+  <table id="example2" class="table table-bordered table-hover">
+      <thead class="tbl-head">
+          <tr class="tr-grid-header">
+              <th style="text-align: center !important">Section</th>
+              <th style="text-align: center !important">Description of work</th>
+              <th style="text-align: center !important">Unit</th>
+              <th style="text-align: center !important" >Total Quantity</th>
+              <th style="text-align: center !important">rate</th>
+              <th style="text-align: center !important" >Amount</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let item of excavations">
+            <td class="text-center">
+              {{item.site}}
+            </td>
+            <td class="text-center">
+              {{item.cat_name}}
+            </td>      
+            <td class="text-center">
+              {{item.Performed}}
+            </td>
+            <td class="text-center">
+              {{item.insecby}}
+            </td> 
+            <td class="text-center">
+              {{item.date}}
+            </td> 
+            <td class="text-center">
+              {{item.result}}
+            </td>
+          </tr>
+      </tbody>
+  </table>
+  <div class="col-sm-12" style="margin-top: 10px;">
+    <div class="col-sm-10" style="background-color:blanchedalmond;">
+        <label style="display: block;text-align: center;">Total Amount (INR)</label>
+    </div>
+    <!-- <div class="col-sm-1" style="background-color:white;">
+
+    </div> -->
+    <div class="col-sm-2" style="background-color:blanchedalmond;">
+       <label style="display: block;text-align: end;">66900</label>
+    </div>
+   </div>
+  <!-- <mat-paginator class="col-sm-12" [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="handlePage($event)" showFirstLastButtons></mat-paginator> -->
+</div>

@@ -1,0 +1,17 @@
+<div class="NewHeader">
+  <h1 mat-dialog-title>
+    Add/Edit Observations
+  </h1>
+</div>
+<div mat-dialog-content>
+ <h4>Enter Notes for Q001</h4>
+ <textarea class="col-12 mb-3" style="height: 100px;" placeholder="Enter Notes"></textarea>
+</div>
+<mat-dialog-actions class="col-sm-12" align="end">
+  <button mat-raised-button class="btn-primary text-light">
+    <mat-icon>send</mat-icon>&nbsp;Save
+  </button>
+  <button mat-raised-button class="CancelClass" (click)="close()">
+    &nbsp;Close
+  </button>
+</mat-dialog-actions>

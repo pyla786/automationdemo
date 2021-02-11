@@ -1,0 +1,37 @@
+<div class="NewHeader">
+  <h1 mat-dialog-title>
+    Previous Versions
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div id="divQuotesGrid" class="table-responsive">
+      <table matSort id="example2" class="table table-bordered table-hover">
+        <thead class="tbl-head">
+          <tr>
+            <!-- <th class="text-center">Project Name</th> -->
+            <th class="text-center">Version</th>
+            <th class="text-center">Remarks</th>
+            <th class="text-center">Document</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of totalProjects">
+            <!-- <td style="text-align: center!important;">{{item.projectname}}</td> -->
+            <td style="text-align: center!important;">{{item.verNum}}</td>
+            <td style="text-align: center!important;">{{item.Rem}}</td>
+            <td style="text-align: center!important;"><a href="http://africau.edu/images/default/sample.pdf" target="_blank">View</a></td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<mat-dialog-actions class="col-sm-12" align="end">
+  <button mat-raised-button class="CancelClass" (click)="close()">
+    &nbsp;Close
+  </button>
+</mat-dialog-actions>

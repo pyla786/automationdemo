@@ -1,0 +1,74 @@
+
+<div class="NewHeader">
+  <h1 mat-dialog-title> Add Line Item</h1>
+</div>
+<div mat-dialog-content>
+  
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Criteria : </label>
+      <div class="col-sm-8">
+        <mat-select class="form-control" id="status" placeholder="Select Criteria">
+          <mat-option [value]=0>Electrical Control Cabinet (TAG22T3-100B)</mat-option>
+          <mat-option [value]=1>Standard Work Procedures</mat-option>
+          <mat-option [value]=2>Certificates of Compliance</mat-option>
+          <mat-option [value]=3>Equipment Data Sheets</mat-option>
+          <mat-option [value]=4>Materials Data Sheets</mat-option>
+        </mat-select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Line Item : </label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="step" placeholder="Enter Line Item">
+      </div>
+    </div>
+    <!-- <div class="form-group">
+      <label class="control-label col-sm-4">Step Type:</label>
+      <div class="col-sm-8">
+        <select class="form-control" id="type">
+          <option  >--Select--</option>
+          <option value="note">Note</option>
+          <option value="sequence">Sequence</option>
+        </select>
+      </div>
+    </div> -->
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Importance : </label>
+      <div class="col-sm-8">
+        <mat-select class="form-control" id="status" placeholder="Select Importance">
+          <mat-option [value]=0>High</mat-option>
+          <mat-option [value]=1>Medium</mat-option>
+          <mat-option [value]=2>Low</mat-option>
+        </mat-select>
+      </div>
+    </div>
+    <!-- <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Assigned To : </label>
+      <div class="col-sm-8">
+        <mat-select class="form-control" id="status" placeholder="Select Assignee">
+          <mat-option [value]=0>David</mat-option>
+          <mat-option [value]=1>Warner</mat-option>
+          <mat-option [value]=2>Williamson</mat-option>
+          <mat-option [value]=2>Smith</mat-option>
+          <mat-option [value]=2>Steve</mat-option>
+        </mat-select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Target Date:&nbsp;</label>
+      <div class="col-sm-8">
+        
+        <div class="input-icon right">
+          <input class="form-control" placeholder="MM/DD/YYYY" class="form-control" id="db" [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" name="dt1">
+          <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+        </div> 
+      </div>
+    </div> -->
+  </form>
+</div>
+<mat-dialog-actions align="end">
+  <button mat-raised-button class="btn-primary" (click)="saveStep()" [mat-dialog-close]="'test'"><span *ngIf="user">Save</span><span
+    *ngIf="!user">Update</span></button>
+    <button mat-raised-button class="CancelClass" (click)="close()">Close</button>
+  </mat-dialog-actions> 

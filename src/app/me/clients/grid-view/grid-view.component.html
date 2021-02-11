@@ -1,0 +1,282 @@
+<div class="row-wrap">
+    <div class="flex-p w-100">
+        <div class="row">
+            <div class="col-xs-12">
+
+                <div class="row" style="margin-bottom:7px;">
+                    <div class="col-sm-3">
+                        <div *ngIf="userType == 'admin' || userType =='project_manager' ">
+                            <label class="control-label col-lg-5 col-md-5 col-sm-5 col-xs-5 " style="margin-top: 15px;"
+                                for="pwd">Select Project:
+                            </label>
+                            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                                <mat-select class="form-control" style="margin-top: 10px;" placeholder="Select Project">
+                                    <mat-option [value]="0">00 001</mat-option>
+                                    <mat-option [value]="1">00 002 </mat-option>
+                                    <mat-option [value]="2">00 003</mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-4 " style="margin-top: 15px;"
+                            for="pwd">Due Date:
+                        </label>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8"
+                            style="font-size: 22px;font-family: 'FontAwesome';margin-top: 9px;font-weight: 600;">
+                            30-Mar-2021
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="flex-p">
+
+                            <button mat-raised-button class="pull-right  btn-primary margin-right-10"
+                                (click)="openGridColumn()">
+                                <mat-icon>grid_on</mat-icon> Grid Columns
+                            </button>
+                            <button mat-raised-button color="primary" class="pull-right filters-hover margin-right-10"
+                                (click)="filterToggle = !filterToggle">
+                                <mat-icon>filter_list</mat-icon> Filter
+                            </button>
+                            <button *ngIf="userType== 'admin'" mat-raised-button title="Upload excel to add Job"
+                                class=" pull-right add-hover  btn-success " style="margin-right: 10px;"
+                                (click)="uploadExcel()">
+                                <mat-icon>import_export</mat-icon>
+                                Upload Excel
+                            </button>
+                            <button *ngIf="userType== 'admin'" mat-raised-button color="primary"
+                                title="Click To Dowload Template" class="pull-right" style="margin-right: 10px;">
+                                <mat-icon>import_export</mat-icon>
+                                Download Sample
+                            </button>
+                            <div *ngIf="userType == 'admin' || userType =='project_manager' " class=" pull-right"
+                                style="margin-right: 15px;margin-top: 12px;">
+                                <mat-checkbox [checked]="toppingsPersonal" (change)="showPriority()">
+                                </mat-checkbox>
+                                &nbsp;<span style="color: black">Show Archived</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div fxLayout="row wrap">
+                    <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p w-100" *ngIf="filterToggle">
+                        <mat-card class="filter">
+                            <mat-card-content>
+                                <div class="row col-sm-12">
+                                    <div class="col-sm-4">
+                                        <div class="col-sm-4 newMarginClass">By Project#:</div>
+                                        <div class="col-sm-8">
+                                            <mat-select class="form-control" placeholder="Select by Project#">
+                                                <mat-option [value]="0">04</mat-option>
+                                                <mat-option [value]="1">03</mat-option>
+                                                <mat-option [value]="2">02</mat-option>
+                                                <mat-option [value]="3">01</mat-option>
+                                            </mat-select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="col-sm-4 newMarginClass">
+                                            By Job#:
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <input type="text" placeholder="Search by Job#" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="col-sm-4 newMarginClass">By Engineer:</div>
+                                        <div class="col-sm-8">
+                                            <mat-select class="form-control" placeholder="Select by Engineer">
+                                                <mat-option [value]="0">Mukesh</mat-option>
+                                                <mat-option [value]="1">Adityesh</mat-option>
+                                                <mat-option [value]="2">Vijay</mat-option>
+                                                <mat-option [value]="3">Murali</mat-option>
+                                            </mat-select>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="row col-sm-12" style="margin-top:20px">
+                                    <div class="col-sm-4">
+                                        <div class="col-sm-4 newMarginClass">By Project Manager:</div>
+                                        <div class="col-sm-8">
+                                            <mat-select class="form-control" placeholder="Select by In Charge">
+                                                <mat-option [value]="0">Vijay</mat-option>
+                                                <mat-option [value]="1">Raj Kumar</mat-option>
+                                                <mat-option [value]="2">Lokesh</mat-option>
+                                                <mat-option [value]="3">Murali</mat-option>
+                                            </mat-select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="col-sm-4 newMarginClass">By Target Date:</div>
+                                        <div class="col-sm-8">
+                                            <input class="form-control" placeholder="MM/DD/YYYY" class="form-control"
+                                                id="db" [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2" name="dt2">
+                                            <owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="col-sm-4 newMarginClass">By Status:</div>
+                                        <div class="col-sm-8">
+
+                                            <mat-select class="form-control" placeholder="Select by Status">
+                                                <mat-option [value]="0">In Progress</mat-option>
+                                                <mat-option [value]="1">Delayed</mat-option>
+                                                <mat-option [value]="2">Done</mat-option>
+                                            </mat-select>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+
+                                <div class="row col-sm-12" style="margin-top:20px">
+                                    <div class="col-sm-4">
+                                        <div class="col-sm-4 newMarginClass">By Completion Date:</div>
+                                        <div class="col-sm-8">
+                                            <input class="form-control" placeholder="MM/DD/YYYY" class="form-control"
+                                                id="db" [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" name="dt1">
+                                            <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="col-sm-4 newMarginClass">By Approval:</div>
+                                        <div class="col-sm-8">
+                                            <mat-select class='form-control' placeholder="Search by Approval">
+                                                <mat-option [value]=1>Approved</mat-option>
+                                                <mat-option [value]=2>Pending</mat-option>
+                                            </mat-select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="col-sm-4 newMarginClass">
+                                            Keyword:
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <input type="text" placeholder="Search by Keyword" class="form-control">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row col-sm-12" style="margin-top:20px">
+                                    <div class="col-sm-4">
+                                        <!-- <div class="col-sm-4 newMarginClass">
+                                            Archived:
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <input type="checkbox" style="margin-top: 9px;width: 20px;height: 20px;;">
+                                        </div> -->
+                                    </div>
+                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-2">
+                                        <div class="col-lg-1" style="margin-top: -5px;">
+                                            <button mat-raised-button class="pull-right btn-primary">
+                                                <mat-icon>youtube_searched_for</mat-icon> Search
+                                            </button>
+
+                                        </div>
+                                        <div class="col-lg-1">
+                                            <button mat-raised-button
+                                                style="background-color:#37474f; color:#fff !important;margin-top: -5px">
+                                                <mat-icon>settings_backup_restore</mat-icon> Clear
+                                            </button>
+
+                                        </div>
+                                        <a (click)="filterToggle = !filterToggle" class="pull-right"
+                                            style="font-size: 25px; cursor: pointer; margin-left: 5px;">
+                                            <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                                        </a>
+
+
+                                    </div>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top:20px">
+                    <div class="col-xs-12">
+                        <div id="divQuotesGrid" class="table-responsive">
+                            <table matSort id="example2" class="table table-bordered table-hover">
+                                <thead class="tbl-head">
+                                    <tr>
+                                        <th>Project #</th>
+                                        <th>Job #</th>
+                                        <th>Description</th>
+                                        <th>Engineer</th>
+                                        <th>Project Manager</th>
+                                        <th class="text-center">Work Duration in Days</th>
+                                        <th class="text-center">Target Date</th>
+                                        <th class="text-center">Remarks</th>
+                                        <th class="text-center">Review Date</th>
+                                        <th class="text-center">Issues</th>
+                                        <th class="text-center">Status</th>
+                                        <th class="text-center">Completion Date</th>
+                                        <th *ngIf="userType == 'admin' || userType =='project_manager' "
+                                            class="text-center">Approve</th>
+                                        <th *ngIf="userType == 'admin' || userType =='project_manager' "
+                                            class="text-center">Decline</th>
+                                        <th *ngIf="userType == 'admin' || userType =='project_manager' "
+                                            class="text-center" style="width: 112px!important;">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of values">
+                                        <td>{{item.project}}</td>
+                                        <td>{{item.job}}</td>
+                                        <td>{{item.description}}</td>
+                                        <td>{{item.engineer}}</td>
+                                        <td>{{item.incharge}}</td>
+                                        <td style="text-align: center!important;">{{item.work}}</td>
+                                        <td style="text-align: center!important;">{{item.target}}</td>
+                                        <th class="text-center">{{item.remark}}</th>
+                                        <td class="onClick text-center" (click)="openReviewsDilog('')">{{item.review}}
+                                        </td>
+                                        <td class="onClick text-center" (click)="openIssuesDilog('')">{{item.issues}}
+                                        </td>
+                                        <td class="onClick" style="text-align: center!important;">{{item.status}}</td>
+                                        <td style="text-align: center!important;">{{item.completion}}</td>
+                                        <td *ngIf="userType == 'admin' || userType =='project_manager' "
+                                            style="text-align: center!important;">
+                                            <input mwlConfirmationPopover [popoverTitle]="'Approve'"
+                                                [popoverMessage]="'The task will be approved and it is moved to archived'"
+                                                placement="left" (confirm)="deleteUser()"
+                                                (cancel)="cancelClicked1 = true" type="checkbox">
+                                        </td>
+                                        <td *ngIf="userType == 'admin' || userType =='project_manager' "
+                                            style="text-align: center!important;">
+                                            <input mwlConfirmationPopover [popoverTitle]="'Decline'"
+                                                [popoverMessage]="'The task will be declined and it will be reassigned to respective engineer'" placement="left"
+                                                (confirm)="deleteUser()" (cancel)="cancelClicked1 = true"
+                                                type="checkbox">
+                                        </td>
+                                        <td *ngIf="userType == 'admin' || userType =='project_manager' "
+                                            class="text-center">
+                                            <a style="cursor: pointer;margin-right:10px; " matTooltip="Update Job">
+                                                <i class="fa fa-edit" style="color: cornflowerblue"></i>
+                                            </a>
+                                            <a><i class="fa fa-trash red" matTooltip="Delete Job"
+                                                    style="cursor: pointer;"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+                                [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons></mat-paginator>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

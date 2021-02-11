@@ -1,0 +1,150 @@
+<div fxLayout="column">
+  <div class="flex-p">
+      <div class="row" style="margin-top:15px;">
+          <div class="col-lg-4"> 
+              
+              <mat-card-header fxLayoutAlign="center center">                
+                  <mat-card-subtitle><h2>Exception by Module</h2></mat-card-subtitle>
+              </mat-card-header>
+              <div class="w-100 h-300p">
+                  <ngx-charts-pie-chart
+                  [scheme]="colorScheme"
+                  [results]="single"
+                  [legend]="showLegend"
+                  [explodeSlices]="explodeSlices"
+                  [labels]="showLabels"
+                  [doughnut]="doughnut"
+                  [gradient]="gradient"
+                  (select)="onSelect($event)">
+              </ngx-charts-pie-chart>                  
+          </div>
+          
+      </div>
+      
+      <div class="col-lg-4"> 
+          
+          <mat-card-header fxLayoutAlign="center center">                
+              <mat-card-subtitle><h2>Exception by Device</h2></mat-card-subtitle>
+          </mat-card-header>
+          <div class="w-100 h-300p">
+              <ngx-charts-pie-chart
+              [scheme]="colorScheme"
+              [results]="triple"
+              [legend]="showLegend"
+              [explodeSlices]="explodeSlices"
+              [labels]="showLabels"
+              [doughnut]="doughnut"
+              [gradient]="gradient"
+              (select)="onSelect($event)">
+          </ngx-charts-pie-chart>                  
+      </div>
+      
+  </div>
+  <div class="col-lg-4"> 
+      
+      <mat-card-header fxLayoutAlign="center center">                
+          <mat-card-subtitle><h2>Alerts by time of day</h2></mat-card-subtitle>
+      </mat-card-header>
+      <div class="w-100 h-300p">
+          <ngx-charts-pie-chart
+          [scheme]="colorScheme"
+          [results]="multiTriple"
+          [legend]="showLegend"
+          [explodeSlices]="explodeSlices"
+          [labels]="showLabels"
+          [doughnut]="doughnut"
+          [gradient]="gradient"
+          (select)="onSelect($event)">
+      </ngx-charts-pie-chart>                  
+  </div>
+  
+</div>
+</div>
+<mat-card>
+  <mat-card-header fxLayoutAlign="center center">                
+      <mat-card-subtitle><h2>Precision Trend for Oct 2020</h2></mat-card-subtitle>
+  </mat-card-header>
+  <div class="w-100">
+      <div class="row wrap" fxLayoutAlign="center center">
+          <div style="width:200px;margin:0 5px">
+              <mat-select color="primary" placeholder="Select Month" formControlName="Country" class="form-control"
+                required>
+                <mat-option >
+                </mat-option>
+              </mat-select>
+              <!-- <div *ngIf="!Country.valid && (Country.dirty || Country.touched)" class="error-text">
+                <div *ngIf="Country.errors.required">
+                  Project Type is required
+                </div>
+              </div> -->
+            </div>
+          
+          <div style="width:200px;margin: 0 5px;">
+            <mat-select color="primary" placeholder="Select Year" formControlName="Country" class="form-control"
+              required>
+              <mat-option  >
+              </mat-option>
+            </mat-select>
+            <!-- <div *ngIf="!Country.valid && (Country.dirty || Country.touched)" class="error-text">
+              <div *ngIf="Country.errors.required">
+                Project Type is required
+              </div>
+            </div> -->
+          </div>
+        </div>
+  </div>
+  <div  style="margin-top: 10px;width:100%;height:400px">
+      <ngx-charts-line-chart
+      [scheme]="colorScheme"
+      [results]="multi"
+      [gradient]="gradient2"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [legend]="showLegend2"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [autoScale]="autoScale"
+      (select)="onSelect($event)">
+  </ngx-charts-line-chart>                  
+</div>
+</mat-card>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+      <div id="divQuotesGrid" class="table-responsive">
+          <table matSort id="example2" class="table table-bordered table-hover">
+              <thead class="tbl-head">
+                  <tr>
+                      <th class="text-center">Module</th>
+                      <th class="text-center">Devices</th>
+                      <th class="text-center">Exceptions</th>
+                      <th class="text-center">Alerts</th>
+                      <th class="text-center">Last Exception</th>
+                      <th class="text-center">Last Alert</th>
+                      <th class="text-center">Active Since</th>
+                      
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let item of totalProjects">
+                      <td style="text-align: center!important;">{{item.module}}</td>
+                      <td style="text-align: center!important;">{{item.devices}}</td>
+                      <td style="text-align: center!important;">{{item.exceptions}}</td>
+                      <td style="text-align: center!important;">{{item.alerts}}</td>
+                      <td style="text-align: center!important;">{{item.lastexception}}</td>
+                      <td style="text-align: center!important;">{{item.lastalert}}</td>
+                      <td style="text-align: center!important;">{{item.activesince}}</td>
+                  </tr>
+                  
+              </tbody>
+          </table>
+          <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+          [pageSizeOptions]="[5, 10, 25, 50, 100]" 
+          showFirstLastButtons></mat-paginator>
+      </div>
+  </div>
+</div>

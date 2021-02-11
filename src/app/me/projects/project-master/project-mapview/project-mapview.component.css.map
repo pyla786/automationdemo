@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,wBAAwB,CAAC;EACrB,MAAM,EAAE,gBAAgB;CAC3B",
+    "sources": [
+        "project-mapview.component.scss"
+    ],
+    "names": [],
+    "file": "project-mapview.component.css"
+}

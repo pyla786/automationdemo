@@ -1,0 +1,67 @@
+<div class="row-wrap">
+  <div class="flex-p w-100">
+      <div class="row">
+          <div class="col-xs-12">
+              <div class="row" style="margin-bottom:7px;">
+                  <div class="col-xs-6 ">
+                      <div class="pills w-100 flex-p">
+                        <ul class="nav nav-pills">
+                          <li routerLinkActive="active">
+                              <a mat-raised-button class="navtabWidth"
+                                  [routerLink]="['/admin/jobs/gridview']">
+                                  <mat-icon>grid_on</mat-icon> Grid view
+                              </a>
+                          </li>
+                          <li routerLinkActive="active">
+                              <a mat-raised-button class="navtabWidth"
+                                  [routerLink]="['/admin/jobs/mapview']">
+                                  <mat-icon>place </mat-icon> Map view
+                              </a>
+                          </li>
+                      </ul>
+                      </div>
+                  </div>
+                  <div class="col-xs-6">
+                  </div>
+              </div>
+              <div fxLayout="column">
+                  <!-- <div class="flex-p">  -->
+                      <mat-card>
+                          
+                          <div class="w-100 h-500p">
+                                  <agm-map #AgmMap [minZoom]="2" [maxZoom]="16" [zoom]="7" [streetViewControl]="false" [latitude]="lat" [longitude]="lng" [fullscreenControl]="true">
+                                      <agm-marker-cluster>
+                                          <agm-marker [iconUrl]="'../../../../assets/img/google-marker-regular.png'" *ngFor="let pointer of markingPoints" [latitude]="pointer.lat" [longitude]="pointer.lng" (mouseOver)="onMouseOver(infoWindow,AgmMap)" (mouseOut)="onMouseOut(infoWindow,AgmMap)">
+                                              <agm-info-window [disableAutoPan]="true" #infoWindow>
+                                                  <strong>{{pointer.label}}</strong>
+                                              </agm-info-window>
+                                          </agm-marker>
+                                      </agm-marker-cluster>
+                                  </agm-map>
+                              </div>
+                      </mat-card>
+                 <!--  </div>   -->
+              </div>
+              <!-- <div class="row-wrap">
+                  <div class="w-100 flex-p">
+                      <div fxLayout="column">
+                              <mat-card>
+                                  <div class="w-100 h-500p">
+                                      <agm-map #AgmMap [minZoom]="2" [maxZoom]="16" [zoom]="7" [streetViewControl]="false" [latitude]="lat" [longitude]="lng" [zoomControlOptions]="zoomControlOptions" [fullscreenControl]="true">
+                                          <agm-marker-cluster>
+                                              <agm-marker [iconUrl]="'../../assets/img/google-marker-regular.png'" *ngFor="let pointer of markingPoints" [latitude]="pointer.lat" [longitude]="pointer.lng" (mouseOver)="onMouseOver(infoWindow,AgmMap)" (mouseOut)="onMouseOut(infoWindow,AgmMap)">
+                                                  <agm-info-window [disableAutoPan]="true" #infoWindow>
+                                                      <strong>{{pointer.label}}</strong>
+                                                  </agm-info-window>
+                                              </agm-marker>
+                                            </agm-marker-cluster>
+                                      </agm-map>
+                                      </div>
+                                  </mat-card>
+                              </div>
+                          </div>
+                      </div> -->
+                </div>
+         </div>    
+   </div>
+</div>

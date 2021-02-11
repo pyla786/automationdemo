@@ -1,0 +1,45 @@
+.main-section{
+	margin-top:100px;
+	font-family: 'Abel', sans-serif;
+}
+
+.card-header{
+    box-shadow:1px 5px 15px #a2a2a2;
+}
+
+.card-header-add{
+	background: blanchedalmond; 
+}
+
+.card-header-first{
+	background: linear-gradient(-90deg, #9400d3, rgba(148, 0, 211, 0.48)); 
+}
+
+.card-header-second{
+	background: linear-gradient(to right, #4b6cb7, #1c3058);
+}
+
+.card-header-third{
+	background-image: radial-gradient( circle farthest-corner at 22.4% 21.7%,  rgba(4,189,228,1) 0%, rgba(2,83,185,1) 100.2% );
+}
+
+.card-header-four{
+	background: linear-gradient(to right, #11998e, #38ef7d);
+}
+
+.card-header-five{
+    background: linear-gradient(-90deg, #f9d56e, #f9d56e);  
+}
+
+.card-header-six{
+     background: linear-gradient(to right, #f12711, #f5af19);
+}
+
+.card-header-seven{
+      background: azure; 
+}
+
+.card-section:hover{
+	box-shadow:5px 5px 25px #d2d2d2;
+}
+

@@ -1,0 +1,151 @@
+<div class="NewHeader">
+  <h3 mat-dialog-title>
+    <span class="title-left">+ Parameters</span>
+  </h3>
+</div>
+
+<div mat-dialog-content>
+  <form class="form-horizontal" novalidate>
+      <div class="form-group">
+          <label class="control-label col-sm-4 add-member-label">Parameter Name :</label>
+          <div class="col-sm-8">
+            <input class="form-control"/>
+            
+          </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Ideal Value :</label>
+            <div class="col-sm-8">
+              <input class="form-control"/>
+              
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Warning Upper Limit :</label>
+            <div class="col-sm-8">
+              <input class="form-control"/>
+              
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label">Warning Lower Limit :</label>
+            <div class="col-sm-8">
+              <input class="form-control"/>
+              
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-4 add-member-label" >ALert Upper Limit :</label>
+            <div class="col-sm-8">
+              <input class="form-control"/>
+              
+            </div>
+          </div>
+      <div class="form-group">
+          <label class="control-label col-sm-4 add-member-label">Alert Lower Limit :</label>
+          <div class="col-sm-8">
+              <input class="form-control"   />
+            
+          </div>
+        </div>
+        <!-- <div class="form-group">
+          <label class="control-label col-sm-4 add-member-label">End Date:</label>
+          <div class="col-sm-8">
+              <input class="form-control"   placeholder="MM/DD/YYYY"
+              class="form-control" id="db2" [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" name="dt1">
+            <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+          </div>
+        </div> -->
+  </form>
+</div>
+
+<mat-dialog-actions class="col-sm-12" align="end">
+  <button mat-raised-button class="btn-primary" (click)="close()">
+    <!-- <mat-icon>send</mat-icon>&nbsp;Save -->
+    Save
+  </button>
+  <!-- <button mat-raised-button class="CancelClass" (click)="close()">
+    <mat-icon>cancel</mat-icon>&nbsp;Close
+  </button> -->
+</mat-dialog-actions>
+
+<div fxLayout="row wrap" style="margin-top:70px;">
+  <div class="table-responsive w-100 flex-p " id="grid-table-container">
+    <table id="example2" class="table table-bordered table-hover ">
+      <thead class="tbl-head ">
+        <tr class="tr-grid-header">
+          <th>Parameter Name</th>
+          <th>Ideal Value</th>
+          <th>Warning Upper Lt</th>
+          <th>Warning Lower Lt</th>
+          <th>Alert Upper Lt</th>
+          <th>Alert Lower Lt</th>
+          <th style="width: 70px;text-align: center !important;vertical-align: middle !important;">Actions</th>
+          <!-- <th>Audit ID</th>
+          <th>Site</th>
+          <th>Construction Sub Category</th>
+          <th>Checklist</th>
+          <th>Status</th>
+          <th>Auditor</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Submission Date</th>
+          <th style="width: 90px;text-align: center !important;">Actions</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="showEmpty">
+          <td colspan="21" class="text-center">No records found</td>
+        </tr>
+
+        <tr *ngFor="let campaign of site">
+          <td class="inner-screen">
+            {{campaign.name}}
+          </td>
+          <td>
+            {{campaign.value}}
+          </td>
+          <td>
+            {{campaign.wupper}}
+          </td>
+          <td >
+            {{campaign.wlower}}
+          </td>
+          <td >
+            {{campaign.aupper}}
+          </td>
+          <td>
+            {{campaign.alower}}
+          </td>
+          <td class="text-center">
+            <a title="Edit Asset" style="cursor: pointer;">
+              <i class="fa fa-edit" style="color: cornflowerblue"></i>
+            </a>
+            <a title="Delete Asset" style="cursor: pointer;">
+              <i style="cursor: pointer;" title="Delete Campaign" class="fa fa-trash red"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- <button class="mine" mat-fab (click)="scrollGrid('right');">
+      <mat-icon style="color:#37474f">fast_forward</mat-icon>
+    </button>
+    <button class="mine" mat-fab style="margin-right: 78px !important;" (click)="scrollGrid('left');">
+      <mat-icon style="color:#37474f">fast_rewind</mat-icon>
+    </button> -->
+    <!-- <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+        [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="handlePage($event)" showFirstLastButtons></mat-paginator> -->
+  </div>
+</div>
+
+<mat-dialog-actions class="col-sm-12" align="end">
+  <button mat-raised-button class="CancelClass" (click)="close()">
+    <!-- <mat-icon>send</mat-icon>&nbsp;Save -->
+    Close
+  </button>
+  <!-- <button mat-raised-button class="CancelClass" (click)="close()">
+    <mat-icon>cancel</mat-icon>&nbsp;Close
+  </button> -->
+</mat-dialog-actions>
+

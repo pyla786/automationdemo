@@ -1,0 +1,151 @@
+<div class="NewHeader">
+  <h1 mat-dialog-title>
+    <span *ngIf="!asset" class="title-left">Add</span>
+    <span *ngIf="asset" class="title-left">Update</span> asset
+  </h1>
+</div>
+
+        <div mat-dialog-content>
+            <form class="form-horizontal" novalidate >
+              <div class="form-group">
+                <label class="control-label col-sm-4 add-member-label">Asset Category:&nbsp;</label>
+                <div class="col-sm-8">
+                  <mat-select color="primary" placeholder="-- Select Asset Category --"  class="form-control"
+                      required>
+                      <mat-option *ngFor="let conuntry of countries" [value]="conuntry.conuntry_id">{{conuntry.conuntry_name}}
+                      </mat-option>
+                    </mat-select>
+                  <!-- <div *ngIf="!contactName.valid && (contactName.dirty || contactName.touched)" class="error-text">
+                    <div *ngIf="contactName.errors.required">
+                      Asset Category is required
+                    </div>
+                  </div> -->
+                </div>
+              </div>
+              <div class="form-group">
+                  <label class="control-label col-sm-4 add-member-label">Sequence Number:&nbsp;</label>
+                  <div class="col-sm-8">
+                    -
+                    <!-- <div *ngIf="!streetAddress.valid && (streetAddress.dirty || streetAddress.touched)" class="error-text">
+                      <div *ngIf="streetAddress.errors.required">
+                        street Address is required
+                      </div>
+                    </div> -->
+                  </div>
+                </div>
+              <div class="form-group">
+                <label class="control-label col-sm-4 add-member-label">Asset Number:&nbsp;</label>
+                <div class="col-sm-8">
+                  <input type="text" maxlength="50" class="form-control" placeholder="Enter Asset Number" 
+                    required>
+                  <!-- <div *ngIf="!jobTitle.valid && (jobTitle.dirty || jobTitle.touched)" class="error-text">
+                    <div *ngIf="jobTitle.errors.required">
+                      Asset Number is required
+                    </div>
+                  </div> -->
+                </div>
+              </div>
+              <div class="form-group">
+                  <label class="control-label col-sm-4 add-member-label">Asset Name:&nbsp;</label>
+                  <div class="col-sm-8">
+                    <input type="text" maxlength="50" class="form-control" placeholder="Enter Asset Name" 
+                    required>
+                    <!-- <div *ngIf="!Country.valid && (Country.dirty || Country.touched)" class="error-text">
+                      <div *ngIf="Country.errors.required">
+                        asset Type is required
+                      </div>
+                    </div> -->
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-4 add-member-label">Make:&nbsp;</label>
+                    <div class="col-sm-8">
+                      <input type="text" maxlength="50" class="form-control" placeholder="Enter Make" 
+                      required>
+                      <!-- <div *ngIf="!State.valid && (State.dirty || State.touched)" class="error-text">
+                        <div *ngIf="State.errors.required">
+                          Make is required
+                        </div>
+                      </div> -->
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-4 add-member-label">Model:&nbsp;</label>
+                    <div class="col-sm-8">
+                      <input type="text" maxlength="50" class="form-control" placeholder="Enter Model" 
+                      required>
+                      <!-- <div *ngIf="!State.valid && (State.dirty || State.touched)" class="error-text">
+                        <div *ngIf="State.errors.required">
+                          Model is required
+                        </div>
+                      </div> -->
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-4 add-member-label">Delear:&nbsp;</label>
+                    <div class="col-sm-8">
+                      <input type="text" maxlength="50" class="form-control" placeholder="Enter Delear" 
+                      required>
+                      <!-- <div *ngIf="!State.valid && (State.dirty || State.touched)" class="error-text">
+                        <div *ngIf="State.errors.required">
+                          Delear is required
+                        </div>
+                      </div> -->
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-4 add-member-label">Purchase Price:&nbsp;</label>
+                    <div class="col-sm-8">
+                      <input type="text" maxlength="50" class="form-control" placeholder="Enter Purchase Price" 
+                      required>
+                      <!-- <div *ngIf="!State.valid && (State.dirty || State.touched)" class="error-text">
+                        <div *ngIf="State.errors.required">
+                          Purchase Price is required
+                        </div>
+                      </div> -->
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-4 add-member-label">Purchased Date:&nbsp;</label>
+                    <div class="col-sm-8">
+                      <input class="form-control"   placeholder="MM/DD/YYYY"
+                      class="form-control" id="db1" [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2" name="dt2">
+                    <owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time>
+                      <!-- <div *ngIf="!State.valid && (State.dirty || State.touched)" class="error-text">
+                        <div *ngIf="State.errors.required">
+                          Purchase Price is required
+                        </div>
+                      </div> -->
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label col-sm-4 add-member-label">Serial Number:&nbsp;</label>
+                    <div class="col-sm-8">
+                      <input type="text" maxlength="50" class="form-control" placeholder="Enter Serial Number" 
+                      required>
+                      <!-- <div *ngIf="!State.valid && (State.dirty || State.touched)" class="error-text">
+                        <div *ngIf="State.errors.required">
+                          Serial Number is required
+                        </div>
+                      </div> -->
+                    </div>
+                  </div>
+            </form>
+          </div>
+          <mat-dialog-actions class="col-sm-12" align="end">
+            <button *ngIf="!asset"mat-raised-button  class="btn-primary" (click)="close()">
+              <mat-icon>send</mat-icon>&nbsp;Save
+            </button>
+            <button *ngIf="asset" mat-raised-button 
+            class="btn-primary"(click)="close()" >
+              <mat-icon>update</mat-icon>&nbsp;Update
+            </button>
+            <button mat-raised-button class="CancelClass" (click)="close()">
+              <mat-icon>cancel</mat-icon>&nbsp;Close
+            </button>
+          </mat-dialog-actions>
+
+   
+
+
+

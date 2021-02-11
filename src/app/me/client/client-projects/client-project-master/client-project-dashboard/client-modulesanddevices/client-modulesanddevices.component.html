@@ -1,0 +1,347 @@
+<div class="flex-p" style="margin-top: -10px; margin-bottom: 10px;">
+  <div class="row wrap">
+      <div class="col-sm-12">
+         
+<!-- <div class="col-sm-6 pull-right no-padding">
+  
+  <button  mat-raised-button class="pull-right  btn-primary" (click)="openEntityDialog('Add')">
+      <mat-icon>add</mat-icon> Add Device
+  </button>
+  
+  <button  style="margin-bottom:10px;margin-right: 10px;" mat-raised-button class="pull-right btn-primary" (click)="openModuleDialog('Add')">
+      <mat-icon>add</mat-icon> Add Panel
+  </button>
+  <button  style="margin-bottom:10px;margin-right: 10px;" mat-raised-button class="pull-right  btn-primary" (click)="openTaskDialog('Add')">
+      <mat-icon>add</mat-icon> Add Module
+  </button>
+</div> -->
+</div>
+</div>
+</div>
+
+<div fxLayout="row wrap">
+  <div class="col-sm-12 w-100">
+      <mat-drawer-container class="custom-sidenav" hasBackdrop="false" class="margin-top-10">
+          <mat-drawer #drawer mode="side" opened="true">
+              <div class="col-sm-12" style="padding-left:0px;">
+                  <mat-card class="col-sm-12" style="background: #3b7bb882 !important">
+                      <p-tree [value]="files" class="ptreecustom" selectionMode="single" [(selection)]="selectedFile"></p-tree>
+                  </mat-card>
+              </div>
+          </mat-drawer>
+          <mat-drawer-content>
+              <div class="col-sm-12 no-padding">
+                  <mat-card class="col-sm-12" style="background: #dbe8f3 !important;">
+                      <div class="col-sm-3">
+                          <label>Module :</label>
+                          <span>&nbsp;&nbsp;H.T Transformers</span>
+                      </div>
+                      <div class="col-sm-2">
+                          <label>Panel :</label>
+                          <span>&nbsp;&nbsp;Main MCCB</span>
+                      </div>
+                      <div class="col-sm-2">
+                          <label>Number of Devices :</label>
+                          <span>&nbsp;&nbsp;6 </span>
+                      </div>
+                      <div class="col-sm-3" style="text-align:center !important;">
+                          <label>Exceptions Per Day :</label>
+                          <span>&nbsp;&nbsp;6 </span>
+                      </div>
+                      <div class="col-sm-2" style="text-align: left !important;">
+                          <label>Exceptions till Date :</label>
+                          <span>&nbsp;&nbsp;6 </span>
+                      </div>
+                      <!-- <div class="col-sm-3 no-padding">
+                          <label class="col-sm-6">Due Date:</label>
+                          <span>&nbsp;&nbsp;2020-10-24 </span>
+                      </div> -->
+                  </mat-card>
+                  <mat-card class="col-sm-12 margin-top-10">
+                      <div class="w-100">
+                          <div class="">
+                              
+                              <div class="col-sm-12" style="padding: 0px !important; margin-top: 10px;">
+                                  <p-accordion (onClose)="onTabClose($event)" (onOpen)="onTabClose($event)" class="customAccordian">
+                                      <p-accordionTab *ngFor="let item of localData" [selected]="item.selected" [ngClass]="item.classes == 1 ? 'ui-accordion-header a all' : item.classes == 2 ? 'ball' : item.classes == 3 ? 'call' : 'dall'">
+                                          <p-header class="col-sm-11 pull-right" style="padding-left: 0px;">
+                                              <div class="col-sm-3">
+                                                  <label>Device ID:</label>
+                                                  <span>&nbsp;
+                                                      {{item.id}}
+                                                  </span>
+                                              </div>
+                                              <div class="col-sm-5" style="text-align: center !important;">
+                                                  
+                                                  <label>Parameters:</label>
+                                                  <span>&nbsp;
+                                                      {{item.parameters}}
+                                                  </span>
+                                              </div>
+                                              <div class="col-sm-4">
+                                                  
+                                                  <label>Setup Date:</label>
+                                                  <span>&nbsp;  {{item.date}}</span>
+                                              </div>
+                                              
+                                          </p-header>
+                                          <div class="table-responsive" id="{{item.id}}">
+                                              
+                                              <mat-card class="col-sm-12" style="margin-bottom: 10px;">
+                                                <div class="row">
+                                                  <div class="col-xs-12">
+                                                      <div id="grid-table-container" class="table-responsive">
+                                                          <table matSort id="example2" class="table table-bordered table-hover">
+                                                              <thead class="tbl-head">
+                                                                  <tr>
+                                                                      <th class="text-center">Date</th>
+                                                                      <th class="text-center">Current(A)</th>
+                                                                      <th class="text-center">Voltage(V)</th>
+                                                                      <th class="text-center">Rating(KW)</th>
+                                                                      <th class="text-center">Load(KVA)</th>
+                                                                      <th class="text-center">Power Factor</th>
+                                                                      <th class="text-center">Consumption(KWh)</th>
+                                                                  </tr>
+                                                              </thead>
+                                                              <tbody>
+                                                                  <tr *ngFor="let item of values">
+                                                                      <td class="text-center" style="min-width: 70px !important;">
+                                                                        <a>
+                                                                          {{item.head}}
+                                                                      </a>
+                                                                  </td>
+                                                                  <td class="text-center">
+                                                                      {{item.amperes}}
+                                                                      
+                                                                  </td>
+                                                                  <td class="text-center">
+                                                                      {{item.voltage}}
+                                                                      
+                                                                  </td>
+                                                                  <td class="text-center">
+                                                                      {{item.KW}}
+                                                                      
+                                                                  </td>
+                                                                  <td class="text-center">
+                                                                      {{item.KVA}}
+                                                                      
+                                                                  </td>
+                                                                  <td class="text-center">
+                                                                      {{item.power}}
+                                                                      
+                                                                  </td>
+                                                                  <td class="text-center">
+                                                                      {{item.KWh}}
+                                                                      
+                                                                  </td>
+                                                  </tr>
+                                                </tbody>
+                                                </table>
+                                                </div>
+                                                </div>
+                                                </div>  
+                                                <!-- <div class="col-sm-12" style="text-align: center;font-weight: bold;margin:10px 0">
+                                                      31-10-2020 16:49:50
+
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Current(A) :</label>
+                                                      <span>&nbsp;&nbsp;{{item.current}}</span>
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Voltage(V) :</label>
+                                                      <span>&nbsp;&nbsp;{{item.voltage}}</span>
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Rating(KW) :</label>
+                                                      <span>&nbsp;&nbsp;{{item.rating}}</span>
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Load(KVA):</label>
+                                                      <span>&nbsp;&nbsp;{{item.load}}</span>
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Power Factor:</label>
+                                                      <span>&nbsp;&nbsp;{{item.power}}</span>
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Consumption(KWh):</label>
+                                                      <span>&nbsp;&nbsp;{{item.consumption}} </span>
+                                                  </div>
+                                                  <div class="col-sm-12" style="text-align: center;font-weight: bold;margin:10px 0">
+                                                      31-10-2020 16:49:50
+
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Current(A) :</label>
+                                                      <span>&nbsp;&nbsp;{{item.current}}</span>
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Voltage(V) :</label>
+                                                      <span>&nbsp;&nbsp;{{item.voltage}}</span>
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Rating(KW) :</label>
+                                                      <span>&nbsp;&nbsp;{{item.rating}}</span>
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Load(KVA):</label>
+                                                      <span>&nbsp;&nbsp;{{item.load}}</span>
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Power Factor:</label>
+                                                      <span>&nbsp;&nbsp;{{item.power}}</span>
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Consumption(KWh):</label>
+                                                      <span>&nbsp;&nbsp;{{item.consumption}} </span>
+                                                  </div>
+                                                  <div class="col-sm-12" style="text-align: center;font-weight: bold;margin:10px 0">
+                                                      31-10-2020 16:49:50
+
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Current(A) :</label>
+                                                      <span>&nbsp;&nbsp;{{item.current}}</span>
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Voltage(V) :</label>
+                                                      <span>&nbsp;&nbsp;{{item.voltage}}</span>
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Rating(KW) :</label>
+                                                      <span>&nbsp;&nbsp;{{item.rating}}</span>
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Load(KVA):</label>
+                                                      <span>&nbsp;&nbsp;{{item.load}}</span>
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Power Factor:</label>
+                                                      <span>&nbsp;&nbsp;{{item.power}}</span>
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Consumption(KWh):</label>
+                                                      <span>&nbsp;&nbsp;{{item.consumption}} </span>
+                                                  </div>
+                                                  <div class="col-sm-12" style="text-align: center;font-weight: bold;margin:10px 0">
+                                                      31-10-2020 16:49:50
+
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Current(A) :</label>
+                                                      <span>&nbsp;&nbsp;{{item.current}}</span>
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Voltage(V) :</label>
+                                                      <span>&nbsp;&nbsp;{{item.voltage}}</span>
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Rating(KW) :</label>
+                                                      <span>&nbsp;&nbsp;{{item.rating}}</span>
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Load(KVA):</label>
+                                                      <span>&nbsp;&nbsp;{{item.load}}</span>
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Power Factor:</label>
+                                                      <span>&nbsp;&nbsp;{{item.power}}</span>
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Consumption(KWh):</label>
+                                                      <span>&nbsp;&nbsp;{{item.consumption}} </span>
+                                                  </div>
+                                                  <div class="col-sm-12" style="text-align: center;font-weight: bold;margin:10px 0">
+                                                      31-10-2020 16:49:50
+
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Current(A) :</label>
+                                                      <span>&nbsp;&nbsp;{{item.current}}</span>
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Voltage(V) :</label>
+                                                      <span>&nbsp;&nbsp;{{item.voltage}}</span>
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Rating(KW) :</label>
+                                                      <span>&nbsp;&nbsp;{{item.rating}}</span>
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Load(KVA):</label>
+                                                      <span>&nbsp;&nbsp;{{item.load}}</span>
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Power Factor:</label>
+                                                      <span>&nbsp;&nbsp;{{item.power}}</span>
+                                                  </div>
+                                                  <div class="col-sm-4">
+                                                      <label>Consumption(KWh):</label>
+                                                      <span>&nbsp;&nbsp;{{item.consumption}} </span>
+                                                  </div> -->
+                                                  <div class="col-sm-12" style="text-align: center !important;margin-top: 5px;">
+                                                      <a mat-raised-button class="btn-primary" target="_blank" routerLink="/simc/devices/cardview">
+                                                          View More
+                                                      </a>
+                                                  </div>
+                                              </mat-card>
+                                              
+                                          </div>
+                                      </p-accordionTab>
+                                      <!-- <p-accordionTab>
+                                          <p-header>
+                                              <label class="margin-left-7">Expenses</label>
+                                          </p-header>
+                                          <table id="example2" class="table table-bordered table-striped table-hover">
+                                              <thead>
+                                                  <tr style="background: #586958 !important; color:#fff !important;">
+                                                      <th>
+                                                          Item
+                                                      </th>
+                                                      <th class="text-center">
+                                                          Rate
+                                                      </th>
+                                                      <th style="width: 150px !important">
+                                                          Quantity
+                                                      </th>
+                                                      <th class="text-center">
+                                                          Totals
+                                                      </th>
+                                                      <th class="text-center">
+                                                          Budget Fee
+                                                      </th>
+                                                      
+                                                  </tr>
+                                              </thead>
+                                              <tbody>
+                                                  
+                                                  <tr *ngFor="let item of expenses; let i = index">
+                                                      <td *ngIf="item.name != ''">{{item.name}}</td>
+                                                      <td *ngIf="item.name == ''"> <input type="text" [(ngModel)]="item.name" class="form-control" placeholder="Enter Name">
+                                                      </td>
+                                                      <td class="text-center" *ngIf="item.rate != null">{{item.rate | currency}}</td>
+                                                      <td *ngIf="item.rate == null"> <input type="number" [(ngModel)]="item.rate" class="form-control" placeholder="Enter Rate"> </td>
+                                                      <td> <input type="number" [(ngModel)]="item.quantity" class="form-control" placeholder="Enter Quantity"> </td>
+                                                      <td class="text-center">{{item.totals | currency}}</td>
+                                                      <td *ngIf="i == 0" [attr.rowspan]="expenses.length" style="vertical-align: middle; text-align: center">{{totalBudget | currency}}</td>
+                                                      
+                                                  </tr>
+                                              </tbody>
+                                          </table>
+                                      </p-accordionTab> -->
+                                      
+                                  </p-accordion>
+                              </div>
+                          </div>
+                          <div class="flex-p">
+                          </div>
+                      </div>
+                  </mat-card>
+              </div>
+          </mat-drawer-content>
+      </mat-drawer-container>
+      
+  </div>
+</div>
+

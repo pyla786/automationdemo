@@ -1,0 +1,46 @@
+<div class="NewHeader">
+  <h1 mat-dialog-title>
+    <span *ngIf="!team" class="title-left"></span>
+    <span *ngIf="team" class="title-left"></span> Add Docs
+  </h1>
+</div>
+<div mat-dialog-content>
+  <form class="form-horizontal" novalidate [formGroup]="teamForm">
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Visit Date:&nbsp;</label>
+      <div class="col-sm-8">
+        <div class="input-icon right">
+          <input class="form-control" formControlName="City" placeholder="MM/DD/YYYY" class="form-control" id="db2"
+            [owlDateTimeTrigger]="dt3" [owlDateTime]="dt3" name="dt3">
+          <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>
+        </div>
+        <div *ngIf="!City.valid && (City.dirty || City.touched)" class="error-text">
+          <div *ngIf="City.errors.required">
+            Schedule Date is required
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Add Document:&nbsp;</label>
+      <div class="col-sm-8">
+          <input type="file" (change)="handleFileSelect($event)" formControlName="filesSelect">
+      </div>
+    </div>
+
+
+  </form>
+</div>
+<mat-dialog-actions class="col-sm-12" align="end">
+  <button *ngIf="!team" mat-raised-button [disabled]="!teamForm.valid" [ngClass]="!teamForm.valid ? '' : 'btn-primary'">
+    <mat-icon>send</mat-icon>&nbsp;Save
+  </button>
+  <button *ngIf="team" mat-raised-button [disabled]="!teamForm.valid" [ngClass]="!teamForm.valid ? '' : 'btn-primary'">
+    <mat-icon>update</mat-icon>&nbsp;Update
+  </button>
+  <button mat-raised-button class="CancelClass" (click)="close()">
+    &nbsp;Close
+  </button>
+</mat-dialog-actions>
+
+

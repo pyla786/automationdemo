@@ -1,0 +1,13 @@
+.mine {
+  position: fixed;
+  bottom: 80px;
+  right: 40px;
+  background-color: #e6e6e6 !important;
+}
+
+.app.black-light .ngx-charts text {
+  fill: #8c8c8c;
+  font-weight: bold;
+  font-size: 18px;
+}
+/*# sourceMappingURL=client-project-gridview.component.css.map */

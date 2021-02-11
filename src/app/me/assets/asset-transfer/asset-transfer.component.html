@@ -1,0 +1,114 @@
+<div fxLayout="row wrap">
+  <div class="w-100">
+    <div class="flex-p">
+      <div class="row wrap">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+          <div class="pills w-100 flex-p">
+          </div>
+        </div>
+        <div class="col-xs-6" style="margin-right:0px !important">
+          <div class="w-100 flex-p">
+            <!-- <button mat-raised-button class="pull-right  btn-primary  margin-right-10"
+              (click)="openCampaignDialog(null)">
+              <mat-icon>add</mat-icon> Add
+              Asset
+            </button> -->
+            <button mat-raised-button class="pull-right  btn-primary margin-right-10"
+            (click)="openGridColumnsDialog(null)">
+              <mat-icon>grid_on</mat-icon>
+              Grid Columns
+            </button>
+            <button *ngIf="!showEmpty" mat-raised-button class="pull-right  btn-primary  margin-right-10"
+              (click)="dowloadBulkUploadCampaignTemplate('data')">
+              <mat-icon>import_export</mat-icon>
+              Export
+            </button>
+
+            <button mat-raised-button color="primary" class="pull-right  margin-right-10"
+              (click)="filterToggle = !filterToggle">
+              <mat-icon>filter_list</mat-icon> Filter
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div fxLayout="row wrap" style="margin-top:10px;">
+      <div class="table-responsive w-100 flex-p" id="grid-table-container">
+        <table id="example2" class="table table-bordered table-hover">
+          <thead class="tbl-head">
+            <tr class="tr-grid-header">
+              <th>Asset Category</th>
+              <th>Sequence Number</th>
+              <th>Asset Number</th>
+              <th>Asset Name</th>
+              <th>Project</th>
+              <th>Active Date</th>
+              <th>Make</th>
+              <th>Model</th>
+              <th>Dealer</th>
+              <th>Purchase Price</th>
+              <th>Purchase Date</th>
+              <th>Description</th>
+              <th style="width: 110px;text-align: center !important;">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="showEmpty">
+              <td colspan="21" class="text-center">No records found</td>
+            </tr>
+
+            <tr *ngFor="let campaign of assets">
+              <td>
+                {{campaign.cat}}
+              </td>
+              <td>
+                {{campaign.seqnumber}}
+              </td>
+              <td>{{campaign.assnumber}}</td>
+              <td>
+                {{campaign.assname}}</td>
+                <td>
+                    {{campaign.project}}</td>
+                    <td>
+                        {{campaign.date}}</td>
+              <td> 
+                {{campaign.make}}
+              </td>
+              <td>
+                {{campaign.model}}
+              </td>
+              <td>
+                {{campaign.dealer}}
+              </td>
+              <td>
+                {{campaign.price}}
+              </td>
+              <td>
+                {{campaign.date}}
+              </td>
+              <td class="inner-screen text-center">
+                View</td>
+              <td class="text-center">
+                <a title="Edit Asset" style="cursor: pointer;" (click)="openCampaignDialog(campaign)">
+                  <i class="fa fa-edit" style="color: cornflowerblue"></i>
+                </a>
+                <a title="Delete Asset" (click)="openDeleteDialog(campaign)">
+                  <i style="cursor: pointer;" title="Delete Campaign" class="fa fa-trash red"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="mine" mat-fab (click)="scrollGrid('right');">
+          <mat-icon style="color:#37474f">fast_forward</mat-icon>
+        </button>
+        <button class="mine" mat-fab style="margin-right: 78px !important;" (click)="scrollGrid('left');">
+          <mat-icon style="color:#37474f">fast_rewind</mat-icon>
+        </button>
+        <!-- <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+              [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="handlePage($event)" showFirstLastButtons></mat-paginator> -->
+      </div>
+    </div>
+  </div>
+</div>

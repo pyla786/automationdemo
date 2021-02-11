@@ -1,0 +1,37 @@
+<div class="NewHeader">
+  <h1 mat-dialog-title>Grid View Configuration </h1>
+</div> 
+<p>Please select the required columns in the grid, to view grid with specific columns</p>
+<div mat-dialog-content style="overflow:hidden!important;">
+  <form class="form-horizontal" novalidate  style="margin-top:10px">
+    <mat-checkbox  class="col-sm-4" formControlName="campaignName">Member Name</mat-checkbox>
+    <mat-checkbox  class="col-sm-4" formControlName="Industry">Contact name</mat-checkbox>
+    <mat-checkbox  class="col-sm-4" formControlName="Segment">Email</mat-checkbox>
+    <mat-checkbox  class="col-sm-4" formControlName="Country">Phone Number</mat-checkbox>
+    <!-- <mat-checkbox class="col-sm-4" formControlName="BD">BD</mat-checkbox> -->
+    <mat-checkbox  class="col-sm-4" formControlName="CampaignType">Added By</mat-checkbox>
+    <mat-checkbox  class="col-sm-4" formControlName="Solution">Created Date</mat-checkbox>
+    <mat-checkbox class="col-sm-4" formControlName="Checklist">Package</mat-checkbox>
+    <mat-checkbox  class="col-sm-4" formControlName="LeadSample">EULA</mat-checkbox>
+   
+    <!-- 
+       <mat-checkbox class="col-sm-4" formControlName="EstimatedLeads">Electrical</mat-checkbox>
+    <mat-checkbox class="col-sm-4" formControlName="ActualLeads">Fire Fighting</mat-checkbox>
+    <mat-checkbox class="col-sm-4" formControlName="ResearchLeads">Start Date</mat-checkbox>
+    <mat-checkbox class="col-sm-4" formControlName="WarmLeads">Setup Due Date</mat-checkbox>
+    <mat-checkbox class="col-sm-4" formControlName="HotLeads">Activity Date</mat-checkbox>
+    <mat-checkbox class="col-sm-4" formControlName="Meetings">Awarded</mat-checkbox>
+    <mat-checkbox class="col-sm-4" formControlName="Prospects">Invoiced</mat-checkbox>
+      
+      <mat-checkbox class="col-sm-4" formControlName="LastUpdated">Last Updated</mat-checkbox>
+    <mat-checkbox class="col-sm-4" formControlName="StartDate">Start Date</mat-checkbox>
+    <mat-checkbox class="col-sm-4" formControlName="FinishDate">End Date</mat-checkbox> -->
+  </form>
+</div>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button class="btn-primary" (click)="close()">Configure</button>
+  <button mat-raised-button class="CancelClass" (click)="close()">Cancel</button>
+</mat-dialog-actions>
+
+

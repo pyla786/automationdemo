@@ -1,0 +1,183 @@
+.kanban-table-container {
+    width: 100%!important;
+    overflow: hidden !important;
+    display: flex;
+    //height: 550px;
+  }
+  .kanban-header{
+    background-color: #222 !important;
+    color: #fff !important;
+    text-align: center !important;
+    font-weight: 500 !important;
+    font-family: Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif !important;
+    font-size: 14px !important;
+    line-height: 30px;
+    min-width: 186px;
+    max-width: 220px;
+    //overflow: auto;
+    border-right: 5px solid #ddd;
+  }
+  .outer{
+  background-color: #f5f5f5;
+  height: 80vh;
+    vertical-align: top;
+    overflow: hidden;
+    text-align: center;
+    width: 50px;
+    box-sizing: border-box;
+    border-right: 5px solid #ddd;
+    border-left: 5px solid #ddd;
+  }
+  .inner{
+  color: rgba(0, 0, 0, 0.87);
+    font-size: 14px;
+    font-weight: 400;
+    transform: rotate(90deg) translate(30px);
+    white-space: nowrap;
+  }
+  .kanban-item-container {
+    /* background-color: rgb(189, 215, 238); */
+    height: 500px !important;
+    overflow: auto;
+    min-width: 186px;
+    max-width: 220px;
+    //border-right: 5px solid #ddd;
+  }
+  .kanban-table {
+    min-width: 190px !important;
+    max-width: 220px !important;
+    height: 100%;
+  }
+  .collapse {
+  min-width: 40px !important;
+  max-width: 400px !important;
+  height: 100%;
+  }
+  .vericaltext{
+  width:1px;
+  word-wrap: break-word;
+  font-family: monospace; /* this is just for good looks */
+  }
+  
+  .kanban-item {
+    cursor: pointer;
+    touch-action: none;
+    position: relative;
+    top: 0;
+    padding: 8px;
+    background-color: rgb(255, 255, 255);
+    /* width: 95%; */
+    height: auto;
+    min-width: 165px !important;
+    max-width: 165px !important;
+    margin: 10px 10px 0px 10px;
+    box-shadow: #888 2px 2px 5px;
+    border-radius: 6px!important;
+  }
+  .mat-menu-item {
+    line-height:28px !important;
+    height: 28px !important;
+  }
+  .mat-menu-item:hover {
+    background-color: #ddd !important;
+  }
+  
+  :host {
+  
+    display: block;
+    box-sizing: border-box;
+  }
+  
+  pre {
+  
+    text-align: center;
+    padding: 8px;
+  }
+  
+  .mat-list-item {
+  
+    margin: 2px;
+    border: 1px solid gray;
+  }
+  
+  .dndList {
+  
+    transition: all 300ms ease;
+  
+    //border: 1px red solid;
+    //min-width: 200px;
+    height: 500px;
+    min-height: 200px;
+  
+    overflow-y: auto;
+  
+    &.dndDragover {
+  
+      padding-top: 12px;
+      padding-bottom: 12px;
+  
+      //border-color: green;
+    }
+  }
+  
+  
+  
+  .dndDraggingSource {
+  
+    display: none;
+  }
+  
+  .dndPlaceholder {
+  
+    min-height: 150px;
+    border: 2px dotted #fff;
+    background-color: rgb(189, 215, 238);
+  }
+  
+  .pills>.nav>li>a {
+    border-radius: 4px;
+    //padding: 8px 25px;
+    background: #dddddd !important;
+    //border-color: #444d58;
+    //box-shadow: 7px 6px 25px #7b7b7bee;
+    margin-right: 7px;
+    //border-bottom: 5px solid transparent;
+    //color: #ffffff;
+    font-size: 15px;
+    min-width: 64px;
+    line-height: 40px;
+    padding: 0 16px;
+    font-weight: 500;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+  }
+  
+  .pills>.nav>li.active>a {
+    background: #50636d !important;
+    color: #ffffff;
+    //border-bottom: #222222 5px solid;
+  }
+  
+  .pills>.nav>li>a:hover {
+    color: #ffffff;
+    background: #70818a !important;
+    //border-bottom: #2e3a40 5px solid;
+    //box-shadow: 5px 6px 6px #909090ee;
+  }
+  
+  .pills>.nav>li.active>a:hover {
+    color: #222222;
+    background: #50636d !important;
+    //border-bottom: #222222 5px solid;
+    //box-shadow: 7px 6px 25px #7b7b7bee;
+  }
+  
+  .filterMargin {
+    margin-top: 10px;
+  }
+  
+  .cap-names {
+    //margin-left: 5px;
+    margin-top: 5px;
+    font-size: 12px;
+    padding: 2px;
+}

@@ -1,0 +1,161 @@
+<div class="row-wrap">
+  <div class="flex-p w-100">
+    
+    
+    
+    <!-- <div class="col-lg-4">  -->
+      <div class="col-lg-6">
+        <mat-card-header fxLayoutAlign="center center">                
+          <mat-card-subtitle><h2>Status</h2></mat-card-subtitle>
+        </mat-card-header>
+        <div class="w-100 h-300p">
+          <ngx-charts-pie-chart
+          [scheme]="colorScheme"
+          [results]="single"
+          [legend]="showLegend"
+          [explodeSlices]="explodeSlices"
+          [labels]="showLabels"
+          [doughnut]="doughnut"
+          [gradient]="gradient"
+          (select)="onSelect($event)">
+        </ngx-charts-pie-chart>                  
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+        <mat-card-header fxLayoutAlign="center center">                
+          <mat-card-subtitle><h2>Importance</h2></mat-card-subtitle>
+        </mat-card-header>
+        <div class="w-100 h-300p">
+          <ngx-charts-pie-chart
+          [scheme]="colorScheme"
+          [results]="single1"
+          [legend]="showLegend"
+          [explodeSlices]="explodeSlices"
+          [labels]="showLabels"
+          [doughnut]="doughnut"
+          [gradient]="gradient"
+          (select)="onSelect($event)">
+        </ngx-charts-pie-chart>                  
+      </div>
+    </div>
+    
+    <!-- <div class="col-lg-4"> 
+      
+      <mat-card-header fxLayoutAlign="center center">                
+        <mat-card-subtitle><h2>Industry</h2></mat-card-subtitle>
+      </mat-card-header>
+      <div class="w-100 h-300p">
+        <ngx-charts-pie-chart
+        [scheme]="colorScheme"
+        [results]="multi"
+        [legend]="showLegend"
+        [explodeSlices]="explodeSlices"
+        [labels]="showLabels"
+        [doughnut]="doughnut"
+        [gradient]="gradient"
+        (select)="onSelect($event)">
+      </ngx-charts-pie-chart>                  
+    </div>
+    
+  </div>
+  <div class="col-lg-4"> 
+    
+    <mat-card-header fxLayoutAlign="center center">                
+      <mat-card-subtitle><h2>New vs Repeat</h2></mat-card-subtitle>
+    </mat-card-header>
+    <div class="w-100 h-300p">
+      <ngx-charts-pie-chart
+      [scheme]="colorScheme"
+      [results]="triple"
+      [legend]="showLegend"
+      [explodeSlices]="explodeSlices"
+      [labels]="showLabels"
+      [doughnut]="doughnut"
+      [gradient]="gradient"
+      (select)="onSelect($event)">
+    </ngx-charts-pie-chart>                  
+  </div>
+  
+</div> -->
+<!-- </div> -->
+
+
+<div class="row" style="margin-bottom:7px;">
+  <div class="col-xs-6 ">
+  </div>
+  <div class="col-xs-6 ">
+    <div class="flex-p">
+      <button mat-raised-button class="pull-right btn-primary" (click)="openNewDialog('add')">
+        <mat-icon>add</mat-icon> Append Line Item
+      </button>
+    </div>
+    
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div id="divQuotesGrid" class="table-responsive">
+      <table matSort id="example2" class="table table-bordered table-hover">
+        <thead class="tbl-head">
+          <tr>
+            <th style="width:25%">Criteria</th>
+            <th style="width:50%">Description</th>
+            <!-- <th class="text-center">Description</th> -->
+            <th class="text-center" style="width: 14%">Importance</th>
+            <th class="text-center" style="width:15%">Approved</th>
+            <th class="text-center" style="width:15%">Declined</th>
+            <th class="text-center" style="min-width: 100px!important;">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of totalProjects;let i = index">
+            <td>{{item.fat}}</td>
+            <td>{{item.clientname}}</td>
+            <!-- <td style="text-align:center!important">{{item.description}}</td> -->
+            <td style="text-align: center!important;width: 14%">
+              {{item.importance}}
+            </td>
+            <td style="text-align: center!important;"><mat-checkbox [checked]="item.is_selected" (change)="changeEvent(i,item.is_selected)"></mat-checkbox></td>
+            <td style="text-align: center!important;"><mat-checkbox [checked]="!item.is_selected" (change)="changeEvent(i,item.is_selected)"></mat-checkbox></td>
+            <!-- <td style="text-align: center!important;">{{item.phone}}</td>
+              <td style="text-align: center!important;">{{item.address}}</td>
+              <td style="text-align: center!important;">{{item.city}}</td>
+              <td style="text-align: center!important;">{{item.postal}}</td>
+              <td style="text-align: center!important;">{{item.contact}}</td>
+              <td style="text-align: center!important;">{{item.quotes}}</td>
+              <td style="text-align: center!important;">{{item.projects}}</td>
+              <td style="text-align: center!important;">{{item.created}}</td> -->
+              <!-- <td >
+                <a 
+                [ngClass]="item.status ? 'status' : 'status Red'"
+                mwlConfirmationPopover
+                [popoverTitle]="popoverStatusTitle"
+                [popoverMessage]="popoverStatusMessage"
+                placement="left"
+                (confirm)="cancelClicked = true"
+                (cancel)="cancelClicked = true">
+                {{item.status?'Active':'Inactive'}}
+              </a>
+            </td> -->
+            <td  class="text-center">
+              <a style="cursor: pointer;margin-right:10px; " matTooltip="Update Project" (click)="openNewDialog('edit')">
+                <i class="fa fa-edit" style="color: cornflowerblue"></i>
+              </a>
+              <a ><i class="fa fa-trash red" matTooltip="Delete Project"  style="cursor: pointer;"(click)="openDeleteDialog(item)"></i></a>
+            </td> 
+          </tr>
+          <tr *ngIf="totalProjects ==null || totalProjects.length ==0">
+            <td colspan="13">No data available</td>
+          </tr>
+        </tbody>
+      </table>
+      <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+      [pageSizeOptions]="[5, 10, 25, 50, 100]" 
+      showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
+</div>
+</div>
+</div>

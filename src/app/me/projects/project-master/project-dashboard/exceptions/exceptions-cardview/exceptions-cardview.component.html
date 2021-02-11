@@ -1,0 +1,160 @@
+<div fxLayout="row wrap" #resizedDiv>
+  <div class="flex-p w-100">
+      
+      <div class="row" style="margin-bottom:14px;">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <div class="w-100 flex-p">
+                <ul class="nav nav-pills">
+                  <li routerLinkActive="active" >
+                      <a mat-raised-button class="navtabWidth" style="padding: 0 16px !important;background:rgba(140,140,140,1);color:white" [routerLink]="['/me/projects/project-dashboard/exceptions/cardview']">
+                      
+                      <mat-icon>view_day</mat-icon> Card view
+                      </a>
+                  </li>
+                  <li routerLinkActive="active">
+                    <a mat-raised-button class="navtabWidth" style="margin-left:10px;padding: 0 16px !important" [routerLink]="['/me/projects/project-dashboard/exceptions/gridview']">
+                    
+                    <mat-icon>grid_on</mat-icon> Grid view
+                    </a>
+                  </li>
+                </ul>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <div class="w-100 flex-p">
+                  <button mat-raised-button class="pull-right btn-primary" >
+                       Download CSV
+                  </button>
+                  <button mat-raised-button color="primary" class="pull-right filter-hover margin-right-10" (click)="filterToggle = !filterToggle">
+                      <mat-icon>filter_list</mat-icon> Filter
+                  </button>
+              </div>
+          </div>
+      </div>
+      
+      <div fxLayout="row wrap" *ngIf="filterToggle">
+          <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p">
+              <mat-card class="filter">
+                  <!-- <mat-card-header>
+                      <mat-card-subtitle></mat-card-subtitle>
+                  </mat-card-header> -->
+                  <mat-card-content>
+                      <div class="row col-sm-12">
+                          <div class="col-sm-3">
+                              <div class="col-sm-4 newMarginClass">
+                                  Start Date:
+                              </div>
+                              <div class="col-sm-8">
+                                <div class="input-icon right">
+                                  <input class="form-control"  placeholder="MM/DD/YYYY"
+                                    class="form-control" id="db" [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" name="dt1">
+                                  <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-3">
+                              <div class="col-sm-4 newMarginClass">
+                                  End Date:
+                              </div>
+                              <div class="col-sm-8">
+                                <div class="input-icon right">
+                                  <input class="form-control"  placeholder="MM/DD/YYYY"
+                                    class="form-control" id="db" [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2" name="dt1">
+                                  <owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-3">
+                              <div class="col-sm-4 newMarginClass">
+                                  Start Time:
+                              </div>
+                              <div class="col-sm-8">
+                                <div class="input-icon right" style="margin-top:-15px !important">
+                                  <mat-form-field>
+                                    <input matInput type="time">
+                                  </mat-form-field>
+                                </div>
+                              </div>
+
+                          </div>
+                          <div class="col-sm-3">
+                              <div class="col-sm-4 newMarginClass">
+                                  End Time:
+                              </div>
+                              <div class="col-sm-8">
+                                <div class="input-icon right" style="margin-top:-15px !important">
+                                  <mat-form-field>
+                                    <input matInput type="time">
+                                  </mat-form-field>
+                                  <!-- <input class="form-control"  placeholder="MM/DD/YYYY"
+                                    class="form-control" id="db" [owlDateTimeTrigger]="dt4" [owlDateTime]="dt4" name="dt1">
+                                  <owl-date-time [pickerType]="'calendar'" #dt4></owl-date-time> -->
+                                </div>
+                              </div>
+                          </div>
+                          <!-- <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                              <button class="add-hover btn btn-success">Search</button>
+                          </div>
+                          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="margin-left: -18px;">
+                              <button class="btn filter-hover" style="background-color:#37474f; color:#fff !important">Clear</button>
+                          </div> -->
+                          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+                      </div>
+                      <div class="row col-sm-12" style="margin-top:10px">
+                        
+                          
+                      </div>
+                      <div class="row col-sm-12" style="margin-top:20px">
+                        <div class="col-sm-6">
+                          <div class="col-sm-4 newMarginClass" >
+                              Search by Keyword:
+                          </div>
+                          <div class="col-sm-8" style="margin-left: -45px;">
+                            <input type="text" class="form-control"/>
+                          </div>
+                      </div>
+                          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                              <button class="add-hover btn btn-success">Search</button>
+                          </div>
+                          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                            <button (click)="filterToggle = !filterToggle" class="btn CancelClass">Close</button>
+                        </div>
+                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"></div>
+                          
+                      </div>
+                  </mat-card-content>
+              </mat-card>
+          </div>
+      </div>
+    </div>
+  </div>
+
+<div class="tables">
+  <div  *ngFor="let data of values">
+    <table id="datafield">
+      <tr>
+        <th>{{data.head}}</th>
+      </tr>
+      <tr>
+        <td><p>Current(A)</p> <p [ngStyle]="{'color': data.amperes>32?'red':'black'}">{{data.amperes}}</p></td>
+      </tr>
+      <tr>
+        <td><p>Voltage(V)</p> <p [ngStyle]="{'color': data.voltage>20?'rgb(255,165,0)':'red'}">{{data.voltage}}</p></td>
+      </tr>
+      <tr>
+        <td><p>Rating(KW)</p> <p [ngStyle]="{'color': data.KW>20?'rgb(255,165,0)':'red'}">{{data.KW}}</p></td>
+      </tr>
+      <tr>
+        <td><p>Load(KVA)</p> <p [ngStyle]="{'color': data.KVA>20?'rgb(255,165,0)':'red'}">{{data.KVA}}</p></td>
+      </tr>
+      <tr>
+        <td><p>Power Factor</p> <p [ngStyle]="{'color': data.power>20?'rgb(255,165,0)':'red'}">{{data.power}}</p></td>
+      </tr>
+      <tr>
+        <td><p>Consumption(KWh)</p> <p [ngStyle]="{'color': data.KWh>20?'rgb(255,165,0)':'red'}">{{data.KWh}}</p></td>
+      </tr>
+      
+    </table>
+  
+  </div>
+</div>

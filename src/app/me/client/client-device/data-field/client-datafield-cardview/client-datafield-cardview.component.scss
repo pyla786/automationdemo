@@ -1,0 +1,50 @@
+.newMarginClass {
+    margin-top: 7px !important;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+  
+  .tables {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .tables div {
+    margin: 15px;
+  }
+  #datafield {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 210px;
+    border: 2px solid black;
+    border-spacing: 0px;
+  }
+  
+  #datafield th {
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid black;
+  }
+  
+  #datafield td {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+    padding: 5px;
+  }
+  
+  #datafield tr:hover {
+    background-color: #ddd;
+  }
+  
+  #datafield th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(203, 218, 249);
+    color: black;
+  }
+  

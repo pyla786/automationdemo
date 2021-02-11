@@ -1,0 +1,261 @@
+<div class="flex-p" style="margin-top: -10px; margin-bottom: 10px;">
+  <div class="row wrap">
+      <div class="col-xs-12">
+          <div class="">
+              <button mat-raised-button class="margin-right-10" style="color:white; background:#3b7bb8;" (click)="drawer.toggle()">
+                          <mat-icon>menu</mat-icon>
+                      </button>
+              <button mat-raised-button class="add-hover btn-success margin-right-10" style="margin-left: 5px !important;" (click)="openSiteDialog(false)">
+                <mat-icon>add</mat-icon> Add Site
+            </button>
+              <button mat-raised-button class="add-hover btn-success margin-right-10" (click)="openSiteDialog(true)">
+                <mat-icon>add</mat-icon> Add Level
+            </button>
+            <button mat-raised-button class="add-hover btn-success margin-right-10" (click)="openSiteDialog(null)">
+                <mat-icon>add</mat-icon> Add Task
+            </button>
+              <button class="margin-right-10 pull-right" mat-raised-button style="color:white; background:#3b7bb8;" (click)="openAllAccordians()"><mat-icon>expand_more</mat-icon></button>
+              <button class="margin-right-10 pull-right" mat-raised-button style="color:white; background:#f35353;" (click)="closeAllAccordians()"><mat-icon>expand_less</mat-icon></button>
+              <button class="margin-right-10 pull-right btn-success" mat-raised-button><mat-icon>cloud_download</mat-icon> Download Estimation Sheet </button>
+          </div>
+      </div>
+  </div>
+</div>
+<div fxLayout="row wrap">
+  <!-- <div *ngIf="filterToggle" class="col-sm-12" style="margin-bottom:15px;">
+      <mat-card class="filter">
+          <mat-card-content>
+              <div class="row col-sm-12">
+
+                  <div class="col-sm-4">
+                      <div class="col-sm-4">Status</div>
+                      <div class="col-sm-8">
+                          <mat-select class='select-option form-control' placeholder="--Search by Status--">
+                              <mat-option [value]="1">Any</mat-option>
+                              <mat-option [value]="2">Pending</mat-option>
+                              <mat-option [value]="3">Approved</mat-option>
+                          </mat-select>
+                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                      <div class="col-sm-4">From Date</div>
+                      <div class="col-sm-8">
+                        <input class="form-control"  placeholder="MM/DD/YYYY" class="form-control" id="db2"
+                        [owlDateTimeTrigger]="dt3" [owlDateTime]="dt3" name="dt3">
+                      <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>
+                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                      <div class="col-sm-4">To Date</div>
+                      <div class="col-sm-8">
+                        <input class="form-control"  placeholder="MM/DD/YYYY" class="form-control" id="db2"
+                        [owlDateTimeTrigger]="dt3" [owlDateTime]="dt3" name="dt3">
+                      <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="row col-sm-12" style="margin-top:20px">
+                  <div class="col-sm-4">
+                      <div class="col-sm-4">Keyword</div>
+                      <div class="col-sm-8">
+                          <input class="form-control" placeholder="Enter keyword" type="text">
+                      </div>
+
+                  </div>
+
+                  <div class="col-sm-4">
+                      <div class="col-sm-4">Action</div>
+                      <div class="col-sm-8">
+                          <mat-select class='select-option form-control' placeholder="--Select Action--">
+                              <mat-option [value]="1">CAD Drafting</mat-option>
+                              <mat-option [value]="2"> Field Work</mat-option>
+                          </mat-select>
+                      </div>
+
+                  </div>
+
+                  <div class="col-sm-4">
+                      <a (click)="filterToggle = !filterToggle" class="pull-right" style="font-size: 25px;">
+                          <i class="fas fa-angle-double-up" aria-hidden="true"></i>
+                      </a>
+
+                      <button mat-raised-button class="pull-right btn-success-gray" style="margin-left: 10px;margin-right: 8px;">
+                                          <mat-icon>settings_backup_restore</mat-icon> Reset
+                                      </button>
+                    
+                      <button mat-raised-button color="primary" class="pull-right filters-hover">
+                                          <mat-icon>youtube_searched_for</mat-icon> Search
+                                      </button>
+                  </div>
+
+              </div>
+
+          </mat-card-content>
+      </mat-card>
+  </div> -->
+
+  <div class="col-sm-12 w-100">
+      <mat-drawer-container class="custom-sidenav" hasBackdrop="false" class="margin-top-10">
+          <mat-drawer #drawer mode="side" opened="true">
+              <div class="col-sm-12" style="padding-left:0px;">
+                  <mat-card class="col-sm-12" style="background: #3b7bb882 !important">
+                      <p-tree [value]="files" class="ptreecustom" selectionMode="single" [(selection)]="selectedFile"></p-tree>
+                  </mat-card>
+              </div>
+          </mat-drawer>
+          <mat-drawer-content>
+              <div class="col-sm-12 no-padding">
+                  <mat-card class="col-sm-12" style="background: #dbe8f3 !important;">
+                      <div class="col-sm-3">
+                          <label>Site :</label>
+                          <span>&nbsp;&nbsp;Sujana Mall</span>
+                      </div>
+                      <div class="col-sm-3">
+                          <label>Level Name :</label>
+                          <span>&nbsp;&nbsp;Refrence Plan 1</span>
+                      </div>
+                      <div class="col-sm-3">
+                          <label>Budget Hours :</label>
+                          <span>&nbsp;&nbsp;10 hrs</span>
+                      </div>
+                      <div class="col-sm-3 no-padding">
+                          <label class="col-sm-6">Quoted:</label>
+                          <input type="text" style="margin-top: -5px;" class="form-control col-sm-6" placeholder="Quoted Total">
+                      </div>
+                  </mat-card>
+                  <mat-card class="col-sm-12 margin-top-10">
+                      <div class="w-100">
+                          <div class="">
+
+                              <div class="col-sm-12" style="padding: 0px !important; margin-top: 10px;">
+                                  <p-accordion (onOpen)="onTabOpen($event)" (onClose)="onTabClose($event)"  class="customAccordian">
+                                      <p-accordionTab *ngFor="let item of taskData" [selected]="item.selected">
+                                          <p-header class="col-sm-11 pull-right" style="padding-left: 0px;">
+                                              <div class="col-sm-3">
+                                                  <label>Task:</label>
+                                                  <span>&nbsp;
+                                             {{item.name}}
+                                            </span>
+                                              </div>
+                                              <div class="col-sm-3">
+                                                  <label>Budget Hours:</label>
+                                                  <span>&nbsp;
+                                                    12Hrs($0.00)
+                                            </span>
+                                              </div>
+                                              <div class="col-sm-3">
+                                                  <label>Budget Amount: </label>
+                                                  <span>&nbsp; {{'800' | currency }}</span>
+                                              </div>
+                                              <div *ngIf="item.selected" class="col-sm-3" style="padding: 0px;bottom: 4px;">
+                                                <a class="pull-right"  style="color:white;padding: 0px;bottom: 10px;" matTooltip="Add action" (click)="openSiteDialog('action')"><mat-icon>add</mat-icon></a>
+                                            </div>
+                                          </p-header>
+                                          <div class="table-responsive" id="{{item.id}}">
+                                              <table id="example2" class="table table-bordered table-striped table-hover no-padding" style="margin-bottom: 10px !important">
+                                                  <thead>
+                                                      <tr class="thead-color">
+                                                          <th style="min-width: 120px;">Job Code (Title)</th>
+                                                          <th style="min-width: 100px;" class="text-center">Rate</th>
+                                                          <th style="min-width: 80px;" class="text-center">Planned</th>
+                                                          <th style="min-width: 100px;" class="text-center">Budget</th>
+                                                          <th style="min-width: 100px;" class="text-center">Hours</th>
+                                                          <th style="min-width: 100px;" class="text-center">Cost</th>
+                                                          <th style="min-width: 120px;" class="text-center">Notes</th>
+                                                          <th style="min-width: 100px;" class="text-center">Manage</th>
+                                                      </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                      <tr *ngIf="item.Data?.length == 0">
+
+                                                          <td style="text-align: center;" colspan="7">
+                                                              No records Found
+                                                          </td>
+                                                      </tr>
+                                                      <tr *ngFor="let tData of item.Data; let i = index">
+                                                          <td>
+                                                              <mat-select class="form-control" placeholder="Job Code" (selectionChange)="jobCodeChange($event.value, item.id, tData.id)">
+                                                                  <mat-option *ngFor="let item of jobcode" [value]="item.rate">{{item.jobcode}}</mat-option>
+                                                              </mat-select>
+                                                          </td>
+                                                          <td class="text-center" style="vertical-align: middle"> {{tData.rate | currency}} </td>
+                                                          <td> <input type="number" [(ngModel)]="tData.quantity" (ngModelChange)="getQuantityValue(tData.quantity, item.id, tData.id)" class="form-control" placeholder="Enter Planned Hours"> </td>
+                                                          <td style="vertical-align: middle" class="text-center">{{tData.totals | currency}} </td>
+                                                          <td class="text-center" style="vertical-align: middle" [attr.rowspan]="item.Data.length" *ngIf="i == 0">{{item.budgetHours}}</td>
+                                                          <td class="text-center" style="vertical-align: middle" [attr.rowspan]="item.Data.length" *ngIf="i == 0">{{item.budgetFee | currency}}</td>
+                                                          <td> <input type="number" [(ngModel)]="tData.quantity" (ngModelChange)="getQuantityValue(tData.quantity, item.id, tData.id)" class="form-control" placeholder="Enter Notes"> </td>
+                                                          <td class="text-center" style="vertical-align: middle">
+                                                              <a class="add-job-code" matTooltip="Edit action" (click)="openSiteDialog('action')">
+                                                                  <i class="fa fa-edit" style="color: cornflowerblue"></i>
+                                                              </a>
+                                                              <a class="add-job-code" matTooltip="Delete action" (click)="openDeleteDialog(item)">
+                                                                <i class="fa fa-trash red"></i>
+                                                            </a>
+                                                          </td>
+                                                         
+                                                      </tr>
+                                                  </tbody>
+                                              </table>
+                                          </div>
+                                      </p-accordionTab>
+                                      <!-- <p-accordionTab>
+                                          <p-header>
+                                              <label class="margin-left-7">Expenses</label>
+                                          </p-header>
+                                          <table id="example2" class="table table-bordered table-striped table-hover">
+                                              <thead>
+                                                  <tr style="background: #586958 !important; color:#fff !important;">
+                                                      <th>
+                                                          Item
+                                                      </th>
+                                                      <th class="text-center">
+                                                          Rate
+                                                      </th>
+                                                      <th style="width: 150px !important">
+                                                          Quantity
+                                                      </th>
+                                                      <th class="text-center">
+                                                          Totals
+                                                      </th>
+                                                      <th class="text-center">
+                                                          Budget Fee
+                                                      </th>
+
+                                                  </tr>
+                                              </thead>
+                                              <tbody>
+                                                
+                                                  <tr *ngFor="let item of expenses; let i = index">
+                                                      <td *ngIf="item.name != ''">{{item.name}}</td>
+                                                      <td *ngIf="item.name == ''"> <input type="text" [(ngModel)]="item.name" class="form-control" placeholder="Enter Name">
+                                                      </td>
+                                                      <td class="text-center" *ngIf="item.rate != null">{{item.rate | currency}}</td>
+                                                      <td *ngIf="item.rate == null"> <input type="number" [(ngModel)]="item.rate" class="form-control" placeholder="Enter Rate"> </td>
+                                                      <td> <input type="number" [(ngModel)]="item.quantity" class="form-control" placeholder="Enter Quantity"> </td>
+                                                      <td class="text-center">{{item.totals | currency}}</td>
+                                                      <td *ngIf="i == 0" [attr.rowspan]="expenses.length" style="vertical-align: middle; text-align: center">{{totalBudget | currency}}</td>
+
+                                                  </tr>
+                                              </tbody>
+                                          </table>
+                                      </p-accordionTab> -->
+                                  </p-accordion>
+                              </div>
+                          </div>
+                          <div class="flex-p">
+                          </div>
+                      </div>
+                  </mat-card>
+                  <div class="flex-p">
+                      <div class="col-sm-12 margin-top-15" style="padding: 0px !important;">
+                          <button class="pull-right" style="background: #3a8cab;color: #fff !important;margin-right: 10px !important" mat-raised-button><mat-icon>save</mat-icon>&nbsp;Click to Save</button>
+                      </div>
+                  </div>
+              </div>
+          </mat-drawer-content>
+      </mat-drawer-container>
+
+  </div>
+</div>
+

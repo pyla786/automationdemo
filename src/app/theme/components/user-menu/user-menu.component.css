@@ -1,0 +1,33 @@
+.user-menu .mat-toolbar,
+.user-menu .mat-toolbar-row {
+  height: 100px !important;
+}
+
+.user-menu .user-info {
+  width: 230px;
+}
+
+.user-menu .user-info img {
+  border-radius: 50% !important;
+}
+
+.user-menu .user-info p {
+  margin: auto !important;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+}
+
+.user-menu .mat-menu-item {
+  height: 36px;
+  line-height: 36px;
+}
+
+.user-menu .py-1 {
+  height: auto;
+}
+
+.user-menu #logout-btn {
+  padding: 13px 16px !important;
+}
+/*# sourceMappingURL=user-menu.component.css.map */

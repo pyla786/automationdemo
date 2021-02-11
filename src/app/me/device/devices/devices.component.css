@@ -1,0 +1,97 @@
+.tr-grid-header {
+  background: #0c122a;
+}
+
+.user-form .form-field-outer {
+  width: 280px;
+}
+
+.user-form .mat-radio-button {
+  margin-right: 12px;
+}
+
+.input-icon.right > i {
+  right: 25px;
+  float: right;
+}
+
+.input-icon > i {
+  color: #ccc;
+  display: block;
+  position: absolute;
+  margin-top: 5px;
+  margin-bottom: 4px;
+  margin-left: 10px;
+  z-index: 3;
+  width: 16px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.fa {
+  display: inline-block;
+  font: 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.modal .input-icon > i {
+  z-index: 10055;
+}
+
+.mine {
+  position: fixed;
+  bottom: 80px;
+  right: 40px;
+  background-color: #e6e6e6 !important;
+}
+
+.inner-screen {
+  color: #246ade !important;
+  cursor: pointer;
+}
+
+.filters {
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  padding: 20px 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.search_filters {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.filters input {
+  width: 300px;
+  height: 40px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-left: 10px;
+  background: #e0e0e0;
+  border: none;
+}
+
+.filters label {
+  font-size: 18px;
+  font-weight: normal !important;
+}
+/*# sourceMappingURL=devices.component.css.map */

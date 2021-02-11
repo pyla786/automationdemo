@@ -1,0 +1,134 @@
+<div fxLayout="row wrap">
+  <div class="w-100">
+    <!-- <div class="flex-p">
+      <div class="row wrap">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+          <div class="pills w-100 flex-p">
+          </div>
+        </div>
+        <div class="col-sm-12" style="margin-right:0px !important">
+          <div class="form-row">
+            <div class="col">
+              <input type="text" class="form-control" >
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" >
+            </div>
+            <div class="col">
+              <button mat-raised-button class="pull-right  btn-primary  margin-right-10"
+              (click)="openCampaignDialog(null)">
+              <mat-icon>add</mat-icon> Add Device
+            </button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="filters">
+      <div class="search_filters">
+        <div>
+          <label>Search by Client:</label>
+          <input type="text" />
+        </div>
+        <div style="margin-left:30px">
+          <label>Search by Keyword:</label>
+          <input type="text"/>
+        </div>
+      </div>
+      <div>
+        <button mat-raised-button class="pull-right  btn-primary  margin-right-10"
+              (click)="openAddDevice(null)">
+              <mat-icon>add</mat-icon> Add Device
+            </button>
+      </div>
+    </div>
+
+    <div fxLayout="row wrap" style="margin-top:10px;">
+      <div class="table-responsive w-100 flex-p" id="grid-table-container">
+        <table id="example2" class="table table-bordered table-hover">
+          <thead class="tbl-head">
+            <tr class="tr-grid-header">
+              <th>Device ID</th>
+              <th>Serial No</th>
+              <th>Device Type</th>
+              <th>Make</th>
+              <th>Model</th>
+              <th>Client</th>
+              <th>Project</th>
+              <th>Module</th>
+              <th style="text-align: center !important;">Date Installed</th>
+              <th style="text-align: center !important;">Parameters</th>
+              <th style="text-align: center !important;">Data Field</th>
+              <th style="text-align: center !important;">Current Status </th>
+              <th style="width: 90px;text-align: center !important;">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="showEmpty">
+              <td colspan="21" class="text-center">No records found</td>
+            </tr>
+
+            <tr *ngFor="let campaign of audit">
+              <td class="inner-screen">
+                {{campaign.id}}
+              </td>
+              <td>
+                {{campaign.serialno}}
+              </td>
+              <td>
+                {{campaign.type}}
+              </td>
+              <td>
+                {{campaign.make}}
+              </td>
+              <td >
+                {{campaign.model}}
+              </td>
+              <td style="color:rgb(241, 115, 42)">
+                {{campaign.client}}
+              </td>
+              <td>
+                {{campaign.project}}
+              </td>
+              <td>
+                {{campaign.module}}</td>
+              <td style="text-align: center !important;">
+                {{campaign.date_installed}}
+              </td>
+              <td style="text-align: center !important;color:rgb(54, 155, 243);cursor:pointer" (click)="openCampaignDialog(null)">
+                
+                {{campaign.parameters}}
+              </td>
+              <td style="text-align: center !important;">
+                <a style="color:rgb(54, 155, 243);text-decoration: underline !important;cursor:pointer;" target="_blank" routerLink="/me/devices/cardview" >
+                {{campaign.data_field}}
+                </a>
+              </td>
+              <td [ngStyle]="{'color': campaign.status=='Active'? 'rgb(72, 158, 19)' : 'red'}" style="text-align: center !important;">
+                {{campaign.status}}
+              </td>
+              <td class="text-center">
+                <a title="Edit Asset" style="cursor: pointer;">
+                  <i class="fa fa-edit" style="color: cornflowerblue"></i>
+                </a>
+                <a title="Delete Asset" style="cursor: pointer;">
+                  <i style="cursor: pointer;" title="Delete Campaign" class="fa fa-trash red"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- <button class="mine" mat-fab (click)="scrollGrid('right');">
+          <mat-icon style="color:#37474f">fast_forward</mat-icon>
+        </button>
+        <button class="mine" mat-fab style="margin-right: 78px !important;" (click)="scrollGrid('left');">
+          <mat-icon style="color:#37474f">fast_rewind</mat-icon>
+        </button> -->
+        <!-- <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+            [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="handlePage($event)" showFirstLastButtons></mat-paginator> -->
+      </div>
+    </div>
+  </div>
+</div>

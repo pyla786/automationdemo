@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAC;EACP,UAAU,EAAE,MAAM;EAClB,KAAK,EAAE,KAAK;EACZ,UAAU,EAAE,OAAO;EACnB,WAAW,EAAE,KAAK;EAClB,UAAU,EAAE,KAAK;EACjB,YAAY,EAAE,KAAK;EACnB,WAAW,EAAE,IAAI;EACjB,cAAc,EAAE,GAAG;EACnB,aAAa,EAAE,IAAI;CACtB;;AACD,AAAA,SAAS,CAAC,aAAa,CAAC,mBAAmB,CAAC;EACxC,YAAY,EAAE,mBAAmB;CAClC;;AAED,AAAA,SAAS,CAAC,qBAAqB,CAAC,wBAAwB,CAAC;EACvD,gBAAgB,EAAE,kBAAkB;CACrC",
+    "sources": [
+        "assetdisposal-gridcolumns.component.scss"
+    ],
+    "names": [],
+    "file": "assetdisposal-gridcolumns.component.css"
+}

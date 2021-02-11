@@ -1,0 +1,342 @@
+
+<div class="NewHeader">
+  <h1 *ngIf="doc == false" mat-dialog-title> Add Site</h1>
+  <h1 *ngIf="doc == true" mat-dialog-title> Add Level</h1>
+  <h1 *ngIf="doc == null" mat-dialog-title> Add Task</h1>
+  <h1 *ngIf="doc == 'action'" mat-dialog-title> Add Action</h1>
+</div>
+
+<div *ngIf="doc == false" mat-dialog-content style="margin-left: 15px;margin-right: 15px;">
+  <form class="form-horizontal" novalidate [formGroup]="siteForm">
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Site Ref:&nbsp;</label>
+      <div class="col-sm-8" style="margin-top: 8px;">
+      <label>001</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Site:&nbsp;</label>
+      <div class="col-sm-8">
+        <input type="text" maxlength="50" class="form-control" placeholder="Enter Site Name" formControlName="jobTitle"
+          required>
+        <div *ngIf="!jobTitle.valid && (jobTitle.dirty || jobTitle.touched)" class="error-text">
+          <div *ngIf="jobTitle.errors.required">
+           Site is required
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-4 add-member-label">Street Address:&nbsp;</label>
+        <div class="col-sm-8">
+          <input type="text" maxlength="200" class="form-control" placeholder="Enter Street Address"
+            formControlName="streetAddress" required>
+          <div *ngIf="!streetAddress.valid && (streetAddress.dirty || streetAddress.touched)" class="error-text">
+            <div *ngIf="streetAddress.errors.required">
+              street Address is required
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-4 add-member-label">Country:&nbsp;</label>
+        <div class="col-sm-8">
+          <mat-select color="primary" placeholder="-- Select Country --" formControlName="Country" class="form-control"
+            required>
+            <mat-option *ngFor="let conuntry of countries" [value]="conuntry.conuntry_id">{{conuntry.conuntry_name}}
+            </mat-option>
+          </mat-select>
+          <div *ngIf="!Country.valid && (Country.dirty || Country.touched)" class="error-text">
+            <div *ngIf="Country.errors.required">
+              Country is required
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label class="control-label col-sm-4 add-member-label">State:&nbsp;</label>
+        <div class="col-sm-8">
+          <mat-select color="primary" placeholder="-- Select State --" formControlName="State" class="form-control"
+            required>
+            <mat-option *ngFor="let State of States" [value]="State.state_id">{{State.state_name}}</mat-option>
+          </mat-select>
+          <div *ngIf="!State.valid && (State.dirty || State.touched)" class="error-text">
+            <div *ngIf="State.errors.required">
+              State is required
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label class="control-label col-sm-4 add-member-label">City:&nbsp;</label>
+        <div class="col-sm-8">
+          <mat-select color="primary" placeholder="-- Select City --" formControlName="City" class="form-control"
+            required>
+            <mat-option *ngFor="let City of Cities" [value]="City.city_id">{{City.city_name}}</mat-option>
+          </mat-select>
+          <div *ngIf="!City.valid && (City.dirty || City.touched)" class="error-text">
+            <div *ngIf="City.errors.required">
+              City is required
+            </div>
+          </div>
+        </div>
+      </div>
+  </form>
+</div>
+
+<div *ngIf="doc == true" mat-dialog-content style="margin-left: 15px;margin-right: 15px;"> 
+  <form class="form-horizontal" novalidate [formGroup]="siteForm">
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Level Ref:&nbsp;</label>
+      <div class="col-sm-8" style="margin-top: 8px;">
+      <label>001</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Site:&nbsp;</label>
+      <div class="col-sm-8">
+        <mat-select color="primary" placeholder="-- Select Site --" formControlName="jobTitle" class="form-control"
+            required>
+            <mat-option *ngFor="let conuntry of sites" [value]="conuntry.site_id">{{conuntry.site_name}}
+            </mat-option>
+          </mat-select>
+        <div *ngIf="!jobTitle.valid && (jobTitle.dirty || jobTitle.touched)" class="error-text">
+          <div *ngIf="jobTitle.errors.required">
+           Site is required
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Project Type:&nbsp;</label>
+      <div class="col-sm-8">
+        <mat-select color="primary" placeholder="-- Select Project --" formControlName="Country" class="form-control"
+          required>
+          <mat-option *ngFor="let conuntry of projects" [value]="conuntry.project_id">{{conuntry.project_name}}
+          </mat-option>
+        </mat-select>
+        <div *ngIf="!Country.valid && (Country.dirty || Country.touched)" class="error-text">
+          <div *ngIf="Country.errors.required">
+            Project Type is required
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Level Name:&nbsp;</label>
+      <div class="col-sm-8">
+        <input type="text" maxlength="50" class="form-control" placeholder="Enter Level Name"
+        formControlName="State" required>
+        <div *ngIf="!State.valid && (State.dirty || State.touched)" class="error-text">
+          <div *ngIf="State.errors.required">
+            Level Name is required
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Po Number:&nbsp;</label>
+      <div class="col-sm-8">
+        <input type="text" maxlength="50" class="form-control" placeholder="Enter Po Number"
+        formControlName="City" required>
+        <div *ngIf="!City.valid && (City.dirty || City.touched)" class="error-text">
+          <div *ngIf="City.errors.required">
+            Po Number is required
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <!-- <div class="form-group">
+        <label class="control-label col-sm-4 add-member-label">Street Address:&nbsp;</label>
+        <div class="col-sm-8">
+          <input type="text" maxlength="200" class="form-control" placeholder="Enter Street Address"
+            formControlName="streetAddress" required>
+          <div *ngIf="!streetAddress.valid && (streetAddress.dirty || streetAddress.touched)" class="error-text">
+            <div *ngIf="streetAddress.errors.required">
+              street Address is required
+            </div>
+          </div>
+        </div>
+      </div> -->
+  </form>
+</div>
+
+<div *ngIf="doc == null" mat-dialog-content style="margin-left: 15px;margin-right: 15px;"> 
+  <form class="form-horizontal" novalidate [formGroup]="siteForm">
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Task Ref:&nbsp;</label>
+      <div class="col-sm-8" style="margin-top: 8px;">
+      <label>001</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Site:&nbsp;</label>
+      <div class="col-sm-8">
+        <mat-select color="primary" placeholder="-- Select Site --" formControlName="jobTitle" class="form-control"
+            required>
+            <mat-option *ngFor="let conuntry of sites" [value]="conuntry.site_id">{{conuntry.site_name}}
+            </mat-option>
+          </mat-select>
+        <div *ngIf="!jobTitle.valid && (jobTitle.dirty || jobTitle.touched)" class="error-text">
+          <div *ngIf="jobTitle.errors.required">
+           Site is required
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Project Type:&nbsp;</label>
+      <div class="col-sm-8">
+        <mat-select color="primary" placeholder="-- Select Project --" formControlName="Country" class="form-control"
+          required>
+          <mat-option *ngFor="let conuntry of projects" [value]="conuntry.project_id">{{conuntry.project_name}}
+          </mat-option>
+        </mat-select>
+        <div *ngIf="!Country.valid && (Country.dirty || Country.touched)" class="error-text">
+          <div *ngIf="Country.errors.required">
+            Project Type is required
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Level:&nbsp;</label>
+      <div class="col-sm-8">
+        <mat-select color="primary" placeholder="-- Select Level --" formControlName="Country" class="form-control"
+          required>
+          <mat-option *ngFor="let conuntry of levels" [value]="conuntry.level_id">{{conuntry.level_name}}
+          </mat-option>
+        </mat-select>
+        <div *ngIf="!City.valid && (City.dirty || City.touched)" class="error-text">
+          <div *ngIf="City.errors.required">
+            Level is required
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Task Name:&nbsp;</label>
+      <div class="col-sm-8">
+        <input type="text" maxlength="50" class="form-control" placeholder="Enter Task Name"
+        formControlName="State" required>
+        <div *ngIf="!State.valid && (State.dirty || State.touched)" class="error-text">
+          <div *ngIf="State.errors.required">
+            Level Name is required
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </form>
+</div>
+
+
+<div *ngIf="doc == 'action'" mat-dialog-content style="margin-left: 15px;margin-right: 15px;">
+  <form class="form-horizontal" novalidate [formGroup]="siteForm">
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Job Code:&nbsp;</label>
+      <div class="col-sm-8">
+        <mat-select color="primary" placeholder="-- Select Job Code --" formControlName="Country" class="form-control"
+          required>
+          <mat-option *ngFor="let item of jobcode" [value]="item.rate">{{item.jobcode}}</mat-option>
+        </mat-select>
+        <div *ngIf="!Country.valid && (Country.dirty || Country.touched)" class="error-text">
+          <div *ngIf="Country.errors.required">
+            Job Code is required
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Rate:&nbsp;</label>
+      <div class="col-sm-8">
+        <input type="text" maxlength="50" class="form-control" placeholder="Enter Rate" formControlName="jobTitle"
+          required>
+        <div *ngIf="!jobTitle.valid && (jobTitle.dirty || jobTitle.touched)" class="error-text">
+          <div *ngIf="jobTitle.errors.required">
+           Rate is required
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Planned:&nbsp;</label>
+      <div class="col-sm-8">
+        <input type="text" maxlength="50" class="form-control" placeholder="Enter Rate" formControlName="jobTitle"
+          required>
+        <div *ngIf="!jobTitle.valid && (jobTitle.dirty || jobTitle.touched)" class="error-text">
+          <div *ngIf="jobTitle.errors.required">
+           Planned is required
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Budget:&nbsp;</label>
+      <div class="col-sm-8">
+        <input type="text" maxlength="50" class="form-control" placeholder="Enter Budget" formControlName="jobTitle"
+          required>
+        <div *ngIf="!jobTitle.valid && (jobTitle.dirty || jobTitle.touched)" class="error-text">
+          <div *ngIf="jobTitle.errors.required">
+           Budget is required
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Hours:&nbsp;</label>
+      <div class="col-sm-8">
+        <input type="text" maxlength="50" class="form-control" placeholder="Enter Hours" formControlName="jobTitle"
+          required>
+        <div *ngIf="!jobTitle.valid && (jobTitle.dirty || jobTitle.touched)" class="error-text">
+          <div *ngIf="jobTitle.errors.required">
+           Hours is required
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Cost:&nbsp;</label>
+      <div class="col-sm-8">
+        <input type="text" maxlength="50" class="form-control" placeholder="Enter Cost" formControlName="jobTitle"
+          required>
+        <div *ngIf="!jobTitle.valid && (jobTitle.dirty || jobTitle.touched)" class="error-text">
+          <div *ngIf="jobTitle.errors.required">
+           Cost is required
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-4 add-member-label">Notes:&nbsp;</label>
+        <div class="col-sm-8">
+          <textarea style="width: 100%;margin-bottom: 30px;"rows="2" class="form-control txtarea" formControlName="streetAddress" id="streetAddress"
+          name="streetAddress" placeholder="Enter Notes"></textarea>
+          <div *ngIf="!streetAddress.valid && (streetAddress.dirty || streetAddress.touched)" class="error-text">
+            <div *ngIf="streetAddress.errors.required">
+              Notes is required
+            </div>
+          </div>
+        </div>
+      </div>
+  </form>
+</div>
+
+<mat-dialog-actions class="col-sm-12" align="end">
+  <button mat-raised-button [disabled]="!siteForm.valid" 
+    [ngClass]="!siteForm.valid ? '' : 'btn-primary'">
+    <mat-icon>send</mat-icon>&nbsp;Save
+  </button>
+  <!-- <button *ngIf="doc" mat-raised-button [disabled]="!siteForm.valid" 
+    [ngClass]="!siteForm.valid ? '' : 'btn-primary'">
+    <mat-icon>update</mat-icon>&nbsp;Update
+  </button> -->
+  <button mat-raised-button class="CancelClass" (click)="close()">
+    &nbsp;Close
+  </button>
+</mat-dialog-actions>
+

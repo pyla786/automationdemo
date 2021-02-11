@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "client-datafield-gridview.component.scss"
+    ],
+    "names": [],
+    "file": "client-datafield-gridview.component.css"
+}

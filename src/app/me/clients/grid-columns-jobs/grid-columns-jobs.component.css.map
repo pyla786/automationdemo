@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "grid-columns-jobs.component.scss"
+    ],
+    "names": [],
+    "file": "grid-columns-jobs.component.css"
+}

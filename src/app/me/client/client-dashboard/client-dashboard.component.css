@@ -1,0 +1,17 @@
+.dashboard {
+  background: #0c122a !important;
+}
+
+.btn {
+  border-radius: 25px;
+  width: 200px;
+  height: 45px;
+  text-align: center;
+}
+
+.app.black-light .ngx-charts text {
+  fill: #8c8c8c !important;
+  font-weight: bold;
+  font-size: 16px;
+}
+/*# sourceMappingURL=client-dashboard.component.css.map */

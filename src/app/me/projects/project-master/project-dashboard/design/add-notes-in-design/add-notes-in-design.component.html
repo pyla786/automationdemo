@@ -1,0 +1,24 @@
+<div class="NewHeader">
+    <h1 mat-dialog-title>Add Notes</h1>
+  </div>
+  <div mat-dialog-content style="margin-left: 15px;margin-right: 15px;">
+    <form class="form-horizontal">
+      <div class="form-group">
+          <label class="control-label col-sm-4 add-member-label">Notes:&nbsp;</label>
+          <div class="col-sm-8">
+            <textarea style="width: 100%;margin-bottom: 30px;"rows="2" class="form-control txtarea" id="streetAddress"
+            name="streetAddress" placeholder="Enter Notes">Notes for project code #12701</textarea>
+          </div>
+        </div>
+    </form>
+  </div>
+  
+  <mat-dialog-actions class="col-sm-12" align="end">
+    <button mat-raised-button class="btn-primary" (click)="close()">
+      <mat-icon>send</mat-icon>&nbsp;Save
+    </button>
+    <button mat-raised-button class="CancelClass" (click)="close()">
+      &nbsp;Close
+    </button>
+  </mat-dialog-actions>
+  

@@ -1,0 +1,517 @@
+<div class="col-sm-12">
+
+
+  <ul style="margin: 0px 0px 20px 0px;" class="nav nav-pills ">
+    <!-- <li>
+              <a [ngClass]="{'tabActive': isQuote === true}" (click)="fnQuote()"  class="mat-raised-button tab">
+                  <span class="mat-button-wrapper">
+                      Quote
+                  </span>
+                  <div class="mat-button-ripple mat-ripple"></div>
+                  <div class="mat-button-focus-overlay"></div>
+              </a>
+          </li>
+          <li>
+              <a [ngClass]="{'tabActive': isProject === true}" (click)="fnProject()"  class="mat-raised-button tab">
+                  <span class="mat-button-wrapper">
+                      Project
+                  </span>
+                  <div class="mat-button-ripple mat-ripple"></div>
+                  <div class="mat-button-focus-overlay"></div>
+              </a>
+          </li> -->
+  </ul>
+
+
+  <div id="example2" *ngIf="isProject" class="margin-top-10 table  table-hover">
+
+    <div class="col-sm-12">
+      <p class="col-sm-12" style="margin-top: 5px;padding-left: 0px;">
+        <span style="font-size: 18px;font-weight: bold; margin-right: 8px">GENERAL </span>
+        <!-- <button *ngIf='isedit' mat-raised-button color="primary" class="btn btn-primary pull-right" (click)="editfun()">
+              Click to Edit Details
+          </button> -->
+      </p>
+      <form [formGroup]="employeeForm">
+
+        <table id="example2" class="margin-top-20 table table-bordered table-hover">
+          <thead *ngIf='isedit'>
+            <tr>
+              <th>Project #:</th>
+              <td>P-190001</td>
+
+
+              <th>Project Type: </th>
+              <td>New Project</td>
+
+            </tr>
+            <tr>
+              <th>Client Name: </th>
+              <td>Toronto Towers</td>
+
+              <th>Contact Details:</th>
+              <td>Existing</td>
+
+            </tr>
+            <tr>
+              <!-- <th>Quote Admin:</th>
+                  <td>James Smith</td> -->
+
+              <th>Account Manager: </th>
+              <td>Rob</td>
+              <th>Email: </th>
+              <td>james2136@gmail.com</td>
+
+            </tr>
+            <tr>
+
+
+              <th>Project Manager: </th>
+              <td>Dwayne</td>
+
+              <th>Phone: </th>
+              <td>(416) 920-5100</td>
+            </tr>
+            <tr>
+              <th>Country:</th>
+              <td>Canada</td>
+              <th>Province: </th>
+              <td>Ontario</td>
+
+            </tr>
+            <tr>
+              <!-- <th>Municipality:</th>
+                  <td>Ottawa</td> -->
+              <th>City: </th>
+              <td>Ottawa </td>
+              <th>Street Address: </th>
+              <td>79GG+XC Gloucester</td>
+            </tr>
+
+            <tr>
+
+              <th>
+                Received Date:
+              </th>
+
+              <td class="form-group">
+                2019-10-09
+              </td>
+              <th>Quoted Date: </th>
+              <td>2019-10-30</td>
+            </tr>
+            <tr>
+
+              <th>
+                Due Date:
+              </th>
+
+              <td class="form-group">
+                2019-11-28
+              </td>
+              <th>
+                Potential Level:
+              </th>
+
+              <td>
+                <i class="fa fa-circle dot" style="float: left !important;" [style.color]="green"></i>
+                Normal
+              </td>
+            </tr>
+          </thead>
+
+          <thead *ngIf='!isedit'>
+            <tr>
+              <th>Project #:</th>
+              <td class="form-group">
+                <input class="form-control" type="text" formControlName="notes" disabled />
+              </td>
+
+              <th>Project Type: </th>
+              <td class="form-group">
+                <mat-select formControlName="projectType" class="form-control" placeholder="Select Project Type">
+                  <mat-option value="1">Planner</mat-option>
+                  <mat-option value="2">Private land owner</mat-option>
+                  <mat-option value="3">Engineer/Engineering Firm</mat-option>
+                  <mat-option value="4">Utility company</mat-option>
+                  <mat-option value="5">Surveyor/Survey firm</mat-option>
+                  <mat-option value="6">Construction</mat-option>
+                </mat-select>
+              </td>
+            </tr>
+            <tr>
+              <th>Client Name: </th>
+              <td class="form-group">
+                <mat-select formControlName="clientName" class="form-control" placeholder="Select Client">
+                  <mat-option value="1">CITYHM</mat-option>
+                  <mat-option value="2">DELHOME</mat-option>
+                  <mat-option value="3">HYDRO</mat-option>
+                  <mat-option value="4">SANDHOME</mat-option>
+                  <mat-option value="5">VALLEY</mat-option>
+                  <mat-option value="6">AECOM</mat-option>
+                </mat-select>
+              </td>
+              <th>Contact Details:</th>
+
+              <td class="form-group">
+                <mat-radio-group aria-label="Select an option">
+                  <mat-radio-button value="1" [checked]="true">Existing&nbsp;&nbsp;</mat-radio-button>
+                  <mat-radio-button value="2">New&nbsp;&nbsp;</mat-radio-button>
+                  <mat-radio-button value="3">Same as client.&nbsp;&nbsp;</mat-radio-button>
+                </mat-radio-group>
+                <!-- <mat-select formControlName="surveyType" class="form-control" placeholder="Select Survey Type">
+                          <mat-option value="1">Legal</mat-option>
+                          <mat-option value="2">Engineering</mat-option>
+                          <mat-option value="3">Construction</mat-option>
+                      </mat-select> -->
+              </td>
+            </tr>
+            <tr>
+              <!-- <th>Quote Admin:</th>
+
+                  <td class="form-group">
+                      <input class="form-control" type="text" formControlName="Admin" />
+                  </td> -->
+              <th>Account Manager: </th>
+
+              <td class="form-group">
+                <mat-select formControlName="accountManager" class="form-control" placeholder="Select Account Manager">
+                  <mat-option value="1">James Cameron</mat-option>
+                  <mat-option value="2">Andre Russell</mat-option>
+                  <mat-option value="3">Steve Michail</mat-option>
+                </mat-select>
+              </td>
+              <th>Email: </th>
+
+              <td class="form-group">
+                <input class="form-control" type="text" formControlName="Email" />
+              </td>
+            </tr>
+            <tr>
+
+              <th>Project Manager: </th>
+
+              <td class="form-group">
+                <mat-select formControlName="projectManager" class="form-control" placeholder="Select Project Manager">
+                  <mat-option value="1">Dwayne Johnson</mat-option>
+                  <mat-option value="2">Andre Russell</mat-option>
+                  <mat-option value="3">Steve Michail</mat-option>
+                </mat-select>
+              </td>
+              <th>Phone: </th>
+
+              <td class="form-group">
+                <input class="form-control" type="text" formControlName="Phone" />
+              </td>
+            </tr>
+            <tr>
+
+              <th>Country:</th>
+
+              <td class="form-group">
+                <mat-select formControlName="country" class="form-control" placeholder="Select Project Manager">
+                  <mat-option value="1">Australia</mat-option>
+                  <mat-option value="2">Canada</mat-option>
+                  <mat-option value="3">India</mat-option>
+                </mat-select>
+              </td>
+              <th>Province: </th>
+
+              <td class="form-group">
+                <mat-select formControlName="state" class="form-control" placeholder="Select Project Manager">
+                  <mat-option value="1">Ontario</mat-option>
+                  <mat-option value="2">Alberta</mat-option>
+                  <mat-option value="3">Manitoba</mat-option>
+                </mat-select>
+              </td>
+            </tr>
+            <tr>
+
+              <!-- <th>Municipality:</th>
+
+                  <td class="form-group">
+                      <mat-select formControlName="municipality" class="form-control" placeholder="Select Project Manager">
+                          <mat-option value="1">Brampton</mat-option>
+                          <mat-option value="2">Totonto</mat-option>
+                          <mat-option value="3">Ottawa</mat-option>
+                      </mat-select>
+                  </td> -->
+              <th>City: </th>
+
+              <td class="form-group">
+                <input class="form-control" type="text" formControlName="City" />
+              </td>
+              <th>Street Address: </th>
+
+              <td class="form-group">
+                <input class="form-control" type="text" formControlName="Street" />
+              </td>
+            </tr>
+
+            <tr>
+              <th>
+                Received Date:
+              </th>
+
+              <td class="form-group">
+                <input class="form-control" type="text" formControlName="ReceivedDate" />
+              </td>
+              <th>Quoted Date: </th>
+
+              <td class="form-group">
+                <input class="form-control" type="text" formControlName="QuotedDate" />
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Due Date:
+              </th>
+
+              <td class="form-group">
+                <input class="form-control" type="text" formControlName="DueDate" />
+              </td>
+            </tr>
+          </thead>
+
+        </table>
+
+      </form>
+    </div>
+
+    <!-- <div class="col-sm-12">
+  <p class="col-sm-12" style="margin-top: 20px;padding-left: 0px;">
+      <span style="font-size: 18px;font-weight: bold; margin-right: 8px">CONTACT DETAILS </span>
+  </p>
+
+  <form [formGroup]="employeeForm">
+
+      <table id="example2" class="margin-top-20 table table-bordered table-hover">
+          <thead *ngIf='isedit'>
+
+              <tr>
+                  <th>Contact Name:</th>
+                  <td>Henry Wade</td>
+                  <th>Job Title:</th>
+                  <td>Field Manager</td>
+
+              </tr>
+              <tr>
+                  <th>Email:</th>
+                  <td>alexgeorge@gmail.com</td>
+                  <th>Phone:</th>
+                  <td>(416) 457-5100</td>
+              </tr>
+
+              <tr>
+                  <th>Street Address:</th>
+                  <td>79GG+XC Gloucester</td>
+                  <th>City:</th>
+                  <td class="form-group">Ottawa</td>
+
+              </tr>
+              <tr>
+                  <th>Country:</th>
+                  <td class="form-group">Canada</td>
+                  <th>Province:</th>
+                  <td>Alberta</td>
+              </tr>
+              <tr>
+                  
+                      <th>Postal Code:</th>
+                      <td>05224</td>
+                  </tr>
+          </thead>
+
+
+
+
+          <thead *ngIf='!isedit'>
+              <tr>
+                  <th>Contact Name:</th>
+                  <td class="form-group">
+                      <mat-select class="form-control" [(ngModel)]="existingContactName" [ngModelOptions]="{standalone: true}">
+                          <mat-option *ngFor="let option of contactoptions" [value]="option">
+                              {{option}}
+                          </mat-option>
+                      </mat-select>
+                  </td>
+
+                  <th>Job Title:</th>
+                  <td class="form-group">
+                      <input class="form-control" type="text" value="Field Manager" disabled/>
+                  </td>
+              </tr>
+              <tr>
+                  <th>Email:</th>
+
+                  <td class="form-group">
+                      <input class="form-control" type="text" value="alexgeorge@gmail.com" disabled/>
+                  </td>
+                  <th>Phone:</th>
+
+                  <td class="form-group">
+                      <input class="form-control" type="text" value="(416) 457-5100" disabled/>
+                  </td>
+              </tr>
+              <tr>
+                  <th>Street Address:</th>
+
+                  <td class="form-group">
+                      <input class="form-control" type="text" value="79GG+XC Gloucester" disabled/>
+                  </td>
+                  <th>City:</th>
+
+                  <td class="form-group">
+                      <input class="form-control" type="text" value="Ottawa" disabled/>
+                  </td>
+              </tr>
+              <tr>
+                      <th>Country:</th>
+
+                      <td class="form-group">
+                          <input class="form-control" type="text" value="Canada" disabled/>
+                      </td>
+                  <th>Province:</th>
+
+                  <td class="form-group">
+                      <input class="form-control" type="text" value="Alberta" disabled/>
+                  </td>
+                  
+              </tr>
+              <tr>
+          
+                  <th>Postal Code:</th>
+
+                  <td class="form-group">
+                      <input class="form-control" type="text" value="05224" disabled/>
+                  </td>
+                  
+              </tr>
+          </thead>
+
+      </table>
+
+  </form>
+</div> -->
+
+    <div class="col-sm-12">
+      <p class="col-sm-12" style="margin-top: 20px;padding-left: 0px;">
+        <span style="font-size: 18px;font-weight: bold; margin-right: 8px">PROJECT ADDRESS </span>
+      </p>
+
+      <form [formGroup]="employeeForm">
+
+        <table id="example2" class="margin-top-20 table table-bordered table-hover">
+          <thead *ngIf='isedit'>
+
+            <tr>
+              <th>Street Address:</th>
+              <td>79GG+XC Gloucester</td>
+              <th>City: </th>
+              <td>British Columbia</td>
+
+            </tr>
+            <tr>
+              <th>Country:</th>
+              <td>Canada</td>
+              <th>Province: </th>
+              <td>Alberta </td>
+            </tr>
+
+            <tr>
+              <!-- <th>Municipality: </th>
+                  <td>Ottawa</td> -->
+              <th>
+                Postal Code:
+              </th>
+
+              <td class="form-group">
+                052214
+              </td>
+              <th>
+              </th>
+
+              <td class="form-group">
+
+              </td>
+            </tr>
+          </thead>
+
+
+
+
+          <thead *ngIf='!isedit'>
+            <tr>
+              <th>Street Address:</th>
+              <td class="form-group">
+                <input class="form-control" type="text" value="British Columbia" />
+              </td>
+
+              <th>City: </th>
+              <td class="form-group">
+                <input class="form-control" type="text" value="79GG+XC Gloucester" />
+              </td>
+            </tr>
+            <tr>
+              <th>Country:</th>
+
+              <td class="form-group">
+                <mat-select formControlName="country" class="form-control" placeholder="Select Project Manager">
+                  <mat-option value="1">Australia</mat-option>
+                  <mat-option value="2">Canada</mat-option>
+                  <mat-option value="3">India</mat-option>
+                </mat-select>
+              </td>
+              <th>Province: </th>
+
+              <td class="form-group">
+                <mat-select formControlName="state" class="form-control" placeholder="Select Project Manager">
+                  <mat-option value="1">Ontario</mat-option>
+                  <mat-option value="2">Alberta</mat-option>
+                  <mat-option value="3">Manitoba</mat-option>
+                </mat-select>
+              </td>
+            </tr>
+            <tr>
+              <!-- <th>Municipality:</th>
+
+                  <td class="form-group">
+                      <mat-select formControlName="municipality" class="form-control" placeholder="Select Project Manager">
+                          <mat-option value="1">Brampton</mat-option>
+                          <mat-option value="2">Totonto</mat-option>
+                          <mat-option value="3">Ottawa</mat-option>
+                      </mat-select>
+                  </td> -->
+              <th>Postal Code: </th>
+
+              <td class="form-group">
+                <input class="form-control" type="text" value="052214" />
+              </td>
+            </tr>
+
+          </thead>
+
+        </table>
+
+      </form>
+    </div>
+
+   
+    <div *ngIf='isedit' class="col-sm-12">
+      <button mat-raised-button color="primary" class="btn btn-primary pull-right" (click)="editfun()">
+        Click to Edit Details
+      </button>
+    </div>
+    <div *ngIf='!isedit' class="col-sm-12">
+      <button mat-raised-button class="add-dark-hover btn-default pull-right" type="button" (click)="cancel()">
+         &nbsp;Cancel
+      </button>
+      <button mat-raised-button class="add-hover btn-primary margin-right-10 pull-right" type="button"
+        (click)="savedata()">
+        <mat-icon>send</mat-icon>&nbsp;Save
+      </button>
+    </div>
+  </div>
+
+
+</div>

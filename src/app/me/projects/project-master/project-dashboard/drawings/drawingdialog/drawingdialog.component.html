@@ -1,0 +1,59 @@
+<div class="NewHeader">
+  <h1 mat-dialog-title>Add Drawing</h1>
+</div>
+<div mat-dialog-content style="margin-left: 15px;margin-right: 15px;">
+  <form class="form-horizontal" novalidate [formGroup]="siteForm">
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Drawing No:&nbsp;</label>
+      <div class="col-sm-8">
+        <input type="text" maxlength="50" class="form-control" placeholder="Enter Drawing No" formControlName="jobTitle"
+        required>
+        <div *ngIf="!Country.valid && (Country.dirty || Country.touched)" class="error-text">
+          <div *ngIf="Country.errors.required">
+            Drawing No is required
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Drawing Name:&nbsp;</label>
+      <div class="col-sm-8">
+        <input type="text" maxlength="50" class="form-control" placeholder="Drawing Name" formControlName="jobTitle"
+          required>
+        <div *ngIf="!jobTitle.valid && (jobTitle.dirty || jobTitle.touched)" class="error-text">
+          <div *ngIf="jobTitle.errors.required">
+           Drawing Name is required
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-4 add-member-label">Upload file:&nbsp;</label>
+      <div class="col-sm-8">
+          <input type="file" (change)="handleFileSelect($event)" formControlName="filesSelect">
+      </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-4 add-member-label">Notes:&nbsp;</label>
+        <div class="col-sm-8">
+          <textarea style="width: 100%;margin-bottom: 30px;"rows="2" class="form-control txtarea" formControlName="streetAddress" id="streetAddress"
+          name="streetAddress" placeholder="Enter Notes"></textarea>
+          <div *ngIf="!streetAddress.valid && (streetAddress.dirty || streetAddress.touched)" class="error-text">
+            <div *ngIf="streetAddress.errors.required">
+              Notes is required
+            </div>
+          </div>
+        </div>
+      </div>
+  </form>
+</div>
+
+<mat-dialog-actions class="col-sm-12" align="end">
+  <button mat-raised-button [disabled]="!siteForm.valid" 
+    [ngClass]="!siteForm.valid ? '' : 'btn-primary'">
+    <mat-icon>send</mat-icon>&nbsp;Save
+  </button>
+  <button mat-raised-button class="CancelClass" (click)="close()">
+    &nbsp;Close
+  </button>
+</mat-dialog-actions>

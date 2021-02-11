@@ -1,0 +1,326 @@
+<div class="row-wrap">
+  <div class="flex-p w-100">
+      <div class="row">
+          <div class="col-xs-12">
+              <div class="row" style="margin-bottom:7px;">
+                  <div class="col-xs-6 ">
+                      <div class="flex-p">
+                          <app-client-project-master></app-client-project-master>
+                      </div>
+                  </div>
+                  <div class="col-xs-6 ">
+                      
+                      
+                  </div>
+              </div>
+              
+              
+              <div class="row" style="margin-top:15px;">
+                  <!-- <div class="col-lg-4"> 
+                      
+                      <mat-card-header fxLayoutAlign="center center">                
+                          <mat-card-subtitle><h2>Projects by Client</h2></mat-card-subtitle>
+                      </mat-card-header>
+                      <div class="w-100 h-300p">
+                          <ngx-charts-pie-chart
+                          [scheme]="colorScheme"
+                          [results]="single"
+                          [legend]="showLegend"
+                          [explodeSlices]="explodeSlices"
+                          [labels]="showLabels"
+                          [doughnut]="doughnut"
+                          [gradient]="gradient"
+                          (select)="onSelect($event)">
+                      </ngx-charts-pie-chart>                  
+                  </div>
+                  
+              </div> -->
+              
+              <div class="col-lg-4"> 
+                  
+                  <mat-card-header fxLayoutAlign="center center">                
+                      <mat-card-subtitle><h2>Source Location</h2></mat-card-subtitle>
+                  </mat-card-header>
+                  <div class="w-100 h-300p">
+                      <ngx-charts-pie-chart
+                      [scheme]="colorScheme"
+                      [results]="triple"
+                      [legend]="showLegend"
+                      [explodeSlices]="explodeSlices"
+                      [labels]="showLabels"
+                      [doughnut]="doughnut"
+                      [gradient]="gradient"
+                      (select)="onSelect($event)">
+                  </ngx-charts-pie-chart>                  
+              </div>
+              
+          </div>
+          <div class="col-lg-4"> 
+              
+              <mat-card-header fxLayoutAlign="center center">                
+                  <mat-card-subtitle><h2>Chronic Exceptions</h2></mat-card-subtitle>
+              </mat-card-header>
+              <div class="w-100 h-300p">
+                  <ngx-charts-pie-chart
+                  [scheme]="colorScheme"
+                  [results]="multi"
+                  [legend]="showLegend"
+                  [explodeSlices]="explodeSlices"
+                  [labels]="showLabels"
+                  [doughnut]="doughnut"
+                  [gradient]="gradient"
+                  (select)="onSelect($event)">
+              </ngx-charts-pie-chart>                  
+          </div>
+          
+      </div>
+  </div>
+  
+  <div class="row" style="margin-bottom:7px;">
+      <div class="col-xs-6 ">
+      </div>
+      <div class="col-xs-6 ">
+          <div class="flex-p">
+              <!-- <button mat-raised-button class="pull-right  btn-primary" (click)="openProjectDialog(null)">
+                  <mat-icon>add</mat-icon> Add Project
+              </button> -->
+              <!-- <button mat-raised-button  class="pull-right  btn-primary margin-right-10" (click)="openGridColumnsDialog(null)">
+                  <mat-icon>grid_on</mat-icon>Grid Columns
+              </button> -->
+              <button mat-raised-button color="primary" class="pull-right filters-hover margin-right-10"
+              (click)="filterToggle = !filterToggle">
+              <mat-icon>filter_list</mat-icon> Filter
+          </button>
+          
+      </div>
+      
+  </div>
+</div>
+
+<div fxLayout="row wrap" *ngIf="filterToggle">
+  <div fxFlex="100" fxFlex.gt-sm fxFlex.sm class="flex-p w-100 margins">
+      <mat-card class="filter">
+          <mat-card-content>
+              <div class="row">
+                  <div class="col-sm-4">
+                      <div class="col-sm-4 newMarginClass">
+                          Project Code: 
+                      </div>
+                      <div class="col-sm-8">
+                          <input type="text" placeholder="Search by Project Code" class="form-control" [formControl]="contactName">
+                      </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="col-sm-4 newMarginClass">
+                        Setup Date: 
+                    </div>
+                    <div class="col-sm-8">
+                        <input class="form-control"  [formControl]="startdueDate" class="form-control" placeholder="MM/DD/YYYY" (keypress)="false" [owlDateTimeTrigger]="dt6" [owlDateTime]="dt6" name="dt6">
+                        <owl-date-time [pickerType]="'calendar'" #dt6></owl-date-time>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="col-sm-4 newMarginClass">
+                        Status: 
+                    </div>
+                    <div class="col-sm-8">
+                        <mat-select placeholder="--Search by Status--" class="form-control" [formControl]="statu" [(ngModel)]="status_filter">
+                            <mat-option *ngFor="let option of status" [value]="option.status_id">{{option.status_name}}</mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+                  <!-- <div class="col-sm-4">
+                      <div class="col-sm-4 newMarginClass">
+                          Client Name: 
+                      </div>
+                      <div class="col-sm-8">
+                          <input type="text" placeholder="Search by Contact Name" class="form-control" [formControl]="clientName">
+                      </div>
+                  </div> -->
+                  <!-- <div class="col-sm-4">
+                      <div class="col-sm-4 newMarginClass">
+                          Project Manager: 
+                      </div>
+                      <div class="col-sm-8">
+                          <input type="text" placeholder="Search by Project Manager" class="form-control" [formControl]="jobTitle">
+                      </div>
+                  </div> -->
+              </div>
+              
+              <!-- <div class="row" style="padding-top:10px !important">
+                  <div class="col-sm-4">
+                      <div class="col-sm-4 newMarginClass">
+                          Start Date: 
+                      </div>
+                      <div class="col-sm-8">
+                          <input class="form-control"  [formControl]="startendDate" class="form-control" placeholder="MM/DD/YYYY" (keypress)="false" [owlDateTimeTrigger]="dt5" [owlDateTime]="dt5" name="dt5">
+                          <owl-date-time [pickerType]="'calendar'" #dt5></owl-date-time>
+                      </div>
+                  </div>
+                  
+                  
+                  <div class="col-sm-4">
+                      <div class="col-sm-4 newMarginClass">
+                          Activity Date: 
+                      </div>
+                      <div class="col-sm-8">
+                          <input class="form-control"  [formControl]="activityDate" class="form-control" placeholder="MM/DD/YYYY" (keypress)="false" [owlDateTimeTrigger]="dt7" [owlDateTime]="dt7" name="dt7">
+                          <owl-date-time [pickerType]="'calendar'" #dt7></owl-date-time>
+                      </div>
+                  </div>
+              </div> -->
+              <div class="row" style="padding-top:10px !important">
+                  <div class="col-sm-4">
+                      <div class="col-sm-4 newMarginClass">
+                          Search by Keyword: 
+                      </div>
+                      <div class="col-sm-8">
+                          <input type="text" class="form-control" placeholder=" Search by Keyword " [formControl]="keyword" >
+                      </div>
+                  </div>
+                  
+                  
+                  <div class="col-lg-1" style="margin-left:195px!important;">
+                      <button mat-raised-button  class="pull-right btn-primary"><mat-icon>youtube_searched_for</mat-icon> Search</button>
+                  </div>
+                  <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="margin-left: -18px;">
+                      <button mat-raised-button style="background-color:#37474f; color:#fff !important" ><mat-icon>settings_backup_restore</mat-icon> Clear</button>
+                  </div>
+                  <a (click)="filterToggle = !filterToggle" class="pull-right" style="font-size: 25px; cursor: pointer; margin-left: 5px;">
+                      <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                  </a>
+                  
+              </div>
+          </mat-card-content>
+      </mat-card>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+      <div id="grid-table-container" class="table-responsive">
+          <table matSort id="example2" class="table table-bordered table-hover">
+              <thead class="tbl-head">
+                  <tr>
+                      <th>Project Code</th>
+                      <th>Topic No</th>
+                      <!-- <th>Client Name</th> -->
+                      <th>Project Address</th>
+                      <th>City</th>
+                      <th>Country</th>
+                      <th>ZipCode</th>
+                      <th>Setup Date</th>
+                      <th class="text-center">Remarks</th>
+                      <th class="text-center">Current Status</th>
+                      <!-- <th class="text-center" style="width: 112px!important;">Actions</th> -->
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let item of totalProjects">
+                      <td style="min-width: 70px !important;"><a target="_blank" matTooltip="View Project Dashboard"
+                          routerLink="/simc/projects/project-dashboard/metrics">
+                          {{item.projectNumber}}
+                      </a>
+                  </td>
+                  <!-- <td style="text-align: center!important;">{{item.projectNumber}}</td> -->
+                  <!-- <td style="text-align: center!important;">{{item.streetAddress}}</td>
+                  <td style="text-align: center!important;">{{item.industry}}</td>
+                  <td style="text-align: center!important;">{{item.projectType}}</td>
+                  <td style="text-align: center!important;"><a target="_blank" 
+                      routerLink="/mpki/projects/project-dashboard/stagegateprocess">
+                      {{item.ele}}
+                  </a></td> -->
+                  <td>
+                      {{item.topicno}}
+                  </td>
+                  <!-- <td>
+                      {{item.clientName}}
+                      
+                  </td> -->
+                  <td>
+                      {{item.project_address}}
+                      
+                  </td>
+                  <td>
+                      {{item.city}}
+                      
+                  </td>
+                  <td>
+                      {{item.country}}
+                      
+                  </td>
+                  <td>
+                      {{item.zipcode}}
+                      
+                  </td>
+                  <td>
+                      {{item.setupDate}}
+                      
+                  </td>
+                  <td style="text-align: center!important;">
+                      {{item.remarks}}
+                      
+                  </td>
+                  <td [ngStyle]="{'color': item.status=='Active'? 'rgb(72, 158, 19)' : 'red'}" style="text-align: center !important;">
+                      {{item.status}}
+                  </td>
+                  <!-- <td style="text-align: center!important;"><a target="_blank" 
+                      routerLink="/mpki/projects/project-dashboard/otherdocs">
+                      {{item.plumbing}}
+                  </a>
+              </td> -->
+              <!-- <td style="text-align: center!important;"><a style="color:#007ad9;cursor: pointer;" (click)="openLogisticsDialog(item)">
+                  {{item.logs}}
+              </a>
+          </td> -->
+          <!-- <td style="text-align: center!important;">
+              {{item.pm}}
+          </td>
+          <td style="text-align: center!important;">
+              {{item.fm}}
+              
+          </td>
+          <td style="text-align: center!important;">{{item.strDueDate}}</td>
+          <td style="text-align: center!important;">{{item.strFollowUpDate}}</td>
+          <td style="text-align: center!important;">{{item.strProjectAwaredDate}}</td>
+          <td style="text-align: center!important;">{{item.PE}}</td> -->
+          <!-- <td style="text-align: center!important;">{{item.awardedAmount}}</td>
+          <td >
+              <a 
+              [ngClass]="item.bt_status ? 'status' : 'status Red'"
+              mwlConfirmationPopover
+              [popoverTitle]="popoverStatusTitle"
+              [popoverMessage]="popoverStatusMessage"
+              placement="left"
+              (confirm)="cancelClicked = true"
+              (cancel)="cancelClicked = true">
+              {{item.bt_status?'Active':'Inactive'}}
+          </a>
+      </td> -->
+      <!-- <td  class="text-center">
+          <a style="cursor: pointer;margin-right:10px; " matTooltip="Update Project" >
+              <i class="fa fa-edit" style="color: cornflowerblue"></i>
+          </a>
+          <a ><i class="fa fa-trash red" matTooltip="Delete Project"  style="cursor: pointer;"></i></a>
+      </td>  -->
+  </tr>
+  <tr *ngIf="totalProjects ==null || totalProjects.length ==0">
+      <td colspan="13">No data available</td>
+  </tr>
+</tbody>
+</table>
+<mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+[pageSizeOptions]="[5, 10, 25, 50, 100]"
+showFirstLastButtons></mat-paginator>
+<!-- <mat-paginator [length]="totalSize" [pageIndex]="currentPage" [pageSize]="pageSize"
+  [pageSizeOptions]="[5, 10, 25, 50, 100]" (page)="handlePage($event)"
+  showFirstLastButtons></mat-paginator> -->
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+

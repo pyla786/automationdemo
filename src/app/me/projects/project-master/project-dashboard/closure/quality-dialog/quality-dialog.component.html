@@ -1,0 +1,65 @@
+<div class="NewHeader">
+  <h1 mat-dialog-title>
+    <span *ngIf="!observations" class="title-left">Add</span>
+    <span *ngIf="observations" class="title-left">Update</span> observation
+  </h1>
+</div>
+<div mat-dialog-content>
+  <form class="form-horizontal" novalidate [formGroup]="observationForm">
+
+    <div class="form-group">
+        <label class="control-label col-sm-4 add-member-label">Site Name:&nbsp;</label>
+        <div class="col-sm-8">
+          <mat-select color="primary" placeholder="-- Select Site Name --" formControlName="Country" class="form-control"
+            required>
+            <mat-option *ngFor="let conuntry of countries" [value]="conuntry.conuntry_id">{{conuntry.conuntry_name}}
+            </mat-option>
+          </mat-select>
+          <div *ngIf="!Country.valid && (Country.dirty || Country.touched)" class="error-text">
+            <div *ngIf="Country.errors.required">
+              Site Name is required
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+          <label class="control-label col-sm-4 add-member-label">Category:&nbsp;</label>
+          <div class="col-sm-8">
+            <mat-select color="primary" placeholder="-- Select Category --" formControlName="State" class="form-control"
+              required>
+              <mat-option *ngFor="let State of States" [value]="State.state_id">{{State.state_name}}</mat-option>
+            </mat-select>
+            <div *ngIf="!State.valid && (State.dirty || State.touched)" class="error-text">
+              <div *ngIf="State.errors.required">
+                Category is required
+              </div>
+            </div>
+          </div>
+        </div>
+    <div class="form-group">
+        <label class="control-label col-sm-4 add-member-label">Observations:&nbsp;</label>
+        <div class="col-sm-8">
+          <textarea formControlName="invoice" rows="2" class="form-control txtarea" 
+          name="addSubject" placeholder="Enter Observations" required></textarea>
+          <div *ngIf="!invoice.valid && (invoice.dirty || invoice.touched)" class="error-text">
+            <div *ngIf="invoice.errors.required">
+              Observations is required
+            </div>
+          </div>
+        </div>
+      </div>
+  </form>
+</div>
+<mat-dialog-actions class="col-sm-12" align="end">
+  <button *ngIf="!observations"mat-raised-button [disabled]="!observationForm.valid" 
+    [ngClass]="!observationForm.valid ? '' : 'btn-primary'">
+    <mat-icon>send</mat-icon>&nbsp;Save
+  </button>
+  <button *ngIf="observations" mat-raised-button [disabled]="!observationForm.valid" 
+    [ngClass]="!observationForm.valid ? '' : 'btn-primary'">
+    <mat-icon>update</mat-icon>&nbsp;Update
+  </button>
+  <button mat-raised-button class="CancelClass" (click)="close()">
+    &nbsp;Close
+  </button>
+</mat-dialog-actions>

@@ -1,0 +1,59 @@
+
+<div class="flex-p" style="margin-top: -10px; margin-bottom: 10px;">
+    <div class="row wrap">
+        <div class="col-xs-12">
+            
+            <div class="col-sm-12 pull-right">
+                <!-- <div class="col-sm-3"></div> -->
+                <div class="col-sm-2" style="margin-right: 5px !important;margin-top: 6px;">
+                    <input class="form-control" placeholder="Enter keyword" type="text">
+                </div>
+                <div class="col-sm-2" style="margin-right: 5px !important;margin-top: 6px;">
+                    <mat-select class="form-control" placeholder="Select Event Type">
+                        <mat-option [value]=0>Stage Gate Process</mat-option>
+                        <mat-option [value]=1>FAT</mat-option>
+                        <mat-option [value]=2>Line Trials</mat-option>
+                        <mat-option [value]=3>CAPA</mat-option>
+                        <mat-option [value]=4>Artwork</mat-option>
+                        <mat-option [value]=5>Specs</mat-option>
+                    </mat-select>
+                </div>
+                <div class="col-sm-2" style="margin-right: 5px !important;margin-top: 6px;">
+                    <input class="form-control"   class="form-control" placeholder="From Date" (keypress)="false" [owlDateTimeTrigger]="dt7" [owlDateTime]="dt7" name="dt7">
+                    <owl-date-time [pickerType]="'calendar'" #dt7></owl-date-time>
+                </div>
+                <div class="col-sm-2" style="margin-right: 5px !important;margin-top: 6px;">
+                    <input class="form-control"   class="form-control" placeholder="To Date" (keypress)="false" [owlDateTimeTrigger]="dt8" [owlDateTime]="dt8" name="dt8">
+                    <owl-date-time [pickerType]="'calendar'" #dt8></owl-date-time>
+                </div>
+                <div class="col-sm-1">
+                    <button mat-raised-button color="primary" class="pull-right filters-hover">
+                        <mat-icon>youtube_searched_for</mat-icon> Search
+                    </button>
+                </div>
+                <div class="col-sm-1">
+                    <button mat-raised-button class="pull-right btn-success-gray">
+                        <mat-icon>settings_backup_restore</mat-icon> Reset
+                    </button>
+                </div>
+                
+            </div>   
+        </div>
+    </div>
+    <div fxLayout="row wrap" style="margin-top:10px;padding: 0px 5px 0px 5px;">
+        <div class="w-100 flex-p">
+            <mgl-timeline  [alternate]="alternate">
+                <mgl-timeline-entry *ngFor="let entry of entries; let i = index;" (expand)="onExpandEntry($event, i)">
+                    <mgl-timeline-entry-header [class] = 'entry.headerClass' (click)="onHeaderClick($event)">
+                        <div style="margin-bottom:10px;"><i class="{{entry.element}}" style="float: left">&nbsp;&nbsp;&nbsp;</i><b style="float: left">{{entry.header}}</b>&nbsp;&nbsp;&nbsp;&nbsp;<b style="float: right">{{entry.date}}</b></div>
+                        <div><p class="left-alignment"><i class="{{entry.dataelement}}" style="float: left"></i>{{entry.content}}</p></div>
+                    </mgl-timeline-entry-header>
+                    
+                    <mgl-timeline-entry-dot [class]="entry.class"
+                    [size]="size"
+                    (click)="onDotClick($event)"></mgl-timeline-entry-dot>
+                    <!-- <mgl-timeline-entry-side>2018</mgl-timeline-entry-side> -->
+                </mgl-timeline-entry>
+            </mgl-timeline>
+        </div>
+    </div>
